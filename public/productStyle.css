@@ -1,0 +1,134 @@
+#productMain{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    font-family: Roboto;
+}
+
+#pictureTube{
+    display: flex;
+    width: 80%;
+}
+
+#pictureTubeTitleContainer{
+
+    background-color: #00b6de;
+    text-align: center;
+    transform: skewX(-20deg);
+    width: 70%;
+}
+
+#pictureTubeTitleContainer h2{
+    transform: skewX(20deg);
+    letter-spacing: 2px;
+}
+
+#pictureTubeLeft{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#pictureTubeRight{
+    width: 100%;
+}
+
+#pictureTubeRight p{
+    word-spacing: 1px;
+}
+
+#xmasKarl{
+    display: flex;
+    width: 80%;
+    margin-top: 50px;
+}
+
+#xmasKarlLeft{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}   
+
+#xmasKarlRight{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+#xmasKarlTitleContainer{
+
+    background-color: #93c13c;
+    text-align: center;
+    transform: skewX(-20deg);
+    width: 50%;
+}
+
+#xmasKarlTitleContainer h2{
+    transform: skewX(20deg);
+    letter-spacing: 2px;
+}
+
+#soloScapes{
+    display: flex;
+    width: 80%;
+    margin-top: 50px;
+}
+
+#soloScapesLeft{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#soloScapesRight{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+#soloScapesTitleContainer{
+
+    background-color: #664595;
+    text-align: center;
+    transform: skewX(-20deg);
+    width: 40%;
+}
+
+#soloScapesTitleContainer h2{
+    transform: skewX(20deg);
+    letter-spacing: 2px;
+}
+
+#caged{
+    display: flex;
+    width: 80%;
+    margin-top: 50px;
+}
+
+#cagedLeft{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#cagedRight{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+#cagedTitleContainer{
+    background-color: #00b6de;
+    text-align: center;
+    transform: skewX(-20deg);
+    width: 60%;
+}
+
+#cagedTitleContainer h2{
+    transform: skewX(20deg);
+    letter-spacing: 2px;
+}

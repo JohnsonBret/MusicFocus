@@ -1,0 +1,36 @@
+.fullWidthFlex{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#historyTitleContainer{
+
+    background-color: #00b6de;
+    width: 80%;
+    text-align: center;
+    transform: skewX(-20deg);
+}
+
+#historyTitle{
+    font-family: Prompt;
+    transform: skewX(20deg);
+    margin: 5px;
+}
+
+#historyTextContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.historySection{
+    width: 90%;
+}
+
+.historyText{
+    margin: 0px 20px;
+    line-height: 1.6;
+    font-family: Roboto;
+}

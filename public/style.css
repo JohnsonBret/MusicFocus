@@ -1,0 +1,319 @@
+
+@font-face{
+    font-family: Bebas;
+    src: url(BebasNeueBook.otf);
+}
+
+body{
+    background-color: black;
+    color: white;
+}
+
+#mainNav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#superlead{
+   font-family: Prompt; 
+   font-size: 48px;
+   text-align: center;
+   margin: auto 30px;
+   /*text-shadow: 0 0 5px #00b6de,0 0 10px #00b6de,0 0 15px #00b6de,0 0 20px #00b6de,0 0 25px #00b6de,0 0 15px #000;*/
+}
+
+#bannerContainer{
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   margin-top: 100px;
+}
+
+#leadContainer{
+    border: 4px #00b6de solid;
+    margin: 0px 20%;
+    padding: 10px;
+    box-shadow: 0 0 5px #00b6de,0 0 10px #00b6de,0 0 15px #00b6de,0 0 20px #00b6de,0 0 25px #00b6de,0 0 15px #000;
+    animation: containerShadow 1s infinite;
+}
+
+#leadLineTwo{
+    border: 4px #00b6de solid;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+#leadBG{
+    top: -96px;
+    position: relative;
+    margin: 0px 200px;
+}
+
+
+#lead{
+    font-family: Prompt; 
+    font-size: 64px;
+    text-align: center;
+    text-shadow: 0 0 5px #00b6de,0 0 10px #00b6de,0 0 15px #00b6de,0 0 20px #00b6de,0 0 25px #00b6de,0 0 15px #000;
+    background-color: #000;
+    animation: logoShadow 2s infinite;
+ }
+
+ #subLead{
+    font-family: Prompt; 
+    font-size: 40px;
+    top: -96px;
+    position: relative;
+    text-align: center;
+    margin: 0;
+ }
+
+ #leadButtons{
+    display: flex;
+    justify-content: center;
+ }
+ 
+ #leadButtons button{
+    background-color: #fed106; /* Green */
+    border: none;
+    color: white;
+    font-family: Roboto;
+    font-weight: 900;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 30px;
+    margin: 0px 40px;
+    text-shadow: 2px 2px 4px black;
+    top: -40px;
+    position: relative;
+ }
+
+ a{
+     text-decoration: none;
+     font-family: Roboto; 
+     color: white;
+     margin: auto 15px;
+     padding: 10px 0px;
+     text-transform: uppercase;
+     letter-spacing: 2px;
+ }
+
+ a:hover{
+     color: #00b6de;
+     text-shadow: 0px 0px 10px #00b6de;
+ }
+
+ #lessonsLink{
+    font-size : 20px;
+    border-bottom: 5px #fed106 solid;
+ }
+
+ #recordingLink{
+    font-size : 20px;
+    border-bottom: 5px #fa743d solid;
+ }
+
+ #rehearsalLink{
+    font-size : 20px;
+    border-bottom: 5px #ff43c0 solid;
+ }
+
+ #productsLink{
+    font-size : 20px;
+    border-bottom: 5px #664595 solid;
+ }
+
+ #ownerLink{
+    font-size : 20px;
+    border-bottom: 5px #93c13c solid;
+ }
+
+ #historyLink{
+    font-size : 20px;
+    border-bottom: 5px #00b6de solid;
+ }
+
+ #scrollButtonContainer{
+     margin-top: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+#ownerMain{
+    display: flex;
+    justify-content: center;
+    margin: 0px 40px;
+}
+
+#ownerTitle{
+    font-family: Prompt;
+}
+
+#karlBioPic{
+    flex-basis: 30%;
+}
+
+#karlBioPic img{
+    border-radius: 15px;
+}
+
+.bioText{
+    margin: 0px 20px;
+    line-height: 1.6;
+    font-family: Roboto;
+}
+
+.bioText p{
+    margin-top: 0;
+}
+
+.bioText p span{
+    font-family: Bangers;
+    font-size: 20px;
+    letter-spacing: 7px;
+}
+
+#ownerTitleContainer{
+
+    background-color: #00b6de;
+    width: 20%;
+    text-align: center;
+    transform: skewX(-20deg);
+}
+
+#ownerTitleContainer h1{
+    transform: skewX(20deg);
+}
+
+#ownerSecondary{
+    display: flex;
+    justify-content: center;
+    margin: 0px 40px;
+}
+
+#ownerEmailContainer{
+    display: flex;
+    align-items: center;
+    margin: 10px 20px;
+}
+
+.sectionTitleText{
+    font-family: Prompt;
+    margin: 10px 20px;
+    transform: skewX(20deg);
+    font-size: 30px;
+}
+
+#ownerEmailTag{
+    background-color: #93c13c;
+    width: 20%;
+    text-align: center;
+    transform: skewX(-20deg);
+    margin-right:  30px;
+}
+
+#mailAddress{
+    font-family: Prompt;
+    font-size: 30px;
+    margin: 0;
+}
+
+#mailAddress h2{
+    margin: 0;
+}
+
+#ownerAlbumTag{
+    background-color: #664595;
+    flex-basis: 30%;
+    text-align: center;
+    transform: skewX(-20deg);
+    margin-right:  30px;
+}
+
+#ownerAlbumTag h1{
+    transform: skewX(20deg);
+}
+
+.creditText{
+    margin: 0px 20px;
+    line-height: 1.6;
+    font-family: Roboto;
+}
+
+#ownerSoundtrackTag{
+    background-color: #ff43c0;
+    flex-basis: 40%;
+    text-align: center;
+    transform: skewX(-20deg);
+    margin-right:  30px;
+}
+
+#ownerCreditsTag{
+    background-color: #fa743d;
+    flex-basis: 40%;
+    text-align: center;
+    transform: skewX(-20deg);
+    margin-right:  30px;
+}
+
+#ownerProductionTag{
+    background-color: #00b6de;
+    flex-basis: 40%;
+    text-align: center;
+    transform: skewX(-20deg);
+    margin-right:  30px;
+}
+
+#work{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+#bandCreditsContainer{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#ownerBooksTag{
+    background-color: #93c13c;
+    flex-basis: 40%;
+    text-align: center;
+    transform: skewX(-20deg);
+    margin-right:  30px;
+}
+
+#ownerAffiliationsTag{
+    background-color: #664595;
+    flex-basis: 30%;
+    text-align: center;
+    transform: skewX(-20deg);
+    margin-right:  30px;
+}
+
+.textCenter{
+    text-align: center;
+}
+
+@keyframes logoShadow{
+	0%{
+		text-shadow: 0 0 5px #00b6de,0 0 10px #00b6de,0 0 15px #00b6de,0 0 20px #00b6de,0 0 25px #00b6de,0 0 15px #000;
+	}
+	100%{
+		text-shadow: 0 0 3px #00b6de,0 0 5px #00b6de,0 0 7px #00b6de,0 0 10px #00b6de,0 0 12px #00b6de,0 0 7px #000;
+	}
+}
+
+@keyframes containerShadow{
+	0%{
+		box-shadow: 0 0 5px #00b6de,0 0 10px #00b6de,0 0 15px #00b6de,0 0 20px #00b6de,0 0 25px #00b6de,0 0 15px #000;
+	}
+	100%{
+		box-shadow: 0 0 3px #00b6de,0 0 5px #00b6de,0 0 7px #00b6de,0 0 10px #00b6de,0 0 12px #00b6de,0 0 7px #000;
+	}
+}

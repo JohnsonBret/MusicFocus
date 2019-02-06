@@ -16,12 +16,13 @@
     background-color: #00b6de;
     text-align: center;
     transform: skewX(-20deg);
-    width: 70%;
+    width: 80%;
 }
 
 #pictureTubeTitleContainer h2{
     transform: skewX(20deg);
     letter-spacing: 2px;
+    font-family: Prompt;
 }
 
 #pictureTubeLeft{
@@ -30,12 +31,23 @@
     width: 100%;
 }
 
+#pictureTubeLeft div ol li{
+    line-height: 1.4;
+}
+
 #pictureTubeRight{
     width: 100%;
 }
 
 #pictureTubeRight p{
     word-spacing: 1px;
+}
+
+#pictureTubeSpacer{
+    background-color: #00b6de;
+    height: 2px;
+    width: 80%;
+    margin-top: 20px;
 }
 
 #xmasKarl{
@@ -68,6 +80,14 @@
 #xmasKarlTitleContainer h2{
     transform: skewX(20deg);
     letter-spacing: 2px;
+    font-family: Prompt;
+}
+
+#xmasKarlSpacer{
+    background-color: #93c13c;
+    height: 2px;
+    width: 80%;
+    margin-top: 20px;
 }
 
 #soloScapes{
@@ -100,6 +120,14 @@
 #soloScapesTitleContainer h2{
     transform: skewX(20deg);
     letter-spacing: 2px;
+    font-family: Prompt;
+}
+
+#soloScapesSpacer{
+    background-color: #664595;
+    height: 2px;
+    width: 80%;
+    margin-top: 20px;
 }
 
 #caged{
@@ -112,6 +140,10 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+}
+
+#cagedLeft div img{
+    width: 30%;
 }
 
 #cagedRight{
@@ -131,4 +163,130 @@
 #cagedTitleContainer h2{
     transform: skewX(20deg);
     letter-spacing: 2px;
+    font-family: Prompt;
+}
+
+#cagedSpacer{
+    background-color: #00b6de;
+    height: 2px;
+    width: 80%;
+    margin-top: 20px;
+}
+
+#campfire{
+    display: flex;
+    width: 80%;
+    margin-top: 50px;
+}
+
+#campfireLeft{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#campfireLeft div img{
+    width: 50%;
+}
+
+#campfireRight{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+
+
+#campfireTitleContainer{
+    background-color: #fa743d;
+    text-align: center;
+    transform: skewX(-20deg);
+    width: 80%;
+}
+
+#campfireTitleContainer h2{
+    transform: skewX(20deg);
+    letter-spacing: 2px;
+    font-family: Prompt;
+}
+
+#campfireSpacer{
+    background-color: #fa743d;
+    height: 2px;
+    width: 80%;
+    margin-top: 20px;
+}
+
+#campfireSongsGrid{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto;
+    grid-template-areas: 
+        "songsLeft songsRight";
+    width: 100%;
+    justify-content: center;
+}
+
+details summary:hover{
+    color: #fa743d;
+}
+
+
+
+#jazzPorch{
+    display: flex;
+    width: 80%;
+    margin-top: 50px;
+}
+
+#jazzPorchLeft{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#jazzPorchLeft div img{
+    width: 30%;
+}
+
+#jazzPorchRight{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+#jazzPorchTitleContainer{
+    background-color: #664595 ;
+    text-align: center;
+    transform: skewX(-20deg);
+    width: 60%;
+}
+
+#jazzPorchTitleContainer h2{
+    transform: skewX(20deg);
+    letter-spacing: 2px;
+    font-family: Prompt;
+}
+
+#jazzPorchSpacer{
+    background-color: #664595 ;
+    height: 2px;
+    width: 80%;
+    margin-top: 20px;
+}
+
+#jazzPorchRight div details summary:hover{
+    color: #664595;
+}
+
+#jazzSongsGrid{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto;
+    grid-template-areas: 
+        "songsLeft songsRight";
+    width: 100%;
+    justify-content: center;
 }

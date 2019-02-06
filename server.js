@@ -55,6 +55,13 @@ app.get('/products', (req, res)=>{
     });
 });
 
+app.get('/rehearsal', (req, res)=>{
+    res.render('rehearsal.hbs', {
+        pageTitle: "Products",
+        company: "Music Focus"
+    });
+});
+
 app.get('/contact', (req, res)=>{
     res.render('contact.hbs', {
         pageTitle: "Contact",

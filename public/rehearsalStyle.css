@@ -9,9 +9,56 @@ body{
     align-items: center;
     background-size: cover;
     background-repeat: no-repeat;
-    background-image: url(abalone-lounge-1.jpg);
-    background-position: 50% 25%;
+    background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url(abalone-lounge-1.jpg) ;
+    background-position: 50% 65%;
     height: 70vh;
+}
+
+#loungeLeadTitleContainer{
+
+    background-color: #00b6de;
+    width: 100%;
+    text-align: center;
+    transform: skewX(-20deg);
+}
+
+#loungeLeadTitle{
+    font-family: Prompt;
+    transform: skewX(20deg);
+    font-size: 2em;
+    text-transform: uppercase;
+    padding: 15px;
+    margin: 5px;
+}
+
+.loungeSubLead{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.loungeSubLead p{
+    width: 60%;
+    background-color: black;
+    text-align: center;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    
+}
+
+.loungeSubLead1{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.loungeSubLead1 p{
+    width: 50%;
+    background-color: black;
+    text-align: center;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    
 }
 
 #bookContainer{
@@ -53,6 +100,26 @@ body{
     flex-direction: column;
     justify-content: center;
     text-align: center;
+}
+
+#biggestRule{
+    display: grid;
+    grid-template-columns: 25% 25% 50%;
+    grid-template-rows: auto;
+    grid-template-areas: 
+"img1 img2 doorText";
+    align-items: center;
+    justify-content: center;
+}
+
+.img1 img, .img2 img{
+    width: 100%;
+}
+
+.doorText{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #rates{

@@ -7,6 +7,7 @@
 body{
     background-color: black;
     color: white;
+    margin: 0;
 }
 
 #mainNav{
@@ -108,33 +109,35 @@ body{
      text-shadow: 0px 0px 10px #00b6de;
  }
 
+ .fs20{
+     font-size: 20px;
+ }
+
  #lessonsLink{
-    font-size : 20px;
     border-bottom: 5px #fed106 solid;
  }
 
  #recordingLink{
-    font-size : 20px;
     border-bottom: 5px #fa743d solid;
  }
 
  #rehearsalLink{
-    font-size : 20px;
     border-bottom: 5px #ff43c0 solid;
  }
 
  #productsLink{
-    font-size : 20px;
     border-bottom: 5px #664595 solid;
  }
 
  #ownerLink{
-    font-size : 20px;
     border-bottom: 5px #93c13c solid;
  }
 
  #historyLink{
-    font-size : 20px;
+    border-bottom: 5px #00b6de solid;
+ }
+
+ #backTopLink{
     border-bottom: 5px #00b6de solid;
  }
 
@@ -298,6 +301,35 @@ body{
 
 .textCenter{
     text-align: center;
+}
+
+footer{
+    background-color: #2f2f2f;
+}
+
+footer nav{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 20px 5px;
+}
+
+footer nav div{
+    display: flex;
+    flex-direction: column;
+}
+
+footer nav div a{
+    margin: 5px;
+}
+
+#copyright{
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color:  #222;
+}
+
+#copyright p{
+    margin: 0;
 }
 
 @keyframes logoShadow{

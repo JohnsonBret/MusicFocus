@@ -1,5 +1,6 @@
 body{
     font-family: Roboto;
+    max-width: 100%;
 }
 
 #loungeLeadContainer{
@@ -85,13 +86,32 @@ body{
 
 }
 
-#rules{
+.sectionTitleContainer{
+    background-color: #00b6de;
+    width: 20%;
+    transform: skewX(-20deg);
+}
 
+.sectionTitle{
+    font-family: Prompt;
+    transform: skewX(20deg);
+    font-size: 2em;
+    text-transform: uppercase;
+    padding: 15px;
+    margin: 5px;
+    text-align: center; 
+}
+
+#rules{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 #rulesVideo{
     display: flex;
     justify-content: space-evenly;
+    width: 100%;
 }
 
 #rulesVideo div{
@@ -123,15 +143,94 @@ body{
 }
 
 #rates{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
 
+.rateTitleContainer{
+    background-color: #93c13c;
+    width: 20%;
+    transform: skewX(-20deg);
+}
+
+.rateTitle{
+    font-family: Prompt;
+    transform: skewX(20deg);
+    font-size: 2em;
+    text-transform: uppercase;
+    padding: 15px;
+    margin: 5px;
+    text-align: center;
+}
+
+#rates div ul{
+    list-style: none;
 }
 
 #equipment{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
 
+#equipment section{
+    width: 80%;
+}
+
+
+#equipmentTitleContainer{
+    background-color: #fa743d;
+    width: 20%;
+    transform: skewX(-20deg);
+}
+
+#equipmentTitle{
+    font-family: Prompt;
+    transform: skewX(20deg);
+    font-size: 2em;
+    text-transform: uppercase;
+    padding: 15px;
+    margin: 5px;
+    text-align: center;
+}
+
+.instrumentContainer{
+    background-color: #fed106;
+    width: 20%;
+    transform: skewX(-20deg);
+}
+
+.instrumentTitle{
+    font-family: Prompt;
+    transform: skewX(20deg);
+    font-size: 1.5em;
+    text-transform: uppercase;
+    padding: 10px;
+    margin: 5px;
+    text-align: center;
 }
 
 #room{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
 
+#roomTitleContainer{
+    background-color: #ff43c0;
+    width: 20%;
+    transform: skewX(-20deg);
+}
+
+#roomTitle{
+    font-family: Prompt;
+    transform: skewX(20deg);
+    font-size: 2em;
+    text-transform: uppercase;
+    padding: 15px;
+    margin: 5px;
+    text-align: center;
 }
 
 #rehearsalNav{

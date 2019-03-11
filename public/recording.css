@@ -82,83 +82,36 @@ body{
 
 }
 
-#schedule{
-
-}
-
-.sectionTitleContainer{
-    background-color: #00b6de;
-    width: 20%;
-    transform: skewX(-20deg);
-}
-
-.sectionTitle{
-    font-family: Prompt;
-    transform: skewX(20deg);
-    font-size: 2em;
-    text-transform: uppercase;
-    padding: 15px;
-    margin: 5px;
-    text-align: center; 
-}
-
-#rules{
+#setup{
     display: flex;
     align-items: center;
     flex-direction: column;
 }
 
-#rulesVideo{
-    display: flex;
-    justify-content: space-evenly;
-    width: 100%;
-}
 
-#rulesVideo div{
-    flex-basis: 40%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-}
-
-#biggestRule{
-    display: grid;
-    grid-template-columns: 25% 25% 50%;
-    grid-template-rows: auto;
-    grid-template-areas: 
-"img1 img2 doorText";
-    align-items: center;
-    justify-content: center;
-}
-
-.img1 img, .img2 img{
-    width: 100%;
-}
-
-.doorText{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#rates{
+#preparation{
     display: flex;
     align-items: center;
     flex-direction: column;
 }
 
-.rateTitleContainer{
+#post{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.subTitleContainer{
     background-color: #93c13c;
     width: 20%;
     transform: skewX(-20deg);
 }
 
-.rateTitleContainer h2{
+.subTitleContainer h2{
     text-align: center;
 }
 
-.rateTitle{
+.subTitle{
     font-family: Prompt;
     transform: skewX(20deg);
     font-size: 2em;
@@ -215,7 +168,7 @@ body{
     text-align: center;
 }
 
-#room{
+#reference{
     display: flex;
     align-items: center;
     flex-direction: column;

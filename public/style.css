@@ -109,9 +109,55 @@ body{
      text-shadow: 0px 0px 10px #00b6de;
  }
 
- .fs20{
+.fs20{
      font-size: 20px;
- }
+}
+
+.width20Percent{
+    width: 20%;
+}
+
+.sectionTitleContainerSkew{
+    transform: skewX(-20deg);
+}
+
+.sectionTitle{
+    font-family: Prompt;
+    transform: skewX(20deg);
+    font-size: 2em;
+    text-transform: uppercase;
+    padding: 15px;
+    margin: 5px;
+    text-align: center; 
+}
+
+.subTitleContainerSkew{
+    transform: skewX(-20deg);
+}
+
+.yellowBG{
+    background-color: #fed106;
+}
+
+.orangeBG{
+    background-color: #fa743d;
+}
+
+.pinkBG{
+    background-color: #ff43c0;
+}
+
+.purpleBG{
+    background-color: #664595;
+}
+
+.greenBG{
+    background-color: #93c13c;
+}
+
+.blueBG{
+    background-color: #00b6de;
+}
 
  #lessonsLink{
     border-bottom: 5px #fed106 solid;

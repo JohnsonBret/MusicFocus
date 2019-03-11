@@ -57,7 +57,14 @@ app.get('/products', (req, res)=>{
 
 app.get('/rehearsal', (req, res)=>{
     res.render('rehearsal.hbs', {
-        pageTitle: "Products",
+        pageTitle: "Rehearsal",
+        company: "Music Focus"
+    });
+});
+
+app.get('/recording', (req, res)=>{
+    res.render('recording.hbs', {
+        pageTitle: "Recording",
         company: "Music Focus"
     });
 });

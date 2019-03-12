@@ -221,6 +221,10 @@ body{
     flex-direction: column;
 }
 
+#room div{
+    width: 80%;
+}
+
 #roomTitleContainer{
     background-color: #ff43c0;
     width: 20%;

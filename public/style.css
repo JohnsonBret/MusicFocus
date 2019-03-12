@@ -117,6 +117,22 @@ body{
     width: 20%;
 }
 
+.width40Percent{
+    width: 40%;
+}
+
+.width90Percent{
+    width: 90%;
+}
+
+.marginTop20px{
+    margin-top: 20px;
+}
+
+.textCenter{
+    text-align: center;
+}
+
 .sectionTitleContainerSkew{
     transform: skewX(-20deg);
 }
@@ -345,9 +361,7 @@ body{
     margin-right:  30px;
 }
 
-.textCenter{
-    text-align: center;
-}
+
 
 footer{
     background-color: #2f2f2f;

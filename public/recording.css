@@ -82,10 +82,18 @@ body{
 
 }
 
+#karlEngineerPic{
+    border-radius: 15px;
+}
+
 #setup{
     display: flex;
     align-items: center;
     flex-direction: column;
+}
+
+#setup div{
+    width: 80%;
 }
 
 
@@ -95,10 +103,18 @@ body{
     flex-direction: column;
 }
 
+#preparation div{
+    width: 80%;
+}
+
 #post{
     display: flex;
     align-items: center;
     flex-direction: column;
+}
+
+#post div{
+    width: 80%;
 }
 
 .subTitleContainer{
@@ -131,7 +147,7 @@ body{
     flex-direction: column;
 }
 
-#equipment section{
+#equipment div{
     width: 80%;
 }
 
@@ -174,13 +190,22 @@ body{
     flex-direction: column;
 }
 
-#roomTitleContainer{
-    background-color: #ff43c0;
+#reference div{
+    width: 80%;
+}
+
+#referenceTitleContainer{
+    background-color: #664595;
     width: 20%;
     transform: skewX(-20deg);
 }
 
-#roomTitle{
+#talentList{
+    list-style: none;
+    line-height: 1.5;
+}
+
+#referenceTitle{
     font-family: Prompt;
     transform: skewX(20deg);
     font-size: 2em;

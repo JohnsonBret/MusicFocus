@@ -69,6 +69,13 @@ app.get('/recording', (req, res)=>{
     });
 });
 
+app.get('/lessons', (req, res)=>{
+    res.render('lessons.hbs', {
+        pageTitle: "Lessons",
+        company: "Music Focus"
+    });
+});
+
 app.get('/contact', (req, res)=>{
     res.render('contact.hbs', {
         pageTitle: "Contact",

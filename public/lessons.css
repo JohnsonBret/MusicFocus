@@ -1,0 +1,13 @@
+#lessonsNav{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#lessonsNav ul{
+    list-style: none;
+}
+
+#lessonsNav ul li:hover{
+    color: #00b6de;
+}

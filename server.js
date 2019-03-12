@@ -76,6 +76,13 @@ app.get('/lessons', (req, res)=>{
     });
 });
 
+app.get('/songlist', (req, res)=>{
+    res.render('songlist.hbs', {
+        pageTitle: "Song List",
+        company: "Music Focus"
+    });
+});
+
 app.get('/contact', (req, res)=>{
     res.render('contact.hbs', {
         pageTitle: "Contact",

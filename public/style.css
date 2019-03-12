@@ -121,6 +121,10 @@ body{
     width: 40%;
 }
 
+.width80Percent{
+    width: 80%;
+}
+
 .width90Percent{
     width: 90%;
 }
@@ -135,6 +139,16 @@ body{
 
 .sectionTitleContainerSkew{
     transform: skewX(-20deg);
+}
+
+.flexColumnCenter{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.flexColumnCenter div{
+    width: 80%;
 }
 
 .sectionTitle{

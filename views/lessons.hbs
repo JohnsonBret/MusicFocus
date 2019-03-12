@@ -4,8 +4,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Music Focus</title>
-    <link rel="stylesheet" href="recording.css">
+    <title>Music Focus - {{pageTitle}}</title>
+    <link rel="stylesheet" href="lessons.css">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Bangers|Prompt|Roboto|Teko|Roboto:900" rel="stylesheet"> 
   </head>
@@ -19,102 +19,182 @@
 
         <div id="lessonsNav" class="marginTop20px">
                 <div id="signContainer">
-                    <img id="karlEngineerPic" src="kfgrossman_engineer.JPG" alt="">
+                    <img id="karlPic" src="/kfgrossman_guitar.gif" alt="">
                 </div>
                 <ul>
-                    <li><a href="#preparation">Preparation</a></li>
-                    <li><a href="#setup">In-Studio Setup</a></li>
-                    <li><a href="#post">Post Processing</a></li>
-                    <li><a href="#equipment">Equipment List and Rates</a></li>
-                    <li><a href="#reference">Quick Reference</a></li>
+                    <li><a href="#preparation">Introduction</a></li>
+                    <li><a href="/songlist">Song List</a></li>
+                    <li><a href="#post">Lesson Schedule</a></li>
+                    <li><a href="#policy">Lesson Policy</a></li>
+                    <li><a href="#rates">Lesson Rates</a></li>
+                    <li><a href="#reference">Karl's Biography</a></li>
+                    <li><a href="#reference">List of Students</a></li>
                 </ul>
         </div>
 
-        {{!-- <div id="loungeLeadContainer">
+        <div id="lessonsLeadContainer">
             <div>
-                <div id="loungeLeadTitleContainer">
-                    <h2 id="loungeLeadTitle"> Welcome to The "Abalone Lounge" / Music Focus™ rehearsal / training hall!</h2>
+                <div id="lessonsLeadTitleContainer">
+                    <h2 id="lessonsLeadTitle">Lessons </h2>
                 </div>
-                <div class="loungeSubLead">
-                    <p>Thank you for choosing our facility to enhance and further your progress.</p> 
+                {{!-- <div class="lessonsSubLead">
+                    <p>Music Focus has taken great pride in the teaching and gathering of information about music and specifically guitar and bass music.</p> 
                 </div>
-                <div class="loungeSubLead1">
-                    <p>We commit to bringing you a working, clean, private facility. </p> 
-                </div>
+                <div class="lessonsSubLead1">
+                    <p>However, it is and always will be the people to whom that care is given that gets the most attention and respect from our staff. </p> 
+                </div> --}}
             </div>
-        </div> --}}
-        <section id="preparation" class="marginTop20px">
+        </div>
+        <section id="intro" class="marginTop20px">
             <section class="sectionTitleContainerSkew blueBG">
-                <h1 class="sectionTitle">Preparation</h1>
+                <h1 class="sectionTitle">Introduction</h1>
             </section>
             <div>
                 <section class="subTitleContainerSkew blueBG width20Percent textCenter">
-                    <h2>GUITARISTS</h2> 
+                    <h2>Hello!</h2> 
                 </section>
-                <p>Get new strings on the instruments you will be playing on the recording. Check out all guitars, amps, pedals, speakers, and cords to make sure nothing is defective or noisy. </p> 
+                <p>I am so glad that you have shown an interest in taking lessons at Music Focus. We've been active in the South Bay for over 14 years. We pride ourselves on bringing you up to the minute exposure to the latest songs and physical techniques. At first, we encourage students to develop a repertoire of songs that are familiar and fun to play. Our song list, as of the first of this year, has over 5,000 songs. After a time, you may want to start studying the 'insides' of songs and music theory. You will need to supply a standard notebook binder.</p> 
+                <p>So, plan on bringing your guitar, and:</p>
+                <ul>
+                    <li>Your notebook (3 ring binder)</li>
+                    <li>Your picks from the Music Focus Songlist</li>
+                    <li>The songs that you are learning.</li>
+                </ul>
             </div>
             <div>
                 <section class="subTitleContainerSkew blueBG width20Percent textCenter">
-                    <h2>DRUMMERS</h2> 
+                    <h2>SONG LIST!</h2> 
                 </section>
-                <p>Completely tune the kit and think very seriously about purchasing new drum heads for the session. All drum equipment should be listened to carefully for squeaks and rattles that will show up on tape.</p> 
+                <p>After your first lesson we encourage you to visit the <a href="/songlist">Music Focus Songlist</a> and make note of which songs or bands best represent your interests. You can just write down a few or, "paste" the list and make your own computer document! This list will help 'power' your lessons.</p> 
             </div>
             <div>
                 <section class="subTitleContainerSkew blueBG width20Percent textCenter">
-                    <h2>PRACTICE SCHEDULE</h2> 
+                    <h2>LESSON POLICY</h2> 
                 </section>
-                <p>You should have at least 3 recording practices before you come in to record. For the sake of endurance try this: Run a tune 3 or 4 times in a row with about 30 seconds in between. If you really do this with all the tunes, you'll get a good idea of how it's going to feel in the studio on the big day. Get your endurance up before the day. Your sense of perfection is heightened while recording. If you've practiced endurance, you won't wimp out on the 4th take. </p> 
+                <p>Go over the <a href="#policy">Music Focus Lesson Policy</a>. If you are a new student starting during the middle of a month, you will be responsible for bringing in partial payment at your first lesson. From then on you will be billed on a monthly basis. We do all billing business through the mail. The only contract you have with us is for a month at a time. Be sure that if you are not the "responsible person" to check with your parents about this.</p>
+                <p>Thanks again for the interest! I'm looking forward to these lessons with you and to the exciting and challenging results that await. </p> 
+                <p>If you have a question about your lesson plan or any specific point made during your lesson time, </p>
             </div>
             <div>
                 <section class="subTitleContainerSkew blueBG width20Percent textCenter">
-                    <h2>CONCERNS</h2> 
+                    <h2 id="contact">CONTACT</h2> 
                 </section>
-                <p>What songs are you recording? How many? Warn your drummer about fatigue if you plan on more than 3 or 4 songs. Whether you are tracking in layers or recording direct to Pro Tools or DAT, drums are the foundation for everything. Although it is the drummer's performance that matters first, everyone must do everything possible to get "the take." You must strive for perfection. </p> 
+                <p>Music Focus - (310) 379-4454</p> 
+                <p>Fax - (310) 379-2925</p>
+                <img src="/musicfocus_emal.jpg" alt="">
+                <p>Online - <a href="http://www.musicfocus.com">musicfocus.com</a></p>
+                <p>Mailing address is:<br>
+                    Music Focus<br>
+                    671 Valley Drive<br>
+                    Hermosa Beach CA 90254-4626<br>
+                </p>
             </div>
         </section>
 
-        <section id="setup" class="marginTop20px">
+        <section id="policy" class="flexColumnCenter marginTop20px">
             <section class="sectionTitleContainerSkew orangeBG">
-                <h1 class="sectionTitle">In-Studio Setup</h1>
+                <h1 class="sectionTitle">Lesson Policy</h1>
             </section>
             <div>
                 <section class="subTitleContainerSkew orangeBG width20Percent textCenter">
-                    <h2>SOUND CHECK</h2> 
+                    <h2>AGREEMENT</h2> 
                 </section>
-                <p>You will be recorded and then asked into the sound booth to hear your "levels". Everyone is always welcome to make suggestions on getting a better sound.</p> 
+                <p>2019 - Music Focus Academy Membership Policy Agreement.<br>
+                (To be signed before or at first lesson.)</p> 
             </div>
             <div>
                 <section class="subTitleContainerSkew orangeBG width20Percent textCenter">
-                    <h2>STUDIO ENVIRONMENT FACTOR</h2> 
+                    <h2>TERMS</h2> 
                 </section>
-                <p>"Tracking" a song is very different from rehearsal. "Tracking" is laying down the initial "bed" of the song. This might include ALL the instruments, or it might just be the structural "drums and bass" bed of the song that you plan to "overdub" onto... You are more likely to hear small mistakes when you hear a playback in a recording studio. You need to allow about 2 or 3 takes per song to get the original track acceptable. (Many professional bands use what is called a click track to help keep the track tempo even and perfect. If your drummer is very experienced at this by all means use a click track. If you do use a click, find out what your exact tempos are before you come in. We have the machines to make the click.) </p> 
-                <p>Most bands end up NOT using a click track, which is what we actually recommend. You're not making a beer commercial, you're trying to be creative. That said, the tighter you are as a band, rhythmically, the better it will "endure" as a recording. You want your recording to have "legs". </p>
-                <p>It's a great feeling to get a song right in "one take." It does happen. Strive for this - but don't be discouraged if it's not quite right the first time. Don't be afraid to ask questions and get your feet wet in the studio. We want to magnify your wishes and translate your spirit to tape. </p>
-            </div>
-            <div>
-                <section class="subTitleContainerSkew orangeBG width20Percent textCenter">
-                    <h2>HEADPHONES</h2> 
-                </section>
-                <p>Every professional recording studio uses what is called a 'headphone mix' to allow you to hear what is going on. This can be a little confusing at first. When a band tracks their music, usually the vocalist will be in a separate room from the drummer. The drummer hears everyone else only through these headphones. Bass and guitars are almost always tracked "direct" into the mixing console, or tracked at a slightly lesser volume than "show" volume. It's a little funny feeling at first not to have a guitar or bass amp pumping next to you. Your headphone station will have individual adjustments for each band member (with multiple drum "channels"), as well as for vocals.</p> 
-                <p>Be patient with the process of getting a headphone mix. Everyone, including the engineer, wants it to sound just right. Your little "headphone" station will allow a LOT of flexibility. The individual controls of your headphone station are very small - and tiny adjustments go a long way. You also may have to bear with a slightly distorted headphone mix. To get a perfectly clean headphone mix loud enough to hear over a drum set is almost impossible. Normally you will be rewarded with a playback that sounds clean & killer. </p>
-            </div>
-            <div>
-                <section class="subTitleContainerSkew orangeBG width20Percent textCenter">
-                    <h2>SET UP</h2> 
-                </section>
-                <p>It takes up to an hour to get drums set up and microphones correctly placed, this includes testing and equalizing the sounds. During the testing process we always record the drummer playing alone for a minute or so. Then he can hear for himself what the kit sounds like. Once the microphones are set around the drum set, the drummer needs to play each drum for the engineer. </p> 
-                <p>There needs to be a clean sounding drum mix going to tape. If a bass amp is anywhere in the room where a drum set is recorded, it will go onto all the microphones. This goes for guitar amps to a slightly lesser degree. If you know about this and are content to 'let it bleed,' we have no problem with that. That said, bass, guitars and vocals are usually creating "scratch tracks" the first pass through. This just means that these parts, though recorded as well as possible, are probably not going to be the final "keeper" parts for those instruments. The point is this: Your tracking session is really just to get acceptable drums onto tape. Focus on that objective. It's quite common for EVERYONE else to - have their day "in the sun" - to get their part onto the recording to the best of their abilities right now...</p>
-            </div>
-            <div>
-                <section class="subTitleContainerSkew orangeBG width20Percent textCenter">
-                    <h2>CHECKING THE DRUM MICROPHONES</h2> 
-                </section>
-                <p>It is important to know how an engineer needs to hear your drum set. Bass drum is usually first to get checked out. Play only the bass drum slowly and evenly. Always play with the actual strength that you really play. The tendency is to wimp out during sound check, then blow all the mics away during the first tune. Be honest with your hits. Next comes the snare. Again the hit must be the same strength as you plan on really using. Toms are next. Each tom is usually checked from smallest to largest. Watch the engineer through the glass to know when he wants the next sized tom to be hit. Usually at the end of the individual tom check the engineer would like to hear you do some tom fills. Step through your toms with your own style keeping in mind your normal strength of hitting. Next are the over-head mics. Use a basic drum beat with attention to more cymbal crashes and ride cymbal than perhaps is normal for you. Be sure to use cymbals that are placed on either side. Don't over hit your normal crash strength!</p> 
-            </div>
+                <p>WE strive to have a powerful connection here at the Academy.</p>
+                <p>Your willingness to participate and get the benefits of this program can only happen with mutual agreement. Our mission is to provide you with the best possible learning, and enrichment programs possible. Your agreement is that our programs deserve the consistency and support required to make this excellence a reality.</p>
+                <ul>
+                    <li>New, easy, month to month Payment schedule.</li>
+                    <li>Complete personal interaction and online training augmentation included.</li>
+                    <li>New “presage” lessons help with missed appointments or vacation plans.</li>
+                    <li>Special ‘elective’ classes to strengthen your drive</li>
+                </ul>
+                <ol>
+                    <li>You agree to pay by the month until you decide to stop studying at Music Focus. Your current membership status must then be paid for in full, at least by the next month start. There is a $150 enrollment fee for all students ______. (unless waived____). This goes for “re-enrollment” as well. Lesson rates are always posted online and can only rise once a year, if at all (usually February).</li>
+                    <li>The option to ‘skip’ all the rest of these numbered detail-points is available as well. Just pay once a month, come when you can, and that’s it. _____________________________</li>
+                    <li>You agree to pay for at least 4 lessons every month. You can’t ‘miss’ or ‘skip’ classes. In months that have "5" of your regular weekdays, we'll both decide the best way to pay-for, or ‘presage’ that 5th lesson! (see item 5 on presage lessons). If we decide it best to pay, you would need to pay that extra lesson cost in the NEXT month's payment! We will stay in touch with you regarding extra amounts from extra lessons (beyond the required 4) or elective classes and workshops. ______. (see following items…)</li>
+                    <li>Presage lesson system: We require you to ‘get ahead’ on your lesson card. We advise 4 presage lessons on your sig card (2 is minimum, 4 recommended, and 6 is allowed…). However, if you do have to ‘leave us’ permanently, for any reason (also see vacation allowance item #7…), you will be required to pay for the lessons you've taken, but haven’t already paid for______. You may make this payment at the regular start of the next month, or when you take your leave. Please be aware, a fee may be required to re-enroll with us again. We can offer a ‘continuance’ program, which is good for international students and very busy traveling-long-term students. This also entitles you to partake in the online portion of our program. (call for details.)</li>
+                    <li>Presage lessons are simply extra sessions that you will have ‘taken-forward’ to ensure that if you DO need to miss an appointment that you have these ‘taken-ahead’ lessons already accounted for. As we stated (in item 3), you can’t "skip" or "cancel" lessons. With a buffer of presage sessions on your card, we keep a watch over your status relative to ‘current date’. If, for example, you take two weeks vacation, but had a 6 week ‘buffer’ of presage lessons, you’d still be 4 lessons ‘ahead’. We will advise you via email or text if you get to a point of only 2 lessons ‘ahead’. ______. HOW DO I “GET AHEAD” WITH THE “PRESAGE” PROGRAM? 1. Schedule a full extra lesson. - 2. Take an extra lesson before or after your regular appointment time (essentially a double lesson). - 3. Schedule an extra “1/2 lesson". - 4. Add an extra 1/2 lesson before or after your regular appointment. - 5. Take and use, as a lesson, an elective 'Student-Intensive’ session or any of the many workshops and master classes we offer.</li>
+                    <li>If somehow your lesson card gets in ‘arrears’ we still offer you the chance to get back ‘even’ and then get ahead (as is our recommended policy). We have a 3 month allowance period if you DO get behind (there will be an ‘empty’ line on your sig card). If after 3 months you cannot seem to get the make-up lesson in, it will expire. ______.</li>
+                    <li>We can offer a 2 week vacation from lessons (pay 1/2 month - we would only require 2 lessons that month.) You must let us know as far in advance as possible when that might be. ______.</li>
+                    <li>REMEMBER, though you may miss an APPOINTMENT, you cannot cancel a LESSON! The items you agree to will make you a better and stronger participant in our drive toward excellence. Please call or email if you have any questions. PLEASE be willing to get ahead and stay in touch about missing an appointment FAR in advance. If you DO ‘no show’ for an appointed lesson, you agree to ‘sign-off’ on your missed lesson. ______. Our whole point is to get ahead of schedule so we have flexibility to get back on track, and stay on track!</li>
+                    <li>LET US KNOW IF YOU CANNOT ATTEND AN APPOINTMENT. You still need to allow 4 day notice ‘protocol’ for legitimate NON-ATTENDANCE of a regular appointment (remember it is not a 'canceled' lesson). We commit to helping you stay informed about the current status of your tuition... YOU commit to staying AHEAD of the curve of upcoming possible appointment absences! _______.</li>
+                    <li>Payments are due at the first of the month or first regular appointment. You may always pay for the months ‘ahead of time’, we will keep track of the payment on your sig card. ______. Currently we do not offer any sort of "refund" for lessons paid for, but not yet taken. However, your credit IS good for any other services Music Focus offers, including recording, rehearsal, even professional performance.</li>
+                    <li>Music Focus reserves the right to end any student/teacher relationship at any time if serious problems with attitude, desire, and reasonable participation come into question. Though extremely rare, it is the case that if someone is not voluntarily and positively taking lessons, they probably shouldn't be. Please make sure that you or your person is as excited and respectful to the learning process as WE are... In the rare case of a problem, and we must let you 'go' - we WILL refund your remaining credit in the form of a check... </li>
+                    <li>Remember, YOU might not see your progress as clearly as WE do, because you are YOU every day... It's similar to watching a 'cut' heal. You don't SEE it happening, but it is...!<br>Thank you!</li>
+                </ol>
 
-            
+                <p>5/26/2018<br>
+                Karl Grossman<br>
+                Music Focus Academy Directior</p>
+                <a href="#contact">CONTACT</a>
+                <p>We want your lessons to be informative, innovative, challenging and fun. Let's keep the communications going both ways!</p>
+            </div>
+        </section>
+
+        <section id="rates" class="flexColumnCenter marginTop20px">
+            <section class="sectionTitleContainerSkew greenBG">
+                <h1 class="sectionTitle">LESSON RATES</h1>
+            </section>
+            <div>
+                <h2>Lesson rates are $43 per half-hour Lesson.</h2>
+                <ul>
+                   <li>$86 for a full-hour lesson</li>
+                   <li>1 month of half hour lessons (4 lessons) = $172</li>
+                   <li>1 month of 1 hour lessons (4 lessons) = $344</li>
+                   <li>2 months of 1 hour lessons (8 lessons) = $688</li>
+                   <li>4 months of 1 hour lessons (16 lessons) = $1345</li>
+                   <li>6 months of 1 hour lessons (24 lessons) = $1820</li>
+                </ul>
+                <p>Lessons are to be paid - "one month in advance"</p>
+                <p>You cannot 'skip' or cancel lessons. Cancelling an appointment is allowed, you have 3 months to get your lessons in before they expire.</p>
+            </div>
+            <div>
+                <section class="subTitleContainerSkew blueBG width20Percent textCenter">
+                    <h2>SCHEDULING ROUTINE</h2> 
+                </section>
+                <div>
+                    <ul>
+                        <li>BE ON TIME for your appontment.</li>
+                        <li>Please DON'T assume I'm running late.</li>
+                        <li>Please be a 'little bit' flexible... I do, rarely, run a few minutes late...That means, sometimes, you might LEAVE a few minutes later than your actual scheduled end time... I always try to give you your full lesson time. In many cases I can give you a little extra time! </li>
+                        <li>If YOU need to leave early, or "exactly", please tell me at the start of the lesson so we can finish up our session logically! Please don't come at, say, 4:57pm (for a 5pm lesson), knock on the door, and leave, give me a minute to show up, I run a pretty tight ship, but sometimes I have local errands to run... I won't forget about you!!!</li>
+                        <li>I cannot promise you your full session time if you are late. Sometimes, I CAN offer you a few more minutes than scheduled, please, if possible, don't make plans too close to your lesson's "end time"... We will always ask if it's "ok" to go a few minutes more... IF YOUCAN STAY AN EXTRA 1/2HR OR EVEN AN HOUR WE CAN USE THAT TIME AS A 'PRESAGE' LESSON LET US KNOW... </li>
+                        <li> If you "no show" (without 24 hours notice) for any reason, we will "sign off" on your "sig" card with the letter 'M' as in 'missed it', 'missed my lesson'.</li>
+                        <li>Stay ahead of your lesson curve! (see Music Focus™ <a href="#policy">Academy Membership Policy Agreement</a> ) Watch the lesson DATES very carefully. Bookmark this page and check it often. Please check <a href="#holidays">Holidays</a> link. We will make the lessons up or possibly use one of YOUR "presage" lessons (see MFAMPA) BLANK slots - ____________ - are AVAILABLE for regular lessons.</li>
+                        <li>If for ANY reason you would like to use an "alias" instead of your real name, PLEASE let me know...: example: "Mark Par" instead of "Tiger Woods"</li>
+                    </ul>
+                </div>
+            </div>
             
         </section>
+        <section id="holidays" class="flexColumnCenter marginTop20px">
+            <section class="sectionTitleContainerSkew greenBG">
+                <h1 class="sectionTitle">HOLIDAY SCHEDULE</h1>
+            </section>
+            <div>
+                <h2>Please note: Music Focus™ Lesson classes will not meet on the following days:</h2>
+                <ul>
+                   <li>Jan. 1st, New Years Day</li>
+                   <li>Memorial Day</li>
+                   <li>4th of July</li>
+                   <li>Labor Day</li>
+                   <li>Thanksgiving</li>
+                   <li>Dec. 24th (probably), Christmas Eve/day</li>
+                   <li>Dec. 25th, Christmas Day</li>
+                   <li>Dec. 31st (probably), New Years Eve/day</li>
+                </ul>
+                <p>IT IS IMPORTANT THAT YOU STAY AHEAD ON YOUR SIG-CARD so these do not disturb our regular lesson plan. We will be pro-active about re-scheduling or adding "CLASS-TIME" TO YOUR CURRICULUM.</p>
+                <p>(rehearsals may still be booked though...)</p>
+            </div>
+            
+        </section>
+
 
     </main>
 

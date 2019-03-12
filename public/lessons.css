@@ -1,3 +1,78 @@
+body{
+    font-family: Roboto;
+    max-width: 100%;
+}
+
+#bookContainer{
+    display: flex;
+    align-items: center;
+    background-color: #00b6de;
+    color: white;
+    font-family: Prompt;
+    justify-content: center;
+    padding: 0;
+}
+
+
+#lessonsLeadContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url(lesson-room.jpg) ;
+    background-position: 50% 35%;
+    height: 65vh;
+}
+
+#lessonsLeadTitleContainer{
+
+    background-color: #00b6de;
+    width: 100%;
+    text-align: center;
+    transform: skewX(-20deg);
+}
+
+#lessonsLeadTitle{
+    font-family: Prompt;
+    transform: skewX(20deg);
+    font-size: 2em;
+    text-transform: uppercase;
+    padding: 15px;
+    margin: 5px;
+}
+
+.lessonsSubLead{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.lessonsSubLead1 p{
+    width: 60%;
+    background-color: black;
+    text-align: center;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    
+}
+
+.lessonsSubLead1{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.lessonsSubLead1 p{
+    width: 50%;
+    background-color: black;
+    text-align: center;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    
+}
+
 #lessonsNav{
     display: flex;
     justify-content: space-evenly;
@@ -10,4 +85,18 @@
 
 #lessonsNav ul li:hover{
     color: #00b6de;
+}
+
+#intro{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#intro div{
+    width: 80%;
+}
+
+#karlPic{
+    border-radius: 15px;
 }

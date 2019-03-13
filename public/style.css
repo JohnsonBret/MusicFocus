@@ -129,6 +129,10 @@ body{
     width: 90%;
 }
 
+.width100Percent{
+    width: 90%;
+}
+
 .marginTop20px{
     margin-top: 20px;
 }
@@ -149,6 +153,71 @@ body{
 
 .flexColumnCenter div{
     width: 80%;
+}
+
+.flexRow{
+    display: flex;
+}
+
+.justifyCenter{
+    justify-content: center;
+}
+
+.justifySpaceBetween{
+    justify-content: space-between;
+}
+
+.lessonsContainer{
+    font-family: prompt;
+}
+
+.halfHourMember{
+    width: 45%;
+}
+
+.priceGrid{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    list-style-type: none;
+}
+
+.priceGrid li{
+    flex-basis: 30%;
+}
+
+.price{
+    font-size: 3.2rem;
+    line-height: 1.125;
+    margin-bottom: 0.3rem;
+    padding: 0;
+}
+
+.classPack{
+    font-family: Roboto;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.halfHourMember li{
+    margin-bottom: 1.5rem;
+    line-height: 1.285;
+}
+
+#halfHourMemberPricing{
+    font-size: 3.2rem;
+    line-height: 1.125;
+    margin-bottom: 2.5rem;
+}
+
+.lessonPackages{
+    width: 45%;
+}
+
+.lessonPackages h3{
+    font-size: 3.2rem;
+    line-height: 1.125;
+    margin-bottom: 0.5rem;
 }
 
 .sectionTitle{
@@ -187,6 +256,54 @@ body{
 
 .blueBG{
     background-color: #00b6de;
+}
+
+.whiteBG{
+    background-color: #ecf6f8;
+}
+
+.blackBG{
+    background-color: #222;
+}
+
+.yellowText{
+    color: #fed106;
+}
+
+.orangeText{
+    color: #fa743d;
+}
+
+.pinkText{
+    color: #ff43c0;
+}
+
+.purpleText{
+    color: #664595;
+}
+
+.greenText{
+    color: #93c13c;
+}
+
+.blueText{
+    color: #00b6de;
+}
+
+.whiteText{
+    color: #ecf6f8;
+}
+
+.orangeBorder{
+    border: 2px solid #fa743d;
+}
+
+.linkButtonPadding{
+    padding: 17px 30px;
+}
+
+.blackText{
+    color: #222;
 }
 
  #lessonsLink{

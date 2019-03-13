@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Music Focus</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="index.css">
     <link href="https://fonts.googleapis.com/css?family=Bangers|Prompt|Roboto|Teko|Roboto:900" rel="stylesheet"> 
   </head>
   <body>
@@ -30,6 +31,66 @@
         <div id="scrollButtonContainer">
             <img src="UiButtons.png">
         </div>
+        <section class="lessonsContainer">
+            <div class="flexRow justifyCenter">
+                <div class="flexColumnCenter halfHourMember blackBG">
+                    <h3 id="halfHourMemberPricing"  class="textCenter">Monthly Member<br><span class="orangeText">$172/mo</span></h3>
+                    <section class="flexRow justifySpaceBetween width100Percent">
+                        <ul>
+                            <li>New, easy, month to month Payment schedule.</li>
+                            <li>Complete personal interaction</li>
+                            <li>Online training augmentation</li>
+                        </ul>
+                        <ul>
+                            <li>New “presage” lessons</li>
+                            <li>Special ‘elective’ classes</li>
+                        </ul>
+                    </section>
+                    <a class="orangeText orangeBorder linkButtonPadding" href="/lessons">Learn More</a>
+                </div>
+                <div class="flexColumnCenter lessonPackages blueBG">
+                    <h3>Lesson Packages</h3>
+                    <p>3 Month Expiration</p>
+                    <ul class="priceGrid">
+                        <li>
+                            <p class="price">$43</p>
+                            <p class="classPack">half-hour lesson</p>
+                        </li>
+                        <li>
+                            <p class="price">$86</p>
+                            <p class="classPack">full-hour lesson</p>
+                        </li>
+                        <li>
+                            <p class="price">$172</p>
+                            <p class="classPack">4 half-hour lessons</p>
+                        </li>
+                        <li>
+                            <p class="price">$344</p>
+                            <p class="classPack">4 full-hour lessons</p>
+                        </li>
+                        <li>
+                            <p class="price">$688</p>
+                            <p class="classPack">8 full-hour lessons</p>
+                        </li>
+                        <li>
+                            <p class="price">$1345</p>
+                            <p class="classPack">16 full-hour lessons</p>
+                        </li>
+                        <li>
+                            <p class="price">$1820</p>
+                            <p class="classPack">24 full-hour lessons</p>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+            <div class="flexRow justifyCenter">
+                <a class="textCenter" href="/lessons#policy">Membership Terms and Conditions</a>
+            </div>
+            
+        </section>
 
     </main>
     {{> footer}}

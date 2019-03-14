@@ -40,7 +40,7 @@ body{
 
 .loungeSubLead p{
     width: 60%;
-    background-color: black;
+    background-color: #000;
     text-align: center;
     font-size: 1.2em;
     text-transform: uppercase;
@@ -55,7 +55,7 @@ body{
 
 .loungeSubLead1 p{
     width: 50%;
-    background-color: black;
+    background-color: #000;
     text-align: center;
     font-size: 1.2em;
     text-transform: uppercase;

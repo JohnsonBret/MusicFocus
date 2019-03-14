@@ -1,0 +1,50 @@
+#searchBar{
+    font-family: prompt;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0;
+}
+
+#searchBar label{
+    margin: 0 0.75rem;
+}
+
+#searchBar input{
+    background-color: #00b6de;
+    border-top: none;
+    border-right: none;
+    border-bottom: 2px solid #ecf6f8;
+    border-left: 2px solid #ecf6f8;
+    color: #ecf6f8;
+    font-family: prompt;
+    font-size: 1rem;
+    padding: 0.25rem 0.5rem;
+}
+
+#root{
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#root div:nth-child(odd){
+    background-color: #000;
+}
+
+#root div:nth-child(even){
+    background-color: #222;
+}
+
+
+.card{
+    display: flex;
+    font-family: prompt;
+    padding: 0 6rem;
+    width: 60%;
+}
+
+.card p{
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+}

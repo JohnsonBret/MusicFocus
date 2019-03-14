@@ -7,6 +7,7 @@
     <title>Music Focus - {{pageTitle}}</title>
     <link rel="stylesheet" href="songList.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Bangers|Prompt|Roboto|Teko|Roboto:900" rel="stylesheet"> 
   </head>
   <body onload="getSongData()">
@@ -23,7 +24,10 @@
         
       </div>
 
-      <div id="root"></div>
+      <div id="root">
+        <a id="topButton" class="backUpButtonHide orangeBG textCenter" href="#top"><i class="fas fa-arrow-up"></i></a>
+      </div>
+      
       <script src="songListSearch.js"></script>
     </main>
 

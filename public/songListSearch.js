@@ -148,3 +148,20 @@ function search(searchType){
       }
     }
 }
+
+window.onscroll = function() {scrollButton()};
+
+var topButton = document.getElementById("topButton");
+
+var sticky = topButton.offsetTop;
+
+// Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+function scrollButton() {
+  if (window.pageYOffset > sticky) {
+    topButton.classList.add("backUpButton");
+    topButton.classList.remove("backUpButtonHide");
+  } else {
+    topButton.classList.add("backUpButtonHide");
+    topButton.classList.remove("backUpButton");
+  }
+}

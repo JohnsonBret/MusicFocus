@@ -502,6 +502,40 @@ body{
     margin-right:  30px;
 }
 
+.backUpButton{
+    content: "\E006";
+    font-size: 18px;
+    font-size: 1.8rem;
+    line-height: 1;
+    width: 3rem;
+    height: 3rem;
+    box-sizing: border-box;
+    display: block;
+    right: 2%;
+    bottom: 2%;
+    float : none;
+    line-height: 12px;
+    position: fixed;
+    z-index: 14;
+    border-radius: 50%;
+    animation: buttonEaseIn 350ms;
+}
+
+.backUpButtonHide{
+    display: none;
+}
+
+.backUpButton:hover{
+    text-shadow: none;
+    color: #ecf6f8;
+    background-color: #fa743d;
+}
+
+.backUpButton:active{
+    color: #fa743d;
+    background-color: #ecf6f8;
+    text-shadow: none;
+}
 
 
 footer{
@@ -550,3 +584,14 @@ footer nav div a{
 		box-shadow: 0 0 3px #00b6de,0 0 5px #00b6de,0 0 7px #00b6de,0 0 10px #00b6de,0 0 12px #00b6de,0 0 7px #000;
 	}
 }
+
+@keyframes buttonEaseIn {
+    from {
+        bottom: -2%;
+        opacity: 0;
+    }
+    to {
+        opacity: 1.0;
+        bottom: 2%;
+    }
+  }

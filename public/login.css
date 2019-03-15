@@ -1,0 +1,55 @@
+body{
+    font-family: prompt;
+}
+
+.loginItem{
+    width: 60%;
+    height: 70vh;
+}
+
+.formRow{
+	display:flex;
+	margin: 10px;
+}
+
+.formRow label{
+	margin-right: 10px;
+	flex-basis: 50%;
+	text-align: center;
+}
+
+.formInput:focus{
+	box-shadow: 1px 1px 8px  #0770b1;
+
+}
+
+.formRowButtons{
+	display: flex;
+	justify-content: space-evenly;
+}
+
+
+.button{
+	background-color: #0770b1; /* Green */
+	border: 1px solid #feffed;
+	color: #feffed;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 5px;
+
+}
+
+.button:hover{
+	background-color: #feffed; /* Green */
+	border: 1px solid #168799;
+	color: #168799;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	
+}

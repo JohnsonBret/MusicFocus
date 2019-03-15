@@ -1,22 +1,28 @@
 //https://maialinonyc.com/
 //https://www.americarestaurant.ca/
+require('./config/config');
 
+const _ = require('lodash');
 const express = require('express');
 const fs = require('fs');
 const hbs = require('hbs');
 const bodyParser = require('body-parser');
 
-const port = process.env.PORT || 3000;
+var {mongoose} = require('./db/mongoose');
+var {Booking} = require('./models/booking');
+var {User} = require('./models/user');
+var {authenticate} = require('./middleware/authenticate');
 
 var app = express();
 
+app.use(express.static(__dirname + "/public"));
 hbs.registerPartials(__dirname + "/views/partials");
 app.set('view engine', 'hbs');
-
-
-app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({extended: false }));
 app.use(bodyParser.json());
+
+const port = process.env.PORT || 3000;
+
 
 hbs.registerHelper('getCurrentYear', ()=>{
     return new Date().getFullYear();
@@ -29,6 +35,14 @@ hbs.registerHelper('screamIt', (text)=>{
 app.get('/', (req, res)=>{
     res.render('index.hbs', {
         pageTitle: "Alpine Garden",
+        welcomeMessage: "Welcome to this homepage",
+        company: "Music Focus"
+    });
+});
+
+app.get('/login', (req, res)=>{
+    res.render('login.hbs', {
+        pageTitle: "Login",
         welcomeMessage: "Welcome to this homepage",
         company: "Music Focus"
     });
@@ -96,6 +110,31 @@ app.get('/bad', (req,res)=>{
     });
 });
 
+app.post('/users', (req, res)=>{
+    var body = _.pick(req.body, ['email', 'password']);
+    var user = new User(body);
+
+    user.save().then(() => {
+        return user.generateAuthToken();
+    }).then((token)=>{
+        res.header('x-auth', token).send(user);
+    }).catch((e)=>{
+        res.status(400).send(e);
+    });
+});
+
+app.post('/users/login', (req,res)=>{
+    var body = _.pick(req.body,['email', 'password']);
+
+    User.findByCredentials(body.email, body.password).then((user)=>{
+        return user.generateAuthToken().then((token)=>{
+            res.header('x-auth', token).send(user);
+        });
+    }).catch((e)=>{
+        res.status(400).send();
+    });
+});
+
 app.post('/submit', (req, res)=>{
     console.log(`Contact Name: ${req.body.contactName}
                 Contact Email: ${req.body.contactEmail}
@@ -114,3 +153,5 @@ app.post('/submit', (req, res)=>{
 app.listen(port, ()=>{
     console.log(`Server up on Port ${port}`);
 });
+
+module.exports = {app};

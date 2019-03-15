@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Music Focus</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="login.css">
+    <link href="https://fonts.googleapis.com/css?family=Bangers|Prompt|Roboto|Teko|Roboto:900" rel="stylesheet"> 
+</head>
+<body>
+    {{> header}}
+    <main>
+
+
+    <div class ="loginItem">
+                <fieldset>
+                <legend>Login</legend>
+                <div class="formRow">
+                    <label>Email</label>
+                    <input class="formInput" id="email" type="text" name="email">
+                </div>
+                <div class="formRow">
+                    <label>Password</label>
+                    <input class="formInput" id="pass" type="password" name="password">
+                </div>
+                <div class="formRowButtons">
+                    <input class="button" type="reset" value="Clear">
+                    <button class="button" onclick="login()">Login</button>
+                </div>
+            </fieldset>
+    </div>
+    </main>
+    {{> footer}}
+</body>
+</html>

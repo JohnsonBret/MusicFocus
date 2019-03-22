@@ -34,7 +34,7 @@ hbs.registerHelper('screamIt', (text)=>{
 
 app.get('/', (req, res)=>{
     res.render('index.hbs', {
-        pageTitle: "Alpine Garden",
+        pageTitle: "Music Focus | Home",
         welcomeMessage: "Welcome to this homepage",
         company: "Music Focus"
     });
@@ -134,6 +134,20 @@ app.post('/users/login', (req,res)=>{
         res.status(400).send();
     });
 });
+
+app.post('/booking', authenticate, (req, res)=>{
+    var body = _.pick(req.body, ['location', 'slotsAvailable', 'from', 'to', '_creator', '_bookee']);
+    var booking = new Booking(body);
+
+    booking.save().then((token)=>{
+        res.status(200).send({
+            booking: "successful"
+        });
+    }).catch((e)=>{
+        res.status(400).send(e);
+    });
+});
+
 
 app.post('/submit', (req, res)=>{
     console.log(`Contact Name: ${req.body.contactName}

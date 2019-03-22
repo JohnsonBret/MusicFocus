@@ -10,15 +10,13 @@ var Booking = mongoose.model('Booking', {
     slotsAvailable: {
         type: Number,
         required: true
-        // minlength: 1,
-        // trim: true
     },
     from:{
-        type: Number,
+        type: Date,
         required: true
     },
     to:{
-        type: Number,
+        type: Date,
         required: true
     },
     _creator:{
@@ -30,8 +28,8 @@ var Booking = mongoose.model('Booking', {
         required: true
     },
     bookedAt:{
-        type: Number,
-        default: null
+        type: Date,
+        default: Date.now
     },
     attended: {
         type: Boolean,

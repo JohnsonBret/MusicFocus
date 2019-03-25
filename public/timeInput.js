@@ -25,7 +25,7 @@ function changeHour(event)
 {
     
     var clickedHour = event.target.parentElement.getAttribute("id");
-    console.log(clickedHour, event.target.innerHTML)
+    // console.log(clickedHour, event.target.innerHTML)
     var hour;
     if(clickedHour == "fromHour")
     {
@@ -37,13 +37,13 @@ function changeHour(event)
     }
     
     hour.innerHTML = event.target.innerHTML;
-    console.log(hour.innerHTML, event.target.innerHTML);
+    // console.log(hour.innerHTML, event.target.innerHTML);
 }
 
 function changeMinute(event)
 {
     var clickedMinute = event.target.parentElement.getAttribute("id");
-    console.log(clickedMinute, event.target.innerHTML);
+    // console.log(clickedMinute, event.target.innerHTML);
 
     var minute;
 
@@ -57,7 +57,7 @@ function changeMinute(event)
     }
 
     minute.innerHTML = event.target.innerHTML;
-    console.log(minute.innerHTML, event.target.innerHTML);
+    // console.log(minute.innerHTML, event.target.innerHTML);
 }
 
 function changeAmPm(event)
@@ -93,7 +93,7 @@ const bookTime = () =>{
     validateDates(fromDateTime, toDateTime);
     
 
-    console.log(`fromDate ${fromDateTime.toLocaleString()}, fromTime ${toDateTime.toLocaleString()}`);
+    // console.log(`fromDate ${fromDateTime.toLocaleString()}, fromTime ${toDateTime.toLocaleString()}`);
 }
 
 const createDateTime = (date, hour, minute, ampm) => {
@@ -135,22 +135,117 @@ const createDateTime = (date, hour, minute, ampm) => {
     }
     var createdDate = new Date(year, month, day, hours, minutes,seconds, milliseconds);
 
-    console.log(`year ${year}, month ${month}, day ${day}, hours ${hours}, minutes ${minutes}, seconds ${seconds}, milli ${milliseconds}`);
+    // console.log(`year ${year}, month ${month}, day ${day}, hours ${hours}, minutes ${minutes}, seconds ${seconds}, milli ${milliseconds}`);
     console.log(createdDate.toLocaleDateString(), createdDate.toLocaleTimeString());
 
     return createdDate;
 }
 
 const validateDates = (from, to) => {
-    validateYear(from.getFullYear());
-    validateYear(to.getFullYear());
-    validateDay(from.getDate());
-    validateDay(to.getDate());
-    validateHour(from.getMinutes());
-    validateHour(to.getMinutes());
-    validateFromIsBeforeToTime(from , to);
+
+    if(dayIsNaN(from.getDate()))
+    {
+        showScheduleError("Did you pick a Start day?");
+        return;
+    }
+
+    if(dayIsNaN(to.getDate()))
+    {
+        showScheduleError("Did you pick a End day?");
+        return;
+    }
+
+    if(hourIsNaN(from.getHours()))
+    {
+        showScheduleError("Did you pick a Start hour?");
+        return;
+    }
+
+    if(hourIsNaN(to.getHours()))
+    {
+        showScheduleError("Did you pick a End hour?");
+        return;
+    }
+
+    if(!validateYear(from.getFullYear()))
+    {
+        showScheduleError("Start year is not Valid - You can only book up to 1 year in advance");
+        return;
+    }
+    if(!validateYear(to.getFullYear()))
+    {
+        showScheduleError("End year is not Valid - You can only book up to 1 year in advance");
+        return;
+    }
+    if(validateDay(from.getDate()))
+    {
+        showScheduleError("Start Day is not Valid");
+        return;
+    }
+    if(validateDay(to.getDate()))
+    {
+        showScheduleError("End Day is not Valid");
+        return;
+    }
+    if(validateHour(from.getHours()))
+    {
+        showScheduleError("Start Hour is not Valid");
+        return;
+    }
+    if(validateHour(to.getHours()))
+    {
+        showScheduleError("End Hour is not Valid");
+        return;
+    }
+    if(validateMinute(from.getMinutes()))
+    {
+        showScheduleError("Start Minutes are not Valid");
+        return;
+    }
+    if(validateMinute(to.getMinutes()))
+    {
+        showScheduleError("End Minutes are not Valid");
+        return;
+    }
+    if(!validateFromIsBeforeToTime(from , to))
+    {
+        showScheduleError("Start booking time must be BEFORE End booking time")
+        return;
+    }
     console.log(` is time before ${validateFromIsBeforeToTime(from , to)}`);
-    validateMinimumTimeBooked(from, to);
+    if(!validateMinimumTimeBooked(from, to))
+    {
+        showScheduleError("You must book at least minimum Time");
+        return;
+    }
+
+    showScheduleError("Booking submitted successfully");
+    
+}
+
+const dayIsNaN = (day) =>{
+    console.log(`Day is${day}`);
+    if(isNaN(day))
+    {
+        console.log(`Day is NaN`);
+        
+        return true;
+    }
+}
+
+const hourIsNaN = (hour) =>{
+    if(isNaN(hour))
+    {
+        console.log(`Hour is NaN`);
+        return true;
+    }
+}
+
+const minuteIsNaN = (minute)=>{
+    if(isNaN(minute))
+    {
+        return true;
+    }
 }
 
 const validateYear = (year)=>{
@@ -159,14 +254,17 @@ const validateYear = (year)=>{
 }
 
 const validateDay = (day)=>{
+    console.log(`Validate day ${day}`);
     return day < 1 || day > 31;
 }
 
 const validateHour = (hour) =>{
+   
     return hour < 0 || hour > 23
 }
 
 const validateMinute = (minute)=>{
+
     return minute < 0 || minute > 59;
 }
 
@@ -215,4 +313,10 @@ const isDateTimeBefore = (first, second) =>{
 //TODO: Figure out what this should be
 const validateMinimumTimeBooked = () =>{
     return true;
+}
+
+const showScheduleError = (errorMsg) =>{
+    const scheduleError = document.getElementById("scheduleError");
+    scheduleError.setAttribute("style", "display: flex;")
+    scheduleError.innerHTML = errorMsg;
 }

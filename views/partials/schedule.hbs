@@ -1,5 +1,8 @@
+        <section>
+            <p id="scheduleError" class="flexRow justifyCenter orangeBorder linkButtonPadding classPack">Something Went Wrong - Could not Book</p>
+        </section>
         <section class="flexRow justifyCenter">
-            <label class="scheduleLabel">From</label>
+            <label class="scheduleLabel">Start</label>
             <input class="date" type="date" id="fromDate" onchange="onDateChanged(event)">
             
             <div class="dropdown">
@@ -20,7 +23,7 @@
             </div>
             </div>
             <div class="dropdown">
-            <button id="displayFromMinute" class="dropbtn">Hour</button>
+            <button id="displayFromMinute" class="dropbtn">00</button>
             <div id="fromMinute" class="dropdown-content">
                 <a onclick="changeMinute(event)">00</a>
                 <a onclick="changeMinute(event)">15</a>
@@ -37,7 +40,7 @@
             </div> 
         </section>
                 <section class="flexRow justifyCenter">
-            <label class="scheduleLabel">To</label>
+            <label class="scheduleLabel">End</label>
             <input class="date" type="date" id="toDate" onchange="onDateChanged(event)">
             
             <div class="dropdown">
@@ -58,7 +61,7 @@
             </div>
             </div>
             <div class="dropdown">
-            <button id="displayToMinute" class="dropbtn">Hour</button>
+            <button id="displayToMinute" class="dropbtn">00</button>
             <div id="ToMinute" class="dropdown-content">
                 <a onclick="changeMinute(event)">00</a>
                 <a onclick="changeMinute(event)">15</a>

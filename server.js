@@ -48,6 +48,14 @@ app.get('/login', (req, res)=>{
     });
 });
 
+app.get('/dashboard',authenticate, (req,res)=>{
+    res.render('dashboard.hbs', {
+        pageTitle: "Dashboard",
+        welcomeMessage: "Welcome to the Dashboard",
+        company: "Music Focus"
+    });
+});
+
 app.get('/history', (req, res)=>{
     res.render('history.hbs', {
         pageTitle: "History",
@@ -160,7 +168,15 @@ app.post('/submit', (req, res)=>{
     res.render('contact.hbs', {
         pageTitle: "Contact",
         thanksMsg: "Thanks for contacting us!",
-        company: "Alpine Garden"
+        company: "Music Focus"
+    });
+});
+
+app.delete('/users/me/token', authenticate, (req, res)=>{
+    req.user.removeToken(req.token).then(()=>{
+        res.status(200).send();
+    }, () =>{
+        res.status(400).send();
     });
 });
 

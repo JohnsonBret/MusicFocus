@@ -4,9 +4,25 @@
     src: url(BebasNeueBook.otf);
 }
 
+:root {
+    --black-color: #000;
+    --off-black-color: #222;
+    --white-color: rgb(255,255,255);
+    --off-white-color:#ecf6f8;
+    --blue-color:#00b6de;
+    --orange-color:#fa743d;
+    --yellow-color:#fed106;
+    --green-color:#93c13c;
+    --purple-color: #664595;
+    --pink-color:#ff43c0;
+
+}
+
+
+
 body{
-    background-color: #000;
-    color: white;
+    background-color: var(--black-color);
+    color: var(--white-color);
     margin: 0;
 }
 
@@ -21,7 +37,7 @@ body{
    font-size: 48px;
    text-align: center;
    margin: auto 30px;
-   /*text-shadow: 0 0 5px #00b6de,0 0 10px #00b6de,0 0 15px #00b6de,0 0 20px #00b6de,0 0 25px #00b6de,0 0 15px #000;*/
+   /*text-shadow: 0 0 5px var(--blue-color),0 0 10px var(--blue-color),0 0 15px var(--blue-color),0 0 20px var(--blue-color),0 0 25px var(--blue-color),0 0 15px #000;*/
 }
 
 #bannerContainer{
@@ -34,23 +50,23 @@ body{
 #bookContainer{
     display: flex;
     align-items: center;
-    background-color: #00b6de;
-    color: white;
+    background-color: var(--blue-color);
+    color: var(--white-color);
     font-family: Prompt;
     justify-content: center;
     padding: 0;
 }
 
 #leadContainer{
-    border: 4px #00b6de solid;
+    border: 4px var(--blue-color) solid;
     margin: 0px 20%;
     padding: 10px;
-    box-shadow: 0 0 5px #00b6de,0 0 10px #00b6de,0 0 15px #00b6de,0 0 20px #00b6de,0 0 25px #00b6de,0 0 15px #000;
+    box-shadow: 0 0 5px var(--blue-color),0 0 10px var(--blue-color),0 0 15px var(--blue-color),0 0 20px var(--blue-color),0 0 25px var(--blue-color),0 0 15px #000;
     animation: containerShadow 1s infinite;
 }
 
 #leadLineTwo{
-    border: 4px #00b6de solid;
+    border: 4px var(--blue-color) solid;
     margin: 5px;
     display: flex;
     flex-direction: column;
@@ -68,7 +84,7 @@ body{
     font-family: Prompt; 
     font-size: 64px;
     text-align: center;
-    text-shadow: 0 0 5px #00b6de,0 0 10px #00b6de,0 0 15px #00b6de,0 0 20px #00b6de,0 0 25px #00b6de,0 0 15px #000;
+    text-shadow: 0 0 5px var(--blue-color),0 0 10px var(--blue-color),0 0 15px var(--blue-color),0 0 20px var(--blue-color),0 0 25px var(--blue-color),0 0 15px #000;
     background-color: #000;
     animation: logoShadow 2s infinite;
  }
@@ -88,7 +104,7 @@ body{
  }
  
  #leadButtons button{
-    background-color: #fa743d; /* Green */
+    background-color: var(--orange-color); /* Green */
     border: none;
     color: white;
     font-family: Roboto;
@@ -115,8 +131,8 @@ body{
  }
 
  a:hover{
-     color: #00b6de;
-     text-shadow: 0px 0px 10px #00b6de;
+     color: var(--blue-color);
+     text-shadow: 0px 0px 10px var(--blue-color);
  }
 
 .fs20{
@@ -245,27 +261,27 @@ body{
 }
 
 .yellowBG{
-    background-color: #fed106;
+    background-color: var(--yellow-color);
 }
 
 .orangeBG{
-    background-color: #fa743d;
+    background-color: var(--orange-color);
 }
 
 .pinkBG{
-    background-color: #ff43c0;
+    background-color: var(--pink-color);
 }
 
 .purpleBG{
-    background-color: #664595;
+    background-color: var(--purple-color);
 }
 
 .greenBG{
-    background-color: #93c13c;
+    background-color: var(--green-color);
 }
 
 .blueBG{
-    background-color: #00b6de;
+    background-color: var(--blue-color);
 }
 
 .whiteBG{
@@ -277,27 +293,27 @@ body{
 }
 
 .yellowText{
-    color: #fed106;
+    color: var(--yellow-color);
 }
 
 .orangeText{
-    color: #fa743d;
+    color: var(--orange-color);
 }
 
 .pinkText{
-    color: #ff43c0;
+    color: var(--pink-color);
 }
 
 .purpleText{
-    color: #664595;
+    color: var(--purple-color);
 }
 
 .greenText{
-    color: #93c13c;
+    color: var(--green-color);
 }
 
 .blueText{
-    color: #00b6de;
+    color: var(--blue-color);
 }
 
 .whiteText{
@@ -305,7 +321,7 @@ body{
 }
 
 .orangeBorder{
-    border: 2px solid #fa743d;
+    border: 2px solid var(--orange-color);
 }
 
 .linkButtonPadding{
@@ -317,31 +333,31 @@ body{
 }
 
  #lessonsLink{
-    border-bottom: 5px #fed106 solid;
+    border-bottom: 5px var(--yellow-color) solid;
  }
 
  #recordingLink{
-    border-bottom: 5px #fa743d solid;
+    border-bottom: 5px var(--orange-color) solid;
  }
 
  #rehearsalLink{
-    border-bottom: 5px #ff43c0 solid;
+    border-bottom: 5px var(--pink-color) solid;
  }
 
  #productsLink{
-    border-bottom: 5px #664595 solid;
+    border-bottom: 5px var(--purple-color) solid;
  }
 
  #ownerLink{
-    border-bottom: 5px #93c13c solid;
+    border-bottom: 5px var(--green-color) solid;
  }
 
  #historyLink{
-    border-bottom: 5px #00b6de solid;
+    border-bottom: 5px var(--blue-color) solid;
  }
 
  #backTopLink{
-    border-bottom: 5px #00b6de solid;
+    border-bottom: 5px var(--blue-color) solid;
  }
 
  #scrollButtonContainer{
@@ -386,7 +402,7 @@ body{
 
 #ownerTitleContainer{
 
-    background-color: #00b6de;
+    background-color: var(--blue-color);
     width: 20%;
     text-align: center;
     transform: skewX(-20deg);
@@ -416,7 +432,7 @@ body{
 }
 
 #ownerEmailTag{
-    background-color: #93c13c;
+    background-color: var(--green-color);
     width: 20%;
     text-align: center;
     transform: skewX(-20deg);
@@ -434,7 +450,7 @@ body{
 }
 
 #ownerAlbumTag{
-    background-color: #664595;
+    background-color: var(--purple-color);
     flex-basis: 30%;
     text-align: center;
     transform: skewX(-20deg);
@@ -452,7 +468,7 @@ body{
 }
 
 #ownerSoundtrackTag{
-    background-color: #ff43c0;
+    background-color: var(--pink-color);
     flex-basis: 40%;
     text-align: center;
     transform: skewX(-20deg);
@@ -460,7 +476,7 @@ body{
 }
 
 #ownerCreditsTag{
-    background-color: #fa743d;
+    background-color: var(--orange-color);
     flex-basis: 40%;
     text-align: center;
     transform: skewX(-20deg);
@@ -468,7 +484,7 @@ body{
 }
 
 #ownerProductionTag{
-    background-color: #00b6de;
+    background-color: var(--blue-color);
     flex-basis: 40%;
     text-align: center;
     transform: skewX(-20deg);
@@ -487,7 +503,7 @@ body{
 }
 
 #ownerBooksTag{
-    background-color: #93c13c;
+    background-color: var(--green-color);
     flex-basis: 40%;
     text-align: center;
     transform: skewX(-20deg);
@@ -495,7 +511,7 @@ body{
 }
 
 #ownerAffiliationsTag{
-    background-color: #664595;
+    background-color: var(--purple-color);
     flex-basis: 30%;
     text-align: center;
     transform: skewX(-20deg);
@@ -528,11 +544,11 @@ body{
 .backUpButton:hover{
     text-shadow: none;
     color: #ecf6f8;
-    background-color: #fa743d;
+    background-color: var(--orange-color);
 }
 
 .backUpButton:active{
-    color: #fa743d;
+    color: var(--orange-color);
     background-color: #ecf6f8;
     text-shadow: none;
 }
@@ -567,10 +583,22 @@ footer nav div a{
     margin: 0;
 }
 
+.scheduleLabel{
+    background-color: var(--blue-color);
+    color: #ecf6f8;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    min-width: 80px;
+    font-family: Roboto; 
+    text-transform: uppercase;
+}
+
 .date{
     font-family: prompt;
     text-transform: uppercase;
-    background-color: #00b6de;
+    background-color: var(--blue-color);
     color: #ecf6f8;
     border-top: none;
     border-right: none;
@@ -580,7 +608,7 @@ footer nav div a{
 }
 
 .dropbtn {
-    background-color: #00b6de;
+    background-color: var(--blue-color);
     color: #ecf6f8;
     padding: 16px;
     font-size: 16px;
@@ -607,7 +635,7 @@ footer nav div a{
   
   /* Links inside the dropdown */
   .dropdown-content a {
-    color: #00b6de;
+    color: var(--blue-color);
     padding: 6px 8px;
     text-decoration: none;
     display: block;
@@ -626,24 +654,24 @@ footer nav div a{
   
   /* Change the background color of the dropdown button when the dropdown content is shown */
   .dropdown:hover .dropbtn {
-    background-color: #00b6de;
+    background-color: var(--blue-color);
   }
 
 @keyframes logoShadow{
 	0%{
-		text-shadow: 0 0 5px #00b6de,0 0 10px #00b6de,0 0 15px #00b6de,0 0 20px #00b6de,0 0 25px #00b6de,0 0 15px #000;
+		text-shadow: 0 0 5px var(--blue-color),0 0 10px var(--blue-color),0 0 15px var(--blue-color),0 0 20px var(--blue-color),0 0 25px var(--blue-color),0 0 15px #000;
 	}
 	100%{
-		text-shadow: 0 0 3px #00b6de,0 0 5px #00b6de,0 0 7px #00b6de,0 0 10px #00b6de,0 0 12px #00b6de,0 0 7px #000;
+		text-shadow: 0 0 3px var(--blue-color),0 0 5px var(--blue-color),0 0 7px var(--blue-color),0 0 10px var(--blue-color),0 0 12px var(--blue-color),0 0 7px #000;
 	}
 }
 
 @keyframes containerShadow{
 	0%{
-		box-shadow: 0 0 5px #00b6de,0 0 10px #00b6de,0 0 15px #00b6de,0 0 20px #00b6de,0 0 25px #00b6de,0 0 15px #000;
+		box-shadow: 0 0 5px var(--blue-color),0 0 10px var(--blue-color),0 0 15px var(--blue-color),0 0 20px var(--blue-color),0 0 25px var(--blue-color),0 0 15px #000;
 	}
 	100%{
-		box-shadow: 0 0 3px #00b6de,0 0 5px #00b6de,0 0 7px #00b6de,0 0 10px #00b6de,0 0 12px #00b6de,0 0 7px #000;
+		box-shadow: 0 0 3px var(--blue-color),0 0 5px var(--blue-color),0 0 7px var(--blue-color),0 0 10px var(--blue-color),0 0 12px var(--blue-color),0 0 7px #000;
 	}
 }
 

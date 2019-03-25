@@ -13,7 +13,7 @@
 
 #pictureTubeTitleContainer{
 
-    background-color: #00b6de;
+    background-color: var(--blue-color);
     text-align: center;
     transform: skewX(-20deg);
     width: 80%;
@@ -44,7 +44,7 @@
 }
 
 #pictureTubeSpacer{
-    background-color: #00b6de;
+    background-color: var(--blue-color);
     height: 2px;
     width: 80%;
     margin-top: 20px;
@@ -71,7 +71,7 @@
 
 #xmasKarlTitleContainer{
 
-    background-color: #93c13c;
+    background-color:  var(--green-color);
     text-align: center;
     transform: skewX(-20deg);
     width: 50%;
@@ -84,7 +84,7 @@
 }
 
 #xmasKarlSpacer{
-    background-color: #93c13c;
+    background-color: var(--green-color);
     height: 2px;
     width: 80%;
     margin-top: 20px;
@@ -111,7 +111,7 @@
 
 #soloScapesTitleContainer{
 
-    background-color: #664595;
+    background-color: var(--purple-color);
     text-align: center;
     transform: skewX(-20deg);
     width: 40%;
@@ -124,7 +124,7 @@
 }
 
 #soloScapesSpacer{
-    background-color: #664595;
+    background-color: var(--purple-color);
     height: 2px;
     width: 80%;
     margin-top: 20px;
@@ -154,7 +154,7 @@
 }
 
 #cagedTitleContainer{
-    background-color: #00b6de;
+    background-color: var(--blue-color);
     text-align: center;
     transform: skewX(-20deg);
     width: 60%;
@@ -167,7 +167,7 @@
 }
 
 #cagedSpacer{
-    background-color: #00b6de;
+    background-color: var(--blue-color);
     height: 2px;
     width: 80%;
     margin-top: 20px;
@@ -199,7 +199,7 @@
 
 
 #campfireTitleContainer{
-    background-color: #fa743d;
+    background-color: var(--orange-color);
     text-align: center;
     transform: skewX(-20deg);
     width: 80%;
@@ -212,7 +212,7 @@
 }
 
 #campfireSpacer{
-    background-color: #fa743d;
+    background-color: var(--orange-color);
     height: 2px;
     width: 80%;
     margin-top: 20px;
@@ -229,7 +229,7 @@
 }
 
 details summary:hover{
-    color: #fa743d;
+    color: var(--orange-color);
 }
 
 
@@ -258,7 +258,7 @@ details summary:hover{
 }
 
 #jazzPorchTitleContainer{
-    background-color: #664595 ;
+    background-color: var(--purple-color) ;
     text-align: center;
     transform: skewX(-20deg);
     width: 60%;
@@ -271,14 +271,14 @@ details summary:hover{
 }
 
 #jazzPorchSpacer{
-    background-color: #664595 ;
+    background-color: var(--purple-color) ;
     height: 2px;
     width: 80%;
     margin-top: 20px;
 }
 
 #jazzPorchRight div details summary:hover{
-    color: #664595;
+    color: var(--purple-color);
 }
 
 #jazzSongsGrid{

@@ -17,7 +17,7 @@ body{
 
 #loungeLeadTitleContainer{
 
-    background-color: #00b6de;
+    background-color: var(--blue-color);
     width: 100%;
     text-align: center;
     transform: skewX(-20deg);
@@ -65,8 +65,8 @@ body{
 #bookContainer{
     display: flex;
     align-items: center;
-    background-color: #00b6de;
-    color: white;
+    background-color: var(--blue-color);
+    color: var(--white-color);
     font-family: Prompt;
     justify-content: center;
     padding: 0;
@@ -118,7 +118,7 @@ body{
 }
 
 .subTitleContainer{
-    background-color: #93c13c;
+    background-color: var(--green-color);
     width: 20%;
     transform: skewX(-20deg);
 }
@@ -153,7 +153,7 @@ body{
 
 
 #equipmentTitleContainer{
-    background-color: #fa743d;
+    background-color: var(--orange-color);
     width: 20%;
     transform: skewX(-20deg);
 }
@@ -169,7 +169,7 @@ body{
 }
 
 .instrumentContainer{
-    background-color: #fa743d;
+    background-color: var(--orange-color);
     width: 20%;
     transform: skewX(-20deg);
 }
@@ -195,7 +195,7 @@ body{
 }
 
 #referenceTitleContainer{
-    background-color: #664595;
+    background-color: var(--purple-color);
     width: 20%;
     transform: skewX(-20deg);
 }
@@ -226,5 +226,5 @@ body{
 }
 
 #rehearsalNav ul li:hover{
-    color: #00b6de;
+    color: var(--blue-color);
 }

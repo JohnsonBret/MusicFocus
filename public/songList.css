@@ -11,7 +11,7 @@
 }
 
 #searchBar input{
-    background-color: #00b6de;
+    background-color: var(--blue-color);
     border-top: none;
     border-right: none;
     border-bottom: 2px solid #ecf6f8;

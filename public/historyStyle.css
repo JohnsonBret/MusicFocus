@@ -7,7 +7,7 @@
 
 #historyTitleContainer{
 
-    background-color: #00b6de;
+    background-color: var(--blue-color);
     width: 80%;
     text-align: center;
     transform: skewX(-20deg);

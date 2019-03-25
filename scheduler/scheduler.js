@@ -210,12 +210,6 @@ const isTimeSlotAvailable = (timeSlotStart, timeSlotEnd, allocatedTimes) =>{
 }
 
 module.exports = {
-    isTimeBefore,
-    isTimeSame,
-    isTimeAfter,
-    isDateTimeBefore,
-    isDateTimeSame,
-    isDateTimeAfter,
     isTimeSlotAvailable,
 };
 

@@ -17,7 +17,7 @@ body{
 
 #loungeLeadTitleContainer{
 
-    background-color: #00b6de;
+    background-color: var(--blue-color);
     width: 100%;
     text-align: center;
     transform: skewX(-20deg);
@@ -40,7 +40,7 @@ body{
 
 .loungeSubLead p{
     width: 60%;
-    background-color: #000;
+    background-color: var(--black-color);
     text-align: center;
     font-size: 1.2em;
     text-transform: uppercase;
@@ -55,7 +55,7 @@ body{
 
 .loungeSubLead1 p{
     width: 50%;
-    background-color: #000;
+    background-color: var(--black-color);
     text-align: center;
     font-size: 1.2em;
     text-transform: uppercase;
@@ -65,8 +65,8 @@ body{
 #bookContainer{
     display: flex;
     align-items: center;
-    background-color: #00b6de;
-    color: white;
+    background-color: var(--blue-color);
+    color: var(--white-color);
     font-family: Prompt;
     justify-content: center;
     padding: 0;
@@ -87,7 +87,7 @@ body{
 }
 
 .sectionTitleContainer{
-    background-color: #00b6de;
+    background-color: var(--blue-color);
     width: 20%;
     transform: skewX(-20deg);
 }
@@ -149,7 +149,7 @@ body{
 }
 
 .rateTitleContainer{
-    background-color: #93c13c;
+    background-color: var(--green-color);
     width: 20%;
     transform: skewX(-20deg);
 }
@@ -184,7 +184,7 @@ body{
 
 
 #equipmentTitleContainer{
-    background-color: #fa743d;
+    background-color: var(--orange-color);
     width: 20%;
     transform: skewX(-20deg);
 }
@@ -200,7 +200,7 @@ body{
 }
 
 .instrumentContainer{
-    background-color: #fa743d;
+    background-color: var(--orange-color);
     width: 20%;
     transform: skewX(-20deg);
 }
@@ -226,7 +226,7 @@ body{
 }
 
 #roomTitleContainer{
-    background-color: #ff43c0;
+    background-color: var(--pink-color);
     width: 20%;
     transform: skewX(-20deg);
 }
@@ -252,5 +252,5 @@ body{
 }
 
 #rehearsalNav ul li:hover{
-    color: #00b6de;
+    color: var(--blue-color);
 }

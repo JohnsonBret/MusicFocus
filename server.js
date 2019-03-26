@@ -60,6 +60,14 @@ app.get('/dashboard/auth', authenticate, (req,res)=>{
     res.send(200);
 });
 
+app.get('/users', authenticate, (req, res)=> {
+    User.find({}).then((users)=>{
+        res.send({users});
+    }, (e)=>{
+        res.status(400).send(e);
+    });
+});
+
 app.get('/history', (req, res)=>{
     res.render('history.hbs', {
         pageTitle: "History",
@@ -123,13 +131,29 @@ app.get('/bad', (req,res)=>{
 });
 
 app.post('/users', (req, res)=>{
-    var body = _.pick(req.body, ['email', 'password']);
+    var body = _.pick(req.body, ['email', 'password', 'name']);
     var user = new User(body);
 
     user.save().then(() => {
         return user.generateAuthToken();
     }).then((token)=>{
         res.header('x-auth', token).send(user);
+    }).catch((e)=>{
+        res.status(400).send(e);
+    });
+});
+
+app.post('/users/admin/create', (req, res)=>{
+
+    var body = _.pick(req.body, ['email', 'password', 'name']);
+    var user = new User(body);
+
+    user.save().then(()=>{
+        res.status(200).send({
+            status: "successfully created user",
+            username: body.name,
+            email: body.email
+        });
     }).catch((e)=>{
         res.status(400).send(e);
     });

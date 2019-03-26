@@ -2,6 +2,6 @@ main{
     display: none;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     height: 60vh;
 }

@@ -17,8 +17,17 @@ async function login() {
     //before we allow a redirect to dashboard - this is NOT currently happening
     console.log(content, rawResponse.headers.get('x-auth'));
     sessionStorage.xauth = rawResponse.headers.get('x-auth');
-  
-    window.location = '/dashboard';
+    
+    if(rawResponse.status == 200)
+    {
+        console.log("response status 200");
+        window.location = '/dashboard';
+    }
+    else
+    {
+        window.location = '/login';
+    }
+
 
 
 };

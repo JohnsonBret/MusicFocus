@@ -48,12 +48,16 @@ app.get('/login', (req, res)=>{
     });
 });
 
-app.get('/dashboard',authenticate, (req,res)=>{
+app.get('/dashboard', (req,res)=>{
     res.render('dashboard.hbs', {
         pageTitle: "Dashboard",
         welcomeMessage: "Welcome to the Dashboard",
         company: "Music Focus"
     });
+});
+
+app.get('/dashboard/auth', authenticate, (req,res)=>{
+    res.send(200);
 });
 
 app.get('/history', (req, res)=>{

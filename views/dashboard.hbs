@@ -6,16 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Music Focus</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
     <link href="https://fonts.googleapis.com/css?family=Bangers|Prompt|Roboto|Teko|Roboto:900" rel="stylesheet"> 
+    
 </head>
-<body>
+<body onload="getUserDashboard()">
     {{> header}}
-    <main>
+    <main id="dashboardMain">
 
             {{>schedule}}
     
     </main>
-    <script src="login.js"></script>
     {{> footer}}
 </body>
+<script src="/dashboard.js"></script>
 </html>

@@ -2,6 +2,23 @@
     <section>
         <p id="scheduleError" class="flexRow justifyCenter orangeBorder linkButtonPadding classPack">Something Went Wrong - Could not Book</p>
     </section>
+    <section>
+        <label for="clientList">Client</label>
+        <select name="" id="clientList">
+
+        </select>
+    </section>
+    <section>
+        <label class="scheduleLabel">Location</label>
+        <div class="dropdown">
+        <button id="displayLocation" value="1" class="dropbtn">Lesson</button>
+        <div id="location" class="dropdown-content">
+            <a value="1" onclick="changeLocation(event)">Lesson</a>
+            <a value="2" onclick="changeLocation(event)">Rehearsal</a>
+            <a value="3" onclick="changeLocation(event)">Recording</a>
+        </div>
+        </div>
+    </section>
     <section class="flexRow justifyCenter">
         <label class="scheduleLabel">Start</label>
         <input class="date" type="date" id="fromDate" onchange="onDateChanged(event)">
@@ -82,4 +99,5 @@
         <button class="dropbtn" onclick="bookTime(event)">Book Time</button>
     </section>
 <script src="timeInput.js"></script>
+<script src="clientList.js"></script>
 </div> 

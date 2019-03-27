@@ -77,6 +77,15 @@ function changeAmPm(event)
     AmPm.innerHTML = event.target.innerHTML;
 }
 
+function changeLocation(event)
+{
+    var clickedLocation = event.target.parentElement.getAttribute("id");
+
+    var location = document.getElementById("displayLocation");
+    location.value = event.target.getAttribute("value");
+    location.innerHTML = event.target.innerHTML;
+}
+
 const bookTime = () =>{
     var fromDate = document.getElementById("fromDate").value ;
     var fromHour = document.getElementById("displayFromHour").innerHTML;
@@ -91,9 +100,16 @@ const bookTime = () =>{
     var fromDateTime = createDateTime(fromDate, fromHour, fromMinute, fromAmPm);
     var toDateTime = createDateTime(toDate, toHour, toMinute, toAmPm);
     validateDates(fromDateTime, toDateTime);
+
+    var bookee = document.getElementById("clientList").value;
+
+    var location = document.getElementById("displayLocation").value;
     
 
-    // console.log(`fromDate ${fromDateTime.toLocaleString()}, fromTime ${toDateTime.toLocaleString()}`);
+    console.log(`fromDate ${fromDateTime.toLocaleString()}, fromTime ${toDateTime.toLocaleString()}
+    bookee ${bookee} - location ${location}`);
+
+    postBooking(location, fromDateTime, toDateTime, bookee);
 }
 
 const createDateTime = (date, hour, minute, ampm) => {
@@ -319,4 +335,27 @@ const showScheduleError = (errorMsg) =>{
     const scheduleError = document.getElementById("scheduleError");
     scheduleError.setAttribute("style", "display: flex;")
     scheduleError.innerHTML = errorMsg;
+}
+
+const postBooking = async (location, fromDateTime, toDateTime, bookee) =>{
+
+    var auth = sessionStorage.getItem("xauth");
+
+    const rawResponse = await fetch('/booking', {
+        method: 'POST',
+        headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'x-auth': auth
+        },
+        body: JSON.stringify({location: location, from: fromDateTime, to: toDateTime, _bookee: bookee})
+    });
+    // const content = await rawResponse.json()
+        const content = await rawResponse;
+
+
+    if(rawResponse.status == 200)
+    {
+        console.log(`Status 200`);
+    }
 }

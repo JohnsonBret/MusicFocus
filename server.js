@@ -62,7 +62,7 @@ app.get('/dashboard/auth', authenticate, (req,res)=>{
 
 app.get('/users', authenticate, (req, res)=> {
     User.find({}).then((users)=>{
-        res.send({users});
+        res.status(200).send({users});
     }, (e)=>{
         res.status(400).send(e);
     });
@@ -172,16 +172,32 @@ app.post('/users/login', (req,res)=>{
 });
 
 app.post('/booking', authenticate, (req, res)=>{
-    var body = _.pick(req.body, ['location', 'slotsAvailable', 'from', 'to', '_creator', '_bookee']);
-    var booking = new Booking(body);
+    var token = req.header('x-auth');
+    var body = _.pick(req.body, ['location', 'from', 'to', '_bookee']);
 
-    booking.save().then((token)=>{
-        res.status(200).send({
-            booking: "successful"
+    body.slotsAvailable = 1;
+
+    User.findByToken(token).then((user)=>{
+        if(!user){
+            return Promise.reject();
+        }
+
+        body._creator = user._id;
+        var booking = new Booking(body);
+ 
+        booking.save().then(()=>{
+            res.status(200).send({
+                booking: "successful"
+            });
+        }).catch((e)=>{
+            res.status(400).send(e);
         });
+
     }).catch((e)=>{
-        res.status(400).send(e);
+        res.status(401).send(e);
     });
+
+
 });
 
 

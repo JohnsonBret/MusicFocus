@@ -99,7 +99,11 @@ const bookTime = () =>{
 
     var fromDateTime = createDateTime(fromDate, fromHour, fromMinute, fromAmPm);
     var toDateTime = createDateTime(toDate, toHour, toMinute, toAmPm);
-    validateDates(fromDateTime, toDateTime);
+    if(validateDates(fromDateTime, toDateTime) == false)
+    {
+        console.log("should i be returning false?");
+        return false;
+    }
 
     var bookee = document.getElementById("clientList").value;
 
@@ -135,7 +139,7 @@ const createDateTime = (date, hour, minute, ampm) => {
         }
         else
         {
-            hours = 11;
+            hours = 12;
         }
     }
     else
@@ -162,77 +166,81 @@ const validateDates = (from, to) => {
     if(dayIsNaN(from.getDate()))
     {
         showScheduleError("Did you pick a Start day?");
-        return;
+        return false;
     }
 
     if(dayIsNaN(to.getDate()))
     {
         showScheduleError("Did you pick a End day?");
-        return;
+        return false;
     }
 
     if(hourIsNaN(from.getHours()))
     {
         showScheduleError("Did you pick a Start hour?");
-        return;
+        return false;
     }
 
     if(hourIsNaN(to.getHours()))
     {
         showScheduleError("Did you pick a End hour?");
-        return;
+        return false;
     }
 
     if(!validateYear(from.getFullYear()))
     {
         showScheduleError("Start year is not Valid - You can only book up to 1 year in advance");
-        return;
+        return false;
     }
     if(!validateYear(to.getFullYear()))
     {
         showScheduleError("End year is not Valid - You can only book up to 1 year in advance");
-        return;
+        return false;
     }
     if(validateDay(from.getDate()))
     {
         showScheduleError("Start Day is not Valid");
-        return;
+        return false;
     }
     if(validateDay(to.getDate()))
     {
         showScheduleError("End Day is not Valid");
-        return;
+        return false;
     }
     if(validateHour(from.getHours()))
     {
         showScheduleError("Start Hour is not Valid");
-        return;
+        return false;
     }
     if(validateHour(to.getHours()))
     {
         showScheduleError("End Hour is not Valid");
-        return;
+        return false;
     }
     if(validateMinute(from.getMinutes()))
     {
         showScheduleError("Start Minutes are not Valid");
-        return;
+        return false;
     }
     if(validateMinute(to.getMinutes()))
     {
         showScheduleError("End Minutes are not Valid");
-        return;
+        return false;
     }
+
+    console.log(` is time before ${validateFromIsBeforeToTime(from , to)}
+    hours from: ${from.getHours()} hours to: ${to.getHours()}`);
+
     if(!validateFromIsBeforeToTime(from , to))
     {
         showScheduleError("Start booking time must be BEFORE End booking time")
-        return;
+        return false;
     }
-    console.log(` is time before ${validateFromIsBeforeToTime(from , to)}`);
+
     if(!validateMinimumTimeBooked(from, to))
     {
         showScheduleError("You must book at least minimum Time");
-        return;
+        return false;
     }
 
     showScheduleError("Booking submitted successfully");

@@ -99,13 +99,18 @@ const bookTime = () =>{
 
     var fromDateTime = createDateTime(fromDate, fromHour, fromMinute, fromAmPm);
     var toDateTime = createDateTime(toDate, toHour, toMinute, toAmPm);
+
+
+
     if(validateDates(fromDateTime, toDateTime) == false)
     {
         console.log("should i be returning false?");
         return false;
     }
 
-    var bookee = document.getElementById("clientList").value;
+    var clientList = document.getElementById("clientList");
+    var bookee = clientList.value;
+    var viewName = clientList.options[clientList.selectedIndex].text;
 
     var location = document.getElementById("displayLocation").value;
     
@@ -113,7 +118,7 @@ const bookTime = () =>{
     console.log(`fromDate ${fromDateTime.toLocaleString()}, fromTime ${toDateTime.toLocaleString()}
     bookee ${bookee} - location ${location}`);
 
-    postBooking(location, fromDateTime, toDateTime, bookee);
+    postBooking(location, fromDateTime, toDateTime, bookee, viewName);
 }
 
 const createDateTime = (date, hour, minute, ampm) => {
@@ -345,7 +350,7 @@ const showScheduleError = (errorMsg) =>{
     scheduleError.innerHTML = errorMsg;
 }
 
-const postBooking = async (location, fromDateTime, toDateTime, bookee) =>{
+const postBooking = async (location, fromDateTime, toDateTime, bookee, viewName) =>{
 
     var auth = sessionStorage.getItem("xauth");
 
@@ -356,7 +361,7 @@ const postBooking = async (location, fromDateTime, toDateTime, bookee) =>{
         'Content-Type': 'application/json',
         'x-auth': auth
         },
-        body: JSON.stringify({location: location, from: fromDateTime, to: toDateTime, _bookee: bookee})
+        body: JSON.stringify({location: location, from: fromDateTime, to: toDateTime, _bookee: bookee, bookeeName: viewName})
     });
     // const content = await rawResponse.json()
         const content = await rawResponse;

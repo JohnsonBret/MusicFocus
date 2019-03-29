@@ -173,12 +173,13 @@ app.post('/users/login', (req,res)=>{
 
 app.post('/booking', authenticate, (req, res)=>{
     var token = req.header('x-auth');
-    var body = _.pick(req.body, ['location', 'from', 'to', '_bookee']);
+    var body = _.pick(req.body, ['location', 'from', 'to', '_bookee', 'bookeeName']);
 
     body.slotsAvailable = 1;
 
     User.findByToken(token).then((user)=>{
         if(!user){
+            console.log("Failed to find by Token Server.js line 182");
             return Promise.reject();
         }
 

@@ -27,11 +27,19 @@ var Booking = mongoose.model('Booking', {
         type: mongoose.Schema.Types.ObjectId,
         required: true
     },
+    bookeeName:{
+        type: String,
+        required: true
+    },
     bookedAt:{
         type: Date,
         default: Date.now
     },
     attended: {
+        type: Boolean,
+        default: false
+    },
+    canceled: {
         type: Boolean,
         default: false
     }

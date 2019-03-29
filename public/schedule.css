@@ -1,0 +1,15 @@
+#scheduleRoot{
+
+}
+
+.week{
+
+}
+
+.day{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--off-white-color);
+    width: 200px;
+    height: 30vh;
+}

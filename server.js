@@ -69,12 +69,17 @@ app.get('/users', authenticate, (req, res)=> {
     });
 });
 
-app.get('/schedule/week', (req, res) =>{
+app.get('/schedule/week/:weekNum', (req, res) =>{
+
+    var weekNum = req.params.weekNum;
+
+    //TODO: Needs to handle years - can only handle current year
+    var displayWeek = DateTime.fromObject({weekNumber: weekNum});
+
     Booking.find({
         from: {
-            //This needs to look at last week - stopped working after midnight 4/1/2019 when it became a new week
-            $gte: DateTime.local().startOf("week").toJSDate(),
-            $lte: DateTime.local().endOf("week").toJSDate()
+            $gte: displayWeek.startOf("week").toJSDate(),
+            $lte: displayWeek.endOf("week").toJSDate()
         }
     }).then((bookings)=>{
 

@@ -31,3 +31,5 @@ async function getUserDashboard() {
     console.log(content, rawResponse.headers.get('x-auth'));
 
 };
+
+window.onload = getUserDashboard();

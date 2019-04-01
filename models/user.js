@@ -39,7 +39,7 @@ var UserSchema = new mongoose.Schema({
     }]
 });
 
-// UserSchema.methods adds and instance method
+// UserSchema.methods adds an instance method
 UserSchema.methods.toJSON = function(){
     var user = this;
     var userObject = user.toObject();

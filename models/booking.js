@@ -46,6 +46,7 @@ var Booking = mongoose.model('Booking', {
     
 });
 
+
 module.exports = {
     Booking: Booking
 }

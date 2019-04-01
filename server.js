@@ -12,6 +12,7 @@ var {mongoose} = require('./db/mongoose');
 var {Booking} = require('./models/booking');
 var {User} = require('./models/user');
 var {authenticate} = require('./middleware/authenticate');
+var {DateTime} = require('luxon');
 
 var app = express();
 
@@ -63,6 +64,34 @@ app.get('/dashboard/auth', authenticate, (req,res)=>{
 app.get('/users', authenticate, (req, res)=> {
     User.find({}).then((users)=>{
         res.status(200).send({users});
+    }, (e)=>{
+        res.status(400).send(e);
+    });
+});
+
+app.get('/schedule/week', (req, res) =>{
+    Booking.find({
+        from: {
+            $gte: DateTime.local().startOf("week").toJSDate(),
+            $lte: DateTime.local().endOf("week").toJSDate()
+        }
+    }).then((bookings)=>{
+
+        var pickedBookings = bookings.map((current)=>{
+            var pickedCurrent = _.pick(current, ['from', 'to', 'bookeeName']);
+            
+            var fromUTCTime = DateTime.fromJSDate(pickedCurrent.from);
+            var fromLATime = fromUTCTime.setZone('America/Los_Angeles');
+            pickedCurrent.from = fromLATime;
+
+            var toUTCTime = DateTime.fromJSDate(pickedCurrent.to);
+            var toLATime = toUTCTime.setZone('America/Los_Angeles');
+            pickedCurrent.to = toLATime;
+
+            return pickedCurrent;
+        });
+
+        res.status(200).send({pickedBookings});
     }, (e)=>{
         res.status(400).send(e);
     });

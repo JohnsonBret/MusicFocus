@@ -14,6 +14,7 @@ const getScheduleWeek = async () => {
     });
     const content = await rawResponse.json()
 
+    console.log(`Get schedule week status ${rawResponse.status}`);
 
     if(rawResponse.status == 200)
     {
@@ -60,4 +61,20 @@ const populateWeekSchedule = (weekSchedule) => {
 
 };
 
-window.onload = getScheduleWeek();
+const showScheduleSubTitle = () =>{
+    console.log("showScheduleSubTitle")
+    var subTitle = document.getElementById("scheduleSubTitle");
+    var startWeek = DateTime.local().setZone('America/Los_Angeles').startOf("week").toLocaleString(DateTime.DATE_FULL);
+    var endWeek = DateTime.local().setZone('America/Los_Angeles').endOf("week").toLocaleString(DateTime.DATE_FULL);
+    var displaySubTitle = `${startWeek} - ${endWeek}`;
+    subTitle.innerHTML  = displaySubTitle;
+}
+
+function onDashboardLoaded()
+{
+    showScheduleSubTitle();
+    getScheduleWeek();
+    
+}
+
+window.onload = onDashboardLoaded();

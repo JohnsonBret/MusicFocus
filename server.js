@@ -72,6 +72,7 @@ app.get('/users', authenticate, (req, res)=> {
 app.get('/schedule/week', (req, res) =>{
     Booking.find({
         from: {
+            //This needs to look at last week - stopped working after midnight 4/1/2019 when it became a new week
             $gte: DateTime.local().startOf("week").toJSDate(),
             $lte: DateTime.local().endOf("week").toJSDate()
         }
@@ -80,14 +81,6 @@ app.get('/schedule/week', (req, res) =>{
         var pickedBookings = bookings.map((current)=>{
             var pickedCurrent = _.pick(current, ['from', 'to', 'bookeeName']);
             
-            var fromUTCTime = DateTime.fromJSDate(pickedCurrent.from);
-            var fromLATime = fromUTCTime.setZone('America/Los_Angeles');
-            pickedCurrent.from = fromLATime;
-
-            var toUTCTime = DateTime.fromJSDate(pickedCurrent.to);
-            var toLATime = toUTCTime.setZone('America/Los_Angeles');
-            pickedCurrent.to = toLATime;
-
             return pickedCurrent;
         });
 
@@ -96,6 +89,7 @@ app.get('/schedule/week', (req, res) =>{
         res.status(400).send(e);
     });
 });
+
 
 app.get('/history', (req, res)=>{
     res.render('history.hbs', {

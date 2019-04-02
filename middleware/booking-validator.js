@@ -1,7 +1,8 @@
-
-const moment = require('moment');
-
-
+const _ = require('lodash');
+var { DateTime } = require('luxon');
+var {mongoose} = require('../db/mongoose');
+var {Booking} = require('../models/booking');
+var {User} = require('../models/user');
 
 const firstDate = new Date();
 const secondDate = new Date(1981, 2, 28, 9, 14, 54, 1);
@@ -10,26 +11,101 @@ const fourthDate = new Date(2019, 2, 13, 21, 40, 30, 30);
 const fifthDate = new Date(2019, 2, 13, 22, 40, 30, 30);
 const sixthDate = new Date(2019, 2, 13, 22, 41, 30, 30);
 
+var bookingValidator = (req, res, next)=>{
 
-const isTimeBefore = (first, second) => {
-    if (first.getHours() < second.getHours()) 
+    console.log(`Starting Booking Validator`);
+    
+    var desiredBooking = _.pick(req.body, ['location', 'from', 'to']);
+
+    desiredBooking.from = DateTime.fromISO(desiredBooking.from, {zone: 'utc'});
+    desiredBooking.to = DateTime.fromISO(desiredBooking.to, {zone: 'utc'});
+
+    // console.log(desiredBooking);
+
+    Booking.find({
+        location: desiredBooking.location,
+        from: {
+            $gte: desiredBooking.from.startOf("day").toJSDate(),
+            $lte: desiredBooking.to.endOf("day").toJSDate()
+        }
+    }).sort({from: 'asc'}).then((bookings)=>{
+
+        console.log("BOOKINGS START");
+        console.log(bookings);
+        console.log("BOOKINGS END");
+        
+        var result = isTimeSlotAvailable(desiredBooking.from, desiredBooking.to, bookings);
+        
+        console.log(`is time slot available ${result}`);
+
+        next();
+    }, (e)=>{
+        res.status(400).send(e);
+    });
+};
+
+const isTimeSlotAvailable = (timeSlotStart, timeSlotEnd, allocatedTimes) =>{
+
+    // console.log("allocatedTIMES START");
+    // console.log(`type of allocated times ${typeof allocatedTimes}`);
+    // console.log(allocatedTimes);
+    // console.log("allocatedTIMES END");
+
+    for (let i = 0; i < allocatedTimes.length; i++) 
     {
-        return true;
-    } 
-    else if (first.getHours() === second.getHours()) 
-    {
-        return first.getMinutes() < second.getMinutes();
+        // console.log("allocatedTimes[i]");
+        // console.log(allocatedTimes[i]);
+
+        // The problem is this isn't turning into a luxon it is becoming undefined - investigate how to properly turn it into a DATETIME
+        let allocatedFrom = DateTime.fromString(allocatedTimes[i].from);
+        let allocatedTo = DateTime.fromRFC2822(allocatedTimes[i].to);
+
+        // console.log("Allocated from");
+        // console.log(allocatedTimes[i].from);
+        // console.log(`Type of allocated from ${typeof allocatedTimes[i].from}`)
+
+        if ((isTimeAfter(timeSlotStart, allocatedFrom) && isTimeSame(timeSlotStart, allocatedFrom)) 
+            && isTimeBefore(timeSlotStart, allocatedTo)) 
+        {
+            return false;
+        } 
+        else if (isTimeBefore(allocatedFrom, timeSlotEnd) && isTimeAfter(allocatedTo, timeSlotStart)) 
+        {
+            return false;
+        }
     }
-    return false;
-}
+
+    return true;
+};
 
 // console.log(`Time is before ${isTimeBefore(firstDate, secondDate)}`);
 // console.log(`Time is before ${isTimeBefore(secondDate, firstDate)}`);
 
-const isTimeSame = (first, second) =>{
-    if (first.getHours() === second.getHours()) 
+const isTimeAfter = (first, second) =>{
+
+    console.log("First");
+    console.log(first);
+    console.log("Second");
+    console.log(second);
+
+    console.log(`First Hour ${first.hour} Second Hour ${second.hour}
+    First minute ${first.minute} Second minute ${second.minute}`)
+
+    if (first.hour > second.hour) 
     {
-        return first.getMinutes() === second.getMinutes();
+        return true;
+    } 
+    else if (first.hour === second.hour) 
+    {
+        return first.minute > second.minute;
+    }
+    return false;
+}
+
+const isTimeSame = (first, second) =>{
+    if (first.hour === second.hour) 
+    {
+        return first.minute === second.minute;
     }
     return false;
 }
@@ -37,15 +113,14 @@ const isTimeSame = (first, second) =>{
 // console.log(`Time is same ${isTimeSame(firstDate, secondDate)}`);
 // console.log(`Time is same ${isTimeSame(secondDate, secondDate)}`);
 
-
-const isTimeAfter = (first, second) =>{
-    if (first.getHours() > second.getHours()) 
+const isTimeBefore = (first, second) => {
+    if (first.hour < second.hour) 
     {
         return true;
     } 
-    else if (first.getHours() === second.getHours()) 
+    else if (first.hour === second.hour) 
     {
-        return first.getMinutes() > second.getMinutes();
+        return first.minute < second.minute;
     }
     return false;
 }
@@ -192,25 +267,10 @@ const threeThirtyAM = new Date(2000, 1, 1, 3, 30, 00, 00);
 const fourAM = new Date(2000,1,1,4,00,00,00);
 const fiveAM = new Date(2000,1,1,5,00,00,00);
 
-const isTimeSlotAvailable = (timeSlotStart, timeSlotEnd, allocatedTimes) =>{
-    for (const allocated of allocatedTimes) 
-    {
-        if ((isTimeAfter(timeSlotStart, allocated.from) && isTimeSame(timeSlotStart, allocated.from)) 
-            && isTimeBefore(timeSlotStart, allocated.to)) 
-        {
-            return false;
-        } 
-        else if (isTimeBefore(allocated.from, timeSlotEnd) && isTimeAfter(allocated.to, timeSlotStart)) 
-        {
-            return false;
-        }
-    }
 
-    return true;
-}
 
 module.exports = {
-    isTimeSlotAvailable,
+    bookingValidator,
 };
 
 // console.log(`Expecting False - ${isTimeSlotAvailable(midnight, oneThirty, bookedTimes)} - Is time Slot Available`);

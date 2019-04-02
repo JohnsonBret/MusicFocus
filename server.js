@@ -12,6 +12,7 @@ var {mongoose} = require('./db/mongoose');
 var {Booking} = require('./models/booking');
 var {User} = require('./models/user');
 var {authenticate} = require('./middleware/authenticate');
+var {bookingValidator} = require('./middleware/booking-validator');
 var {DateTime} = require('luxon');
 
 var app = express();
@@ -81,7 +82,7 @@ app.get('/schedule/week/:weekNum', (req, res) =>{
             $gte: displayWeek.startOf("week").toJSDate(),
             $lte: displayWeek.endOf("week").toJSDate()
         }
-    }).then((bookings)=>{
+    }).sort({from: 'asc'}).then((bookings)=>{
 
         var pickedBookings = bookings.map((current)=>{
             var pickedCurrent = _.pick(current, ['from', 'to', 'bookeeName']);
@@ -199,7 +200,8 @@ app.post('/users/login', (req,res)=>{
     });
 });
 
-app.post('/booking', authenticate, (req, res)=>{
+var bookingMiddleware = [authenticate, bookingValidator]
+app.post('/booking', bookingMiddleware, (req, res)=>{
     var token = req.header('x-auth');
     var body = _.pick(req.body, ['location', 'from', 'to', '_bookee', 'bookeeName']);
 

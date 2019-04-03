@@ -13,14 +13,12 @@ const sixthDate = new Date(2019, 2, 13, 22, 41, 30, 30);
 
 var bookingValidator = (req, res, next)=>{
 
-    console.log(`Starting Booking Validator`);
-    
     var desiredBooking = _.pick(req.body, ['location', 'from', 'to']);
 
-    desiredBooking.from = DateTime.fromISO(desiredBooking.from, {zone: 'utc'});
-    desiredBooking.to = DateTime.fromISO(desiredBooking.to, {zone: 'utc'});
-
-    // console.log(desiredBooking);
+    // desiredBooking.from = DateTime.fromISO(desiredBooking.from, {zone: 'utc'});
+    // desiredBooking.to = DateTime.fromISO(desiredBooking.to, {zone: 'utc'});
+    desiredBooking.from = DateTime.fromISO(desiredBooking.from, {zone: 'America/Los_Angeles'});
+    desiredBooking.to = DateTime.fromISO(desiredBooking.to, {zone: 'America/Los_Angeles'});
 
     Booking.find({
         location: desiredBooking.location,
@@ -29,41 +27,44 @@ var bookingValidator = (req, res, next)=>{
             $lte: desiredBooking.to.endOf("day").toJSDate()
         }
     }).sort({from: 'asc'}).then((bookings)=>{
-
-        console.log("BOOKINGS START");
-        console.log(bookings);
-        console.log("BOOKINGS END");
-        
+     
         var result = isTimeSlotAvailable(desiredBooking.from, desiredBooking.to, bookings);
         
         console.log(`is time slot available ${result}`);
 
-        next();
+        if(result)
+        {
+            next();
+        }
+        else
+        {
+            res.status(400).send({errorMsg: "Sorry! That time is not available."});
+        }
+
+        
     }, (e)=>{
         res.status(400).send(e);
     });
 };
 
-const isTimeSlotAvailable = (timeSlotStart, timeSlotEnd, allocatedTimes) =>{
-
-    // console.log("allocatedTIMES START");
-    // console.log(`type of allocated times ${typeof allocatedTimes}`);
-    // console.log(allocatedTimes);
-    // console.log("allocatedTIMES END");
+const isTimeSlotAvailable = (timeSlotStart, timeSlotEnd, allocatedTimes) => {
 
     for (let i = 0; i < allocatedTimes.length; i++) 
     {
-        // console.log("allocatedTimes[i]");
-        // console.log(allocatedTimes[i]);
+        var allocatedTime = _.pick(allocatedTimes[i], ['location', 'from', 'to']);
 
-        // The problem is this isn't turning into a luxon it is becoming undefined - investigate how to properly turn it into a DATETIME
-        let allocatedFrom = DateTime.fromString(allocatedTimes[i].from);
-        let allocatedTo = DateTime.fromRFC2822(allocatedTimes[i].to);
+        // console.log(`BEFORE allocated from ${allocatedTime.from} allocated to ${allocatedTime.to}`);
+        // console.log(`BEFORE allocated from ${typeof allocatedTime.from} allocated to ${typeof allocatedTime.to}`);
 
-        // console.log("Allocated from");
-        // console.log(allocatedTimes[i].from);
-        // console.log(`Type of allocated from ${typeof allocatedTimes[i].from}`)
+        // let allocatedFrom = DateTime.fromJSDate(allocatedTime.from, {zone: 'utc'});
+        // let allocatedTo = DateTime.fromJSDate(allocatedTime.to, {zone: 'utc'});
 
+        let allocatedFrom = DateTime.fromJSDate(allocatedTime.from, {zone: 'America/Los_Angeles'});
+        let allocatedTo = DateTime.fromJSDate(allocatedTime.to, {zone: 'America/Los_Angeles'});
+
+        // I was able to book a time where the send of my desired booking (timeSlotEnd) overlapped the start of a previous booking
+        // In this case i desired a 4:30pm to 5:30pm appointment when a 5:00pm to 7:00pm appointment already existed - this should have
+        // returned false - This has to do with the time zone conversion I suspect - Perhaps we should try everything in LA TIME
         if ((isTimeAfter(timeSlotStart, allocatedFrom) && isTimeSame(timeSlotStart, allocatedFrom)) 
             && isTimeBefore(timeSlotStart, allocatedTo)) 
         {
@@ -78,18 +79,16 @@ const isTimeSlotAvailable = (timeSlotStart, timeSlotEnd, allocatedTimes) =>{
     return true;
 };
 
-// console.log(`Time is before ${isTimeBefore(firstDate, secondDate)}`);
-// console.log(`Time is before ${isTimeBefore(secondDate, firstDate)}`);
-
 const isTimeAfter = (first, second) =>{
 
-    console.log("First");
-    console.log(first);
-    console.log("Second");
-    console.log(second);
+    // console.log("First");
+    // console.log(first);
+    // console.log("Second");
+    // console.log(second);
 
-    console.log(`First Hour ${first.hour} Second Hour ${second.hour}
-    First minute ${first.minute} Second minute ${second.minute}`)
+    // console.log(`isTimeAfter--> first ${first} second ${second}
+    // First Hour ${first.hour} Second Hour ${second.hour}
+    // First minute ${first.minute} Second minute ${second.minute}`)
 
     if (first.hour > second.hour) 
     {
@@ -110,10 +109,12 @@ const isTimeSame = (first, second) =>{
     return false;
 }
 
-// console.log(`Time is same ${isTimeSame(firstDate, secondDate)}`);
-// console.log(`Time is same ${isTimeSame(secondDate, secondDate)}`);
-
 const isTimeBefore = (first, second) => {
+
+    console.log(`isTimeBefore--> first ${first} second ${second}
+    First Hour ${first.hour} Second Hour ${second.hour}
+    First minute ${first.minute} Second minute ${second.minute}`)
+
     if (first.hour < second.hour) 
     {
         return true;
@@ -124,10 +125,6 @@ const isTimeBefore = (first, second) => {
     }
     return false;
 }
-
-// console.log(`Time is After ${isTimeAfter(firstDate, secondDate)}`, firstDate, secondDate);
-// console.log(`Time is After ${isTimeAfter(secondDate, firstDate)}`, secondDate, firstDate);
-
 
 const isDateTimeBefore = (first, second) =>{
     if (first.getFullYear() < second.getFullYear()) 
@@ -155,14 +152,6 @@ const isDateTimeBefore = (first, second) =>{
     return false;
 }
 
-// console.log(`Is Date Time Before ${isDateTimeBefore(firstDate, secondDate)}`, firstDate, secondDate);
-// console.log(`Is Date Time Before ${isDateTimeBefore(secondDate, firstDate)}`, secondDate, firstDate);
-// console.log(`Is Date Time Before ${isDateTimeBefore(firstDate, thirdDate)}`, firstDate, thirdDate);
-// console.log(`Is Date Time Before ${isDateTimeBefore(thirdDate, firstDate)}`, thirdDate, firstDate);
-// console.log(`Is Date Time Before ${isDateTimeBefore(thirdDate, fourthDate)}`, thirdDate, fourthDate);
-// console.log(`Is Date Time Before ${isDateTimeBefore(fourthDate, thirdDate)}`, fourthDate, thirdDate);
-
-
 const isDateTimeSame = (first, second) => {
     if (first.getFullYear() === second.getFullYear()) 
     {
@@ -184,18 +173,6 @@ const isDateTimeSame = (first, second) => {
     }
     return false;
 }
-
-// console.log(`Is Date Time Same ${isDateTimeSame(firstDate, secondDate)}`, firstDate, secondDate);
-// console.log(`Is Date Time Same ${isDateTimeSame(secondDate, firstDate)}`, secondDate, firstDate);
-// console.log(`Is Date Time Same ${isDateTimeSame(firstDate, thirdDate)}`, firstDate, thirdDate);
-// console.log(`Is Date Time Same ${isDateTimeSame(thirdDate, firstDate)}`, thirdDate, firstDate);
-// console.log(`Is Date Time Same ${isDateTimeSame(thirdDate, fourthDate)}`, thirdDate, fourthDate);
-// console.log(`Is Date Time Same ${isDateTimeSame(fourthDate, thirdDate)}`, fourthDate, thirdDate);
-// console.log(`Is Date Time Same ${isDateTimeSame(secondDate, secondDate)}`, secondDate, secondDate);
-// console.log(`Is Date Time Same ${isDateTimeSame(fourthDate, fifthDate)}`, fourthDate, fifthDate);
-// console.log(`Is Date Time Same ${isDateTimeSame(fifthDate, fourthDate)}`, fifthDate, fourthDate);
-// console.log(`Is Date Time Same ${isDateTimeSame(fifthDate, sixthDate)}`, fifthDate, sixthDate);
-// console.log(`Is Date Time Same ${isDateTimeSame(sixthDate, fifthDate)}`, sixthDate, fifthDate);
 
 const isDateTimeAfter = (first, second) =>{
     if (first.getFullYear() > second.getFullYear()) 
@@ -223,58 +200,7 @@ const isDateTimeAfter = (first, second) =>{
     return false;
 }
 
-// console.log(`Is Date Time After ${isDateTimeAfter(firstDate, secondDate)}`, firstDate, secondDate);
-// console.log(`Is Date Time After ${isDateTimeAfter(secondDate, firstDate)}`, secondDate, firstDate);
-// console.log(`Is Date Time After ${isDateTimeAfter(firstDate, thirdDate)}`, firstDate, thirdDate);
-// console.log(`Is Date Time After ${isDateTimeAfter(thirdDate, firstDate)}`, thirdDate, firstDate);
-// console.log(`Is Date Time After ${isDateTimeAfter(thirdDate, fourthDate)}`, thirdDate, fourthDate);
-// console.log(`Is Date Time After ${isDateTimeAfter(fourthDate, thirdDate)}`, fourthDate, thirdDate);
-// console.log(`Is Date Time After ${isDateTimeAfter(secondDate, secondDate)}`, secondDate, secondDate);
-// console.log(`Is Date Time After ${isDateTimeAfter(fourthDate, fifthDate)}`, fourthDate, fifthDate);
-// console.log(`Is Date Time After ${isDateTimeAfter(fifthDate, fourthDate)}`, fifthDate, fourthDate);
-// console.log(`Is Date Time After ${isDateTimeAfter(fifthDate, sixthDate)}`, fifthDate, sixthDate);
-// console.log(`Is Date Time After ${isDateTimeAfter(sixthDate, fifthDate)}`, sixthDate, fifthDate);
-
-
-const bookedTimes = [
-    {
-        from: new Date(2000, 1, 1, 1, 00, 00, 00) ,
-        to: new Date(2000, 1, 1, 2, 00, 00, 00)
-    },
-    {
-        from: new Date(2000, 1, 1, 3, 00, 00, 00) ,
-        to: new Date(2000, 1, 1, 3, 30, 00, 00)
-    },
-    {
-        from: new Date(2000, 1, 1, 10, 00, 00, 00) ,
-        to: new Date(2000, 1, 1, 12, 00, 00, 00)
-    },
-    {
-        from: new Date(2000, 1, 1, 20, 00, 00, 00) ,
-        to: new Date(2000, 1, 1, 22, 00, 00, 00)
-    }
-]
-
-const midnight = new Date(2000, 1, 1, 0, 00, 00, 00);
-const oneThirty = new Date(2000, 1, 1, 1, 30, 00, 00);
-
-const oneAM = new Date(2000, 1, 1, 1, 00, 00, 00);
-const twoThirtyAM = new Date(2000, 1, 1, 2, 30, 00, 00);
-
-const oneFiftyNineAM = new Date(2000, 1, 1, 1, 59, 00, 00);
-const threeThirtyAM = new Date(2000, 1, 1, 3, 30, 00, 00);
-
-const fourAM = new Date(2000,1,1,4,00,00,00);
-const fiveAM = new Date(2000,1,1,5,00,00,00);
-
-
-
 module.exports = {
     bookingValidator,
 };
-
-// console.log(`Expecting False - ${isTimeSlotAvailable(midnight, oneThirty, bookedTimes)} - Is time Slot Available`);
-// console.log(`Expecting False - ${isTimeSlotAvailable(oneAM, twoThirtyAM, bookedTimes)} - Is time Slot Available`);
-// console.log(`Expecting False - ${isTimeSlotAvailable(oneFiftyNineAM, threeThirtyAM, bookedTimes)} - Is time Slot Available`);
-// console.log(`Expecting True - ${isTimeSlotAvailable(fourAM, fiveAM, bookedTimes)} - Is time Slot Available`);
 

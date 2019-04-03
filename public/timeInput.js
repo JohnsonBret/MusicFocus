@@ -247,9 +247,6 @@ const validateDates = (from, to) => {
         showScheduleError("You must book at least minimum Time");
         return false;
     }
-
-    showScheduleError("Booking submitted successfully");
-    
 }
 
 const dayIsNaN = (day) =>{
@@ -363,12 +360,17 @@ const postBooking = async (location, fromDateTime, toDateTime, bookee, viewName)
         },
         body: JSON.stringify({location: location, from: fromDateTime, to: toDateTime, _bookee: bookee, bookeeName: viewName})
     });
-    // const content = await rawResponse.json()
-        const content = await rawResponse;
+        const content = await rawResponse.json()
+        //const content = await rawResponse;
 
 
     if(rawResponse.status == 200)
     {
         console.log(`Status 200`);
+        showScheduleError("Booking submitted successfully");
+    }
+    else
+    {
+        showScheduleError(content.errorMsg);
     }
 }

@@ -1,35 +1,47 @@
 var DateTime = luxon.DateTime;
 
-var currentWeek = DateTime.local().weekNumber;
+var currentWeekLesson = DateTime.local().weekNumber;
+var currentWeekRehearsal = DateTime.local.weekNumber;
+
+var lessonLocationData;
+var rehearsalLocationData;
 
 
-const getScheduleWeek = async (weekNum) => {
+const getScheduleWeek = async (weekNum, location) => {
 
     console.log("Getting the weekly schedule");
         
-    const rawResponse = await fetch(`/schedule/week/${weekNum}`, {
+    const rawResponse = await fetch(`/schedule/week/${weekNum}/${location}`, {
         method: 'GET',
         headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
         },
     });
-    const content = await rawResponse.json()
+    const content = await rawResponse.json();
 
     console.log(`Get schedule week status ${rawResponse.status}`);
 
     if(rawResponse.status == 200)
     {
         console.log(content);
-        populateWeekSchedule(content);
+        
+        populateWeekSchedule(content, location);
     }
 };
 
-const populateWeekSchedule = (weekSchedule) => {
+const populateWeekSchedule = (weekSchedule, location) => {
 
-    var weekNode = document.getElementById("scheduleRoot").children[0];
+    //Duplicate break out into function
+    if(location == 1)
+    {
+        var weekNode = document.getElementById("lessonScheduleRoot").children[0];
+    }
+    else if(location == 2)
+    {
+        var weekNode = document.getElementById("rehearsalScheduleRoot").children[0];
+    }
     
-
     weekSchedule.pickedBookings.map((current) =>{
         var fromUTCTime = DateTime.fromISO(current.from);
         var fromLATime = fromUTCTime.setZone('America/Los_Angeles');
@@ -63,10 +75,21 @@ const populateWeekSchedule = (weekSchedule) => {
 
 };
 
-const showScheduleSubTitle = () =>{
-    var subTitle = document.getElementById("scheduleSubTitle");
+const showScheduleSubTitle = (location) =>{
+    
+    console.log(`showScheduleSubTitle-> location ${location}`);
 
-    var displayWeek = DateTime.fromObject({weekNumber: currentWeek});
+    if(location === "1")
+    {
+        var subTitle = document.getElementById("lessonScheduleSubTitle");
+        var displayWeek = DateTime.fromObject({weekNumber: currentWeekLesson});
+    }
+    else if(location === "2")
+    {
+        var subTitle = document.getElementById("rehearsalScheduleSubTitle");
+        var displayWeek = DateTime.fromObject({weekNumber: currentWeekRehearsal});
+    }
+
     var startWeek = displayWeek.setZone('America/Los_Angeles').startOf("week").toLocaleString({ month: 'long', day: 'numeric' });
     var endWeek = displayWeek.setZone('America/Los_Angeles').endOf("week").toLocaleString({ month: 'long', day: 'numeric' });
 
@@ -76,8 +99,17 @@ const showScheduleSubTitle = () =>{
     subTitle.innerHTML  = displaySubTitle;
 }
 
-const clearWeekSchedule = ()=>{
-    var weekNode = document.getElementById("scheduleRoot").children[0];
+const clearWeekSchedule = (location)=>{
+
+    //Duplicate break out into function
+    if(location === "1")
+    {
+        var weekNode = document.getElementById("lessonScheduleRoot").children[0];
+    }
+    else if(location === "2")
+    {
+        var weekNode = document.getElementById("rehearsalScheduleRoot").children[0];
+    }
 
     for (var i = 0; i < weekNode.children.length; i++) {
 
@@ -92,42 +124,104 @@ const clearWeekSchedule = ()=>{
 }
 
 const setupWeekChangeIcons = () =>{
-    var leftArrow = document.getElementById("prevWeekIcon");
-    var rightArrow = document.getElementById("nextWeekIcon");
 
-    leftArrow.addEventListener("click", ()=>{
-        currentWeek > 1 ? currentWeek-- : currentWeek;
-        console.log(`Current Week ${currentWeek}`);
-        clearWeekSchedule();
-        displayCurrentWeekSchedule();
-    });
-    rightArrow.addEventListener("click", ()=>{
-        currentWeek < 53 ? currentWeek++ : currentWeek;
-        console.log(`Current Week ${currentWeek}`);
-        clearWeekSchedule();
-        displayCurrentWeekSchedule();
-    });
+    if(document.getElementById("lessonScheduleRoot") !== null)
+    {
+        var leftArrow = document.getElementById("prevWeekIcon");
+        var rightArrow = document.getElementById("nextWeekIcon");
+
+        leftArrow.addEventListener("click", ()=>{
+            currentWeekLesson > 1 ? currentWeekLesson-- : currentWeekLesson;
+            console.log(`Current Week Lesson ${currentWeekLesson}`);
+            clearWeekSchedule(lessonLocationData);
+            displayCurrentWeekSchedule(lessonLocationData);
+        });
+        rightArrow.addEventListener("click", ()=>{
+            currentWeekLesson < 53 ? currentWeekLesson++ : currentWeekLesson;
+            console.log(`Current Week ${currentWeekLesson}`);
+            clearWeekSchedule(lessonLocationData);
+            displayCurrentWeekSchedule(lessonLocationData);
+        });
+    }
+
+    if(document.getElementById("rehearsalScheduleRoot") !== null)
+    {
+
+        var leftArrow = document.getElementById("prevWeekIconRehearsal");
+        var rightArrow = document.getElementById("nextWeekIconRehearsal");
+
+        leftArrow.addEventListener("click", ()=>{
+            currentWeekRehearsal > 1 ? currentWeekRehearsal-- : currentWeekRehearsal;
+            console.log(`Current Week ${currentWeekRehearsal}`);
+            clearWeekSchedule(rehearsalLocationData);
+            displayCurrentWeekSchedule(rehearsalLocationData);
+        });
+        rightArrow.addEventListener("click", ()=>{
+            currentWeekRehearsal < 53 ? currentWeekRehearsal++ : currentWeekRehearsal;
+            console.log(`Current Week ${currentWeekRehearsal}`);
+            clearWeekSchedule(rehearsalLocationData);
+            displayCurrentWeekSchedule(rehearsalLocationData);
+        });
+    }
 }
 
 const setupRefreshButton = () =>{
-    var refreshBtn = document.getElementById("refreshButton");
-    refreshBtn.addEventListener("click", ()=>{
-        clearWeekSchedule();
-        displayCurrentWeekSchedule();
-    });
+
+    if(document.getElementById("lessonScheduleRoot") !== null)
+    {
+        var refreshBtn = document.getElementById("refreshButton");
+        refreshBtn.addEventListener("click", ()=>{
+            clearWeekSchedule(lessonLocationData);
+            displayCurrentWeekSchedule(lessonLocationData);
+        });
+    }
+
+    if(document.getElementById("rehearsalScheduleRoot") !== null)
+    {
+        var refreshBtn = document.getElementById("refreshButtonRehearsal");
+        refreshBtn.addEventListener("click", ()=>{
+            clearWeekSchedule(rehearsalLocationData);
+            displayCurrentWeekSchedule(rehearsalLocationData);
+        });
+    }
+
+    
 }
 
-const displayCurrentWeekSchedule = () =>{
-    getScheduleWeek(currentWeek);
-    showScheduleSubTitle();
+const displayCurrentWeekSchedule = (location) =>{
+
+    if(document.getElementById("lessonScheduleRoot") !== null)
+    {
+        getScheduleWeek(currentWeekLesson, location);
+        showScheduleSubTitle(location);
+    }
+
+    if(document.getElementById("rehearsalScheduleRoot") !== null)
+    {
+        getScheduleWeek(currentWeekRehearsal, location);
+        showScheduleSubTitle(location);
+    }
 };
 
 function onDashboardLoaded()
 {
-    displayCurrentWeekSchedule();
+    if(document.getElementById("lessonScheduleRoot") !== null)
+    {
+        lessonLocationData = document.getElementById("lessonScheduleRoot").getAttribute("data-schedule-type");
+        displayCurrentWeekSchedule(lessonLocationData);
+    }
+
+    if(document.getElementById("rehearsalScheduleRoot") !== null)
+    {
+        rehearsalLocationData = document.getElementById("rehearsalScheduleRoot").getAttribute("data-schedule-type");
+        displayCurrentWeekSchedule(rehearsalLocationData);
+    }
+    
+    console.log(`Lesson Location Data - ${lessonLocationData} Rehearsal Location Data - ${rehearsalLocationData}`);
+
+
     setupWeekChangeIcons();
     setupRefreshButton();
-    
 }
 
 window.onload = onDashboardLoaded();

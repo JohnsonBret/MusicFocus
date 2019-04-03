@@ -70,14 +70,16 @@ app.get('/users', authenticate, (req, res)=> {
     });
 });
 
-app.get('/schedule/week/:weekNum', (req, res) =>{
+app.get('/schedule/week/:weekNum/:location', (req, res) =>{
 
     var weekNum = req.params.weekNum;
+    var locate = req.params.location;
 
     //TODO: Needs to handle years - can only handle current year
     var displayWeek = DateTime.fromObject({weekNumber: weekNum});
 
     Booking.find({
+        location: locate,
         from: {
             $gte: displayWeek.startOf("week").toJSDate(),
             $lte: displayWeek.endOf("week").toJSDate()

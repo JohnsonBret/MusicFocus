@@ -59,11 +59,11 @@ app.get('/dashboard', (req,res)=>{
 });
 
 app.get('/dashboard/auth', authenticate, (req,res)=>{
-    res.send(200);
+    res.sendStatus(200);
 });
 
 app.get('/users', authenticate, (req, res)=> {
-    User.find({}).then((users)=>{
+    User.find({}).sort({name: 'asc'}).then((users)=>{
         res.status(200).send({users});
     }, (e)=>{
         res.status(400).send(e);

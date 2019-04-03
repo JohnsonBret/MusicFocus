@@ -557,9 +557,18 @@ body{
     text-shadow: none;
 }
 
-.button{
-	background-color: var(--blue-color);
+.blueBtn{
+    background-color: var(--blue-color);
 	border: 1px solid var(--white-color);
+}
+
+.orangeBtn{
+    background-color: var(--orange-color);
+	border: 1px solid var(--white-color);
+}
+
+.button{
+
 	color: var(--white-color);
 	padding: 15px 32px;
 	text-align: center;
@@ -570,10 +579,19 @@ body{
 
 }
 
-.button:hover{
-	background-color: var(--white-color); 
+.blueBtn:hover{
+    background-color: var(--white-color); 
 	border: 1px solid var(--blue-color);
 	color: var(--blue-color);
+}
+
+.orangeBtn:hover{
+    background-color: var(--white-color); 
+	border: 1px solid var(--orange-color);
+	color: var(--orange-color);
+}
+
+.button:hover{
 	padding: 15px 32px;
 	text-align: center;
 	text-decoration: none;
@@ -689,8 +707,9 @@ footer nav div a{
     color: var(--blue-color);
 }
 
-#scheduleError{
-    display: none;
+#scheduleMessage{
+    display: flex;
+    visibility: hidden;
 }
 
 @keyframes logoShadow{

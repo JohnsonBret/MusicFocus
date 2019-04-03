@@ -1,7 +1,7 @@
 var DateTime = luxon.DateTime;
 
 var currentWeekLesson = DateTime.local().weekNumber;
-var currentWeekRehearsal = DateTime.local.weekNumber;
+var currentWeekRehearsal = DateTime.local().weekNumber;
 
 var lessonLocationData;
 var rehearsalLocationData;
@@ -190,13 +190,13 @@ const setupRefreshButton = () =>{
 
 const displayCurrentWeekSchedule = (location) =>{
 
-    if(document.getElementById("lessonScheduleRoot") !== null)
+    if(document.getElementById("lessonScheduleRoot") !== null  && location == lessonLocationData)
     {
         getScheduleWeek(currentWeekLesson, location);
         showScheduleSubTitle(location);
     }
 
-    if(document.getElementById("rehearsalScheduleRoot") !== null)
+    if(document.getElementById("rehearsalScheduleRoot") !== null && location == rehearsalLocationData)
     {
         getScheduleWeek(currentWeekRehearsal, location);
         showScheduleSubTitle(location);

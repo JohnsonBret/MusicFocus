@@ -3,7 +3,7 @@
 }
 
 .week{
-
+    min-height: 40vh;
 }
 
 .day{
@@ -35,12 +35,17 @@ i{
     margin: 0px 20px;
 }
 
-i:hover{
+.blueIcon:hover{
     color: var(--blue-color);
     text-shadow: 0px 0px 10px var(--blue-color);
 }
 
-#scheduleSubTitle{
+.orangeIcon:hover{
+    color: var(--orange-color);
+    text-shadow: 0px 0px 10px var(--orange-color);
+}
+
+.scheduleSubTitle{
     width: 30%;
     text-align: center;
 }

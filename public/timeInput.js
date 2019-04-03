@@ -170,66 +170,66 @@ const validateDates = (from, to) => {
 
     if(dayIsNaN(from.getDate()))
     {
-        showScheduleError("Did you pick a Start day?");
+        showScheduleMessage("Did you pick a Start day?");
         return false;
     }
 
     if(dayIsNaN(to.getDate()))
     {
-        showScheduleError("Did you pick a End day?");
+        showScheduleMessage("Did you pick a End day?");
         return false;
     }
 
     if(hourIsNaN(from.getHours()))
     {
-        showScheduleError("Did you pick a Start hour?");
+        showScheduleMessage("Did you pick a Start hour?");
         return false;
     }
 
     if(hourIsNaN(to.getHours()))
     {
-        showScheduleError("Did you pick a End hour?");
+        showScheduleMessage("Did you pick a End hour?");
         return false;
     }
 
     if(!validateYear(from.getFullYear()))
     {
-        showScheduleError("Start year is not Valid - You can only book up to 1 year in advance");
+        showScheduleMessage("Start year is not Valid - You can only book up to 1 year in advance");
         return false;
     }
     if(!validateYear(to.getFullYear()))
     {
-        showScheduleError("End year is not Valid - You can only book up to 1 year in advance");
+        showScheduleMessage("End year is not Valid - You can only book up to 1 year in advance");
         return false;
     }
     if(validateDay(from.getDate()))
     {
-        showScheduleError("Start Day is not Valid");
+        showScheduleMessage("Start Day is not Valid");
         return false;
     }
     if(validateDay(to.getDate()))
     {
-        showScheduleError("End Day is not Valid");
+        showScheduleMessage("End Day is not Valid");
         return false;
     }
     if(validateHour(from.getHours()))
     {
-        showScheduleError("Start Hour is not Valid");
+        showScheduleMessage("Start Hour is not Valid");
         return false;
     }
     if(validateHour(to.getHours()))
     {
-        showScheduleError("End Hour is not Valid");
+        showScheduleMessage("End Hour is not Valid");
         return false;
     }
     if(validateMinute(from.getMinutes()))
     {
-        showScheduleError("Start Minutes are not Valid");
+        showScheduleMessage("Start Minutes are not Valid");
         return false;
     }
     if(validateMinute(to.getMinutes()))
     {
-        showScheduleError("End Minutes are not Valid");
+        showScheduleMessage("End Minutes are not Valid");
         return false;
     }
 
@@ -238,13 +238,13 @@ const validateDates = (from, to) => {
 
     if(!validateFromIsBeforeToTime(from , to))
     {
-        showScheduleError("Start booking time must be BEFORE End booking time")
+        showScheduleMessage("Start booking time must be BEFORE End booking time")
         return false;
     }
 
     if(!validateMinimumTimeBooked(from, to))
     {
-        showScheduleError("You must book at least minimum Time");
+        showScheduleMessage("You must book at least minimum Time");
         return false;
     }
 }
@@ -341,10 +341,16 @@ const validateMinimumTimeBooked = () =>{
     return true;
 }
 
-const showScheduleError = (errorMsg) =>{
-    const scheduleError = document.getElementById("scheduleError");
-    scheduleError.setAttribute("style", "display: flex;")
+const showScheduleMessage = (errorMsg) =>{
+    const scheduleError = document.getElementById("scheduleMessage");
+    scheduleError.setAttribute("style", "visibility: visible;")
     scheduleError.innerHTML = errorMsg;
+    setTimeout(hideScheduleMessage, 2000);
+}
+
+const hideScheduleMessage = () =>{
+    const scheduleError = document.getElementById("scheduleMessage");
+    scheduleError.setAttribute("style", "visibility: hidden;")
 }
 
 const postBooking = async (location, fromDateTime, toDateTime, bookee, viewName) =>{
@@ -367,10 +373,10 @@ const postBooking = async (location, fromDateTime, toDateTime, bookee, viewName)
     if(rawResponse.status == 200)
     {
         console.log(`Status 200`);
-        showScheduleError("Booking submitted successfully");
+        showScheduleMessage("Booking submitted successfully");
     }
     else
     {
-        showScheduleError(content.errorMsg);
+        showScheduleMessage(content.errorMsg);
     }
 }

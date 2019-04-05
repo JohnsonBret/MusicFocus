@@ -70,6 +70,25 @@ app.get('/users', authenticate, (req, res)=> {
     });
 });
 
+app.get('/bookings/:clientId', (req, res)=>{
+    var bookeeId = req.params.clientId;
+
+    Booking.find({
+        _bookee: bookeeId,
+    }).sort({from: 'asc'}).then((bookings)=>{
+
+        var clientBookings = bookings.map((current)=>{
+            var pickedCurrent = _.pick(current, ['_id','from', 'to', 'bookeeName']);
+            
+            return pickedCurrent;
+        });
+
+        res.status(200).send({clientBookings});
+    }, (e)=>{
+        res.status(400).send(e);
+    });
+});
+
 app.get('/schedule/week/:weekNum/:location', (req, res) =>{
 
     var weekNum = req.params.weekNum;

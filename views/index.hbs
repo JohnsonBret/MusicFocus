@@ -7,6 +7,7 @@
     <title>Music Focus</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="schedule.css">
     <link href="https://fonts.googleapis.com/css?family=Bangers|Prompt|Roboto|Teko|Roboto:900" rel="stylesheet"> 
   </head>
   <body>
@@ -25,8 +26,8 @@
             </div>
         </div>
         <div id="leadButtons">
-            <button>Lesson Schedule</button>
-            <button>Rehearsal Schedule</button>
+            <button onclick="window.location.href = '#lessonScheduleTitle';">Lesson Schedule</button>
+            <button onclick="window.location.href = '#rehearsalScheduleTitle';">Rehearsal Schedule</button>
         </div>
         <div id="scrollButtonContainer">
             <img src="UiButtons.png">
@@ -91,7 +92,15 @@
             </div>
             
         </section>
+
+        {{>scheduleLesson}}
+
+        {{>scheduleRehearsal}}
+
     </main>
     {{> footer}}
+
+    <script src="/luxon.min.js"></script>
+    <script src="/schedule.js"></script>
   </body>
 </html>

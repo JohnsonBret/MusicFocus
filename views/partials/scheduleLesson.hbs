@@ -1,8 +1,8 @@
 <link rel="stylesheet" href="schedule.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
-<div class="flexColumnCenter width100Percent">
-    <h1>Lesson Schedule</h1>
+<div class="flexColumnCenter width100Percent prompt">
+    <h1 id="lessonScheduleTitle">Lesson Schedule</h1>
     <div id="scheduleControls" class="flexRow justifyCenter alignCenter">
         <i id="prevWeekIcon" class="fas fa-chevron-left blueIcon"></i>
         <h2 id="lessonScheduleSubTitle" class="scheduleSubTitle"></h2>
@@ -11,8 +11,8 @@
     <button id="refreshButton" class="button blueBtn"><i class="fas fa-redo blueIcon"></i></button>
 </div>
 
-<section id="lessonScheduleRoot" data-schedule-type="1">
-    <div class="week flexRow blueBG width100Percent">
+<section id="lessonScheduleRoot" class="width100Percent" data-schedule-type="1">
+    <div class="week flexRow blueBG width100Percent prompt">
         <div class="day">
             <h2 class="textCenter">Mon</h2>
         </div>

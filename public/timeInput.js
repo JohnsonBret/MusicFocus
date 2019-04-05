@@ -108,7 +108,7 @@ const bookTime = () =>{
         return false;
     }
 
-    var clientList = document.getElementById("clientList");
+    var clientList = document.getElementById("bookingClientList");
     var bookee = clientList.value;
     var viewName = clientList.options[clientList.selectedIndex].text;
 

@@ -1,16 +1,14 @@
-<div>
+<div class="" id="bookingRoot">
+    <h1>Booking</h1>
     <section>
         <p id="scheduleMessage" class="flexRow justifyCenter orangeBorder linkButtonPadding classPack">Something Went Wrong - Could not Book</p>
     </section>
-    <section>
-        <label for="clientList">Client</label>
-        <select name="" id="clientList">
-
-        </select>
+    <section class="custom-select">
+        <label class="scheduleLabel" for="clientList">Client</label>
+        <select class="clientList" name="" id="bookingClientList"></select>
     </section>
     <section>
-        <label class="scheduleLabel">Location</label>
-        <div class="dropdown">
+        <label class="scheduleLabel">Location</label><div class="dropdown">
         <button id="displayLocation" value="1" class="dropbtn">Lesson</button>
         <div id="location" class="dropdown-content">
             <a value="1" onclick="changeLocation(event)">Lesson</a>
@@ -98,6 +96,8 @@
     <section class="flexRow justifyCenter">
         <button class="dropbtn" onclick="bookTime(event)">Book Time</button>
     </section>
+
+    
 <script src="timeInput.js"></script>
 <script src="clientList.js"></script>
 </div> 

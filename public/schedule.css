@@ -1,9 +1,15 @@
-#scheduleRoot{
+#rehearsalScheduleRoot{
+
+}
+
+#lessonScheduleRoot{
 
 }
 
 .week{
     min-height: 40vh;
+    width: 100%;
+    display: flex;
 }
 
 .day{
@@ -11,7 +17,8 @@
     flex-direction: column;
     justify-content: flex-start;
     border: 1px solid var(--off-white-color);
-    width: 200px;
+    min-width: 160px;
+    width: 15%;
     /* height: 30vh; */
 }
 

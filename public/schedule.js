@@ -64,8 +64,6 @@ const populateWeekSchedule = (weekSchedule, location) => {
         div.appendChild(bookeeP);
         div.appendChild(timeP);
 
-        console.log(fromLATime.weekday)
-
         weekNode.children[fromLATime.weekday - 1].appendChild(div);
 
         return current;

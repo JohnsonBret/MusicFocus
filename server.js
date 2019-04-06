@@ -7,6 +7,7 @@ const express = require('express');
 const fs = require('fs');
 const hbs = require('hbs');
 const bodyParser = require('body-parser');
+const {ObjectID} = require('mongodb');
 
 var {mongoose} = require('./db/mongoose');
 var {Booking} = require('./models/booking');
@@ -272,6 +273,29 @@ app.delete('/users/me/token', authenticate, (req, res)=>{
     req.user.removeToken(req.token).then(()=>{
         res.status(200).send();
     }, () =>{
+        res.status(400).send();
+    });
+});
+
+app.delete('/bookings/delete/:id', authenticate, (req,res) =>{
+    var id = req.params.id;
+
+    if(!ObjectID.isValid(id)){
+        return res.status(404).send();
+    }
+
+    Booking.findOneAndRemove({
+        _id: id
+    }).then((booking) =>{
+
+        if(!booking){
+            return res.status(404).send({errorMsg: "No Booking with that ID"});
+        }
+
+        var deletedBooking = _.pick(booking, ['_id','location', 'from', 'to', '_bookee', 'bookeeName']);
+
+        res.status(200).send({deletedBooking});
+    }).catch((e) =>{
         res.status(400).send();
     });
 });

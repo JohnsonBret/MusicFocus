@@ -39,4 +39,4 @@ const populateClientSelect = (clients) =>{
 
 
 
-getClientList();
+window.onload = getClientList();

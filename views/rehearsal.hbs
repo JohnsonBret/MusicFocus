@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="rehearsalStyle.css">
     <link href="https://fonts.googleapis.com/css?family=Bangers|Prompt|Roboto|Teko|Roboto:900" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   </head>
   <body>
           {{> header}}
@@ -31,7 +32,7 @@
         </div>
 
         <div id="loungeLeadContainer">
-            <div>
+            <div class="flexColumnCenter">
                 <div id="loungeLeadTitleContainer">
                     <h2 id="loungeLeadTitle"> Welcome to The "Abalone Lounge" / Music Focus™ rehearsal / training hall!</h2>
                 </div>
@@ -79,8 +80,13 @@
                 
             </div>
             <div>
-                <ol>
-                    <li>
+                <ul class="rulesList flexRow flexWrap justifySpaceEvenly width100Percent">
+                    <li class="rulesCard width30Percent blackBG">
+                        <div class="flexRow justifyCenter blueBG">
+                            <i class="fas fa-drum iconMargin"></i>
+                            <i class="fas fa-arrow-right iconMargin"></i>
+                            <i class="fas fa-microphone-slash iconMargin"></i>
+                        </div>
                         <h2>Please - no instruments through the P.A.</h2>
                         <p>The P.A. is intended for singing-vocal microphones only.
                         If you intend to amplify guitars, bass guitars, drum mics, drum machines, drum triggers, samples,
@@ -91,7 +97,10 @@
                         Other gear may be used only by specific permission with possible additional rates
                         (guitars, electric piano, acoustic guitar amps, special PRO-electric guitar amps, etc.)</p>  
                     </li>
-                    <li>
+                    <li class="rulesCard width30Percent blackBG">
+                        <div class="flexRow justifyCenter blueBG">
+                            <i class="fas fa-people-carry iconMargin"></i>
+                        </div>
                         <h2>Please pack out your gear!</h2>  
                         <p>There are many other bands rehearsing here.
                         We CANNOT insure or magically guarantee the safety of unlabelled equipment or personal items left in this studio.
@@ -99,16 +108,28 @@
                             and wonder "where's my cowbell" (for real, it happened...). 
                         Sorry... DO speak up if you have a valid concern though... </p>
                     </li>
-                    <li>
+                    <li class="rulesCard width30Percent blackBG">
+                        <div class="flexRow justifyCenter blueBG">
+                            <i class="far fa-thumbs-down iconMargin"></i>
+                            <i class="fas fa-volume-up iconMargin"></i>
+                        </div>
                         <h2>Crazy, crazy sound levels and/or douchy behavior can't be tolerated here.</h2> 
                         <p>This is a facility for recording and rehearsal, it's not a concert hall, or play-pen for dodgy behavior.
                         Also keep your guests to a minimum. No full blown parties without permission... THANKS... </p>
                     </li>
-                    <li>
+                    <li class="rulesCard width30Percent blackBG">
+                        <div class="flexRow justifyCenter blueBG">
+                            <i class="fas fa-camera-retro iconMargin"></i>
+                        </div>
                         <h2>Photo shoots, special/social events and/or video "shoots" may require extra payment.
                         Please let us know in advance if you plan to use our facility for your event.</h2> 
                     </li>
-                    <li>
+                    <li class="rulesCard width30Percent blackBG">
+                        <div class="flexRow justifyCenter blueBG">
+                            <i class="fas fa-money-bill-wave iconMargin"></i>
+                            <i class="fas fa-arrow-right iconMargin"></i>
+                            <i class="far fa-envelope-open iconMargin"></i>
+                        </div>
                         <h2>Pay the pay box in between the studio doors</h2>
                         <h3>(checks do NOT need envelopes, Venmo is "Karl Grossman"):</h3> 
 
@@ -120,26 +141,47 @@
                         agreement, respect of the facility and payment in full. Like a punk song, simple but powerful!
                         99% of our bands are respectful and this is not even an issue... Thank you!!! Peace!!</p> 
                     </li>
-                    <li>
+                    <li class="rulesCard width30Percent blackBG">
+                        <div class="flexRow justifyCenter blueBG">
+                            <i class="far fa-clock iconMargin"></i>
+                        </div>
                         <h2>Please realize that if you book from, say, 2-5pm you must be fully packed OUT at 5pm !! </h2> 
                         <p>It does NOT mean you can play until 5pm then leasurely pack up and leave... In my experiece you need to allow approx 8 to 10 minutes MORE than YOU think to pack, clean-up, and load out (see rule 7.). Word up - we WILL find out if you've been cutting into the "next band's" time... If someone's consistantly abusing YOUR "entrance" time, just let us know...</p> 
                     </li>
-                    <li>
+                    <li class="rulesCard width30Percent blackBG">
+                        <div class="flexRow justifyCenter blueBG">
+                            <i class="fas fa-glass-cheers iconMargin"></i>
+                        </div>
                         <h2>Please use the drink holders!!...</h2>
                     </li>
-                    <li>
+                    <li class="rulesCard width30Percent blackBG">
+                        <div class="flexRow justifyCenter blueBG">
+                            <img id="gum" src="gum.svg" alt="">
+                            <i class="fas fa-arrow-right iconMargin"></i>
+                            <i class="fas fa-ban iconMargin"></i>
+                        </div>
                         <h2>No Gum Chewing Allowed Here!!!</h2>
                         <p>Leave it cleaner than when you came!</p>
                     </li>
-                    <li>
+                    <li class="rulesCard width30Percent blackBG">
+                        <div class="flexRow justifyCenter blueBG">
+                            <i class="fas fa-user-tag iconMargin"></i>
+                        </div>
                         <h2>Anything you bring in here needs to be labeled with your name on it!!!</h2>
                         <p>You'd be surprised what's been left here (weirdest thing listed at end of section)...</p>
                     </li>
-                    <li>
+                    <li class="rulesCard width30Percent blackBG">
+                        <div class="flexRow justifyCenter blueBG">
+                            <i class="fas fa-car-side iconMargin"></i>
+                            <i class="fas fa-truck-loading iconMargin"></i>
+                        </div>
                         <h2>Please park in an assigned space!!!</h2>
                         <p>You can load in right next to the door, but Don't leave your car in the road! Or you'll cause "neighbor-wrath"...</p>
                     </li>
-                    <li>
+                    <li class="rulesCard width30Percent blackBG">
+                        <div class="flexRow justifyCenter blueBG">
+                            <i class="fas fa-tasks iconMargin"></i>
+                        </div>
                         <h2>Please run a FINAL CHECK before you leave:</h2> 
                         <ul>
                             <li>Pay the box?</li>
@@ -155,10 +197,14 @@
                             <li>Take your goods! Ever hear the term "stupid check"? All pros know the term, because we've ALL been stupid at least once! </li>
                         </ul>
                     </li>
-                    <li>
+                    <li class="rulesCard width30Percent blackBG">
+                        <div class="flexRow justifyCenter blueBG">
+                            <i class="fas fa-guitar iconMargin"></i>
+                            <i class="fas fa-music iconMargin"></i>
+                        </div>
                         <h2>Last rule, our best and most fun rule... Jam well people, yes, jam WELL!!!!</h2> 
                     </li>
-                </ol>
+                </ul>
             </div>
             <div>
                 <p>Ok, yes, one time someone left a little vial of "spirit gum" here.</p>
@@ -168,12 +214,12 @@
         </section>
 
         <section id="rates">
-            <div class="rateTitleContainer">
+            <div class="rateTitleContainer negativeSkew">
                  <h1 class="rateTitle">Rates</h1>
             </div>
             <div>
                 <h2> Music Focus™ "Abalone Lounge" rehearsal rates are as follows:</h2>
-                <ul>
+                {{!-- <ul>
                     <li>1 hour - $32.ºº (example. 5-6pm)</li>
                     <li>2 hours - $43.ºº (ex. 6-8pm)</li>
                     <li>3 hours - $54.ºº (ex. 6-9pm) [**best value**]</li>
@@ -182,43 +228,93 @@
                     <li>6 hours - $99.ºº (ex. 3-9pm)</li>
                     <li>7 hours - $118.ºº (ex. 3-10pm)</li>
                     <li>8 hours - $133.ºº (ex. 2-10pm) </li>
-                </ul>
+                </ul> --}}
             </div>
+            <div class="flexColumnCenter lessonPackages greenBG">
+                    <h3>Rehearsal Rates</h3>
+                    <ul class="priceGrid">
+                        <li>
+                            <p class="price">$32</p>
+                            <p class="classPack">1 hour</p>
+                        </li>
+                        <li>
+                            <p class="price">$43</p>
+                            <p class="classPack">2 hours</p>
+                        </li>
+                        <li>
+                            <p class="price">$54</p>
+                            <p class="classPack">3 hours</p>
+                        </li>
+                        <li>
+                            <p class="price">$65</p>
+                            <p class="classPack">4 hours</p>
+                        </li>
+                        <li>
+                            <p class="price">$87</p>
+                            <p class="classPack">5 hours</p>
+                        </li>
+                        <li>
+                            <p class="price">$99</p>
+                            <p class="classPack">6 hours</p>
+                        </li>
+                        <li>
+                            <p class="price">$118</p>
+                            <p class="classPack">7 hours</p>
+                        </li>
+                        <li>
+                            <p class="price">$133</p>
+                            <p class="classPack">8 hours</p>
+                        </li>
+                        <li>
+                            {{!-- <p class="price">$133</p>
+                            <p class="classPack">8 hours</p> --}}
+                        </li>
+
+                    </ul>
+
+                </div>
             <div>
                 <div>
                     <h2>This is a "pay as you play" facility, if you book, it is assumed, you will
                     pay on the day you play, no exceptions</h2>
                 </div>
-                <div>
-                    <div class="rateTitleContainer">
+                <section class="flexRow flexWrap justifySpaceEvenly width100Percent">
+                    <div class="rulesCard alignCenter width30Percent blackBG">
+                        <div class="rateTitleContainer flexRow justifyCenter">
+                            <i class="fas fa-money-bill-alt iconMargin"></i>
+                        </div>
                         <h2>CASH</h2>
+                        
+                        <ul>
+                            <li>For cash payment, use "mini" pay envelopes! </li>
+                            <li>Just put your name and date, or your "band-name" and date on the envelope and pop it in the box!</li>
+                            <li>If there IS a NAME on an envelope, just scratch it out and write YOUR band name!</li>
+                            <li>Your cash receipts are on file - if you did not obtain it, please just ask...</li>
+                        </ul>
                     </div>
-                    <ul>
-                        <li>For cash payment, use "mini" pay envelopes! </li>
-                        <li>Just put your name and date, or your "band-name" and date on the envelope and pop it in the box!</li>
-                        <li>If there IS a NAME on an envelope, just scratch it out and write YOUR band name!</li>
-                        <li>Your cash receipts are on file - if you did not obtain it, please just ask...</li>
-                    </ul>
-                </div>
-                <div>
-                    <div class="rateTitleContainer">
+                    <div class="rulesCard alignCenter width30Percent blackBG">
+                        <div class="rateTitleContainer flexRow justifyCenter">
+                            <i class="fas fa-money-check-alt iconMargin"></i>
+                            
+                        </div>
                         <h2>CHECK</h2>
+                        <ul>
+                            <li>If you're paying by check please DO NOT use an envelope.</li>
+                            <li>We try to deposit your check as quickly as possible.</li>
+                            <li>Make Checks payable to "Music Focus", your cancelled check is your receipt</li>
+                            <li>We don't write out receipts for checks, just cash...</li>
+                        </ul>
                     </div>
-                    <ul>
-                        <li>If you're paying by check please DO NOT use an envelope.</li>
-                        <li>We try to deposit your check as quickly as possible.</li>
-                        <li>Make Checks payable to "Music Focus", your cancelled check is your receipt</li>
-                        <li>We don't write out receipts for checks, just cash...</li>
-                    </ul>
-                </div>
-                <div>
-                    <div class="rateTitleContainer">
+                    <div class="rulesCard alignCenter width30Percent blackBG">
+                        <div class="rateTitleContainer flexRow justifyCenter">
+                            <img class="iconMargin" src="venmo.svg" alt="">
+                        </div>
                         <h2>VENMO </h2>
+                        <ul>
+                            <li>"Karl Grossman"</li>
+                        </ul>
                     </div>
-                    <ul>
-                        <li>"Karl Grossman"</li>
-                    </ul>
-                </div>
+                </section>
                 <div>
                     <div class="rateTitleContainer">
                         <h2>ATTENTION!</h2> 

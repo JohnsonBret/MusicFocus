@@ -143,6 +143,10 @@ body{
     width: 20%;
 }
 
+.width30Percent{
+    width: 30%;
+}
+
 .width40Percent{
     width: 40%;
 }
@@ -189,12 +193,20 @@ body{
     display: flex;
 }
 
+.flexWrap{
+    flex-wrap: wrap;
+}
+
 .justifyCenter{
     justify-content: center;
 }
 
 .justifySpaceBetween{
     justify-content: space-between;
+}
+
+.justifySpaceEvenly{
+    justify-content: space-evenly;
 }
 
 .alignCenter{
@@ -338,6 +350,14 @@ body{
 
 .blackText{
     color: #222;
+}
+
+.negativeSkew{
+    transform: skewX(-20deg);
+}
+
+.positiveSkew{
+    transform: skewX(-20deg);
 }
 
  #lessonsLink{

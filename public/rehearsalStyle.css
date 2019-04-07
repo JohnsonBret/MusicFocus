@@ -18,7 +18,7 @@ body{
 #loungeLeadTitleContainer{
 
     background-color: var(--blue-color);
-    width: 100%;
+    width: 90%;
     text-align: center;
     transform: skewX(-20deg);
 }
@@ -132,6 +132,37 @@ body{
     justify-content: center;
 }
 
+.rulesList{
+    list-style: none;
+    padding: 0;
+}
+
+.rulesCard{
+    display: flex;
+    flex-direction: column;
+    margin: 1em 0px;
+    padding: 1em;
+    line-height: 1.4;
+}
+
+.rulesCard i{
+    font-size: 3rem;
+    
+}
+
+.iconMargin{
+    margin: 1rem 2rem;
+}
+
+.rulesCard p{
+    flex: 1 0 auto;
+}
+
+#gum{
+    width: 3rem;
+    margin: 1rem 2rem;
+}
+
 .img1 img, .img2 img{
     width: 100%;
 }
@@ -150,8 +181,7 @@ body{
 
 .rateTitleContainer{
     background-color: var(--green-color);
-    width: 20%;
-    transform: skewX(-20deg);
+    width: 90%;
 }
 
 .rateTitleContainer h2{

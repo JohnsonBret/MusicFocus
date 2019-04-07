@@ -64,9 +64,33 @@ const listClientBookings = (bookings) => {
         deleteButton.addEventListener("click", (event) => {
             console.log(`Delete Booking ${current.bookeeName} Date: ${fromLATime} OBJ id: ${current._id}`);
             hideDeleteButton(event.target);
-            showLoadingImage(event.target.parentNode);
 
-            deleteBooking(current._id);
+            var confirmButton = document.createElement("button");
+            confirmButton.innerHTML = "Confirm";
+            confirmButton.classList.add("orangeBtn");
+            confirmButton.classList.add("button");
+            confirmButton.addEventListener("click", (event)=>{
+                deleteBooking(current._id);
+                event.target.parentNode.removeChild(event.target.parentNode.lastChild);
+                event.target.parentNode.removeChild(event.target.parentNode.lastChild);
+                showLoadingImage(event.target.parentNode);
+            });
+
+            var backButton = document.createElement("button");
+            backButton.innerHTML = "Back";
+            backButton.classList.add("blueBtn");
+            backButton.classList.add("button");
+            backButton.addEventListener("click", (evt)=>{
+                showDeleteButton(deleteButton);
+                event.target.parentNode.removeChild(event.target.parentNode.lastChild);
+                event.target.parentNode.removeChild(event.target.parentNode.lastChild);
+
+            });
+
+            event.target.parentNode.appendChild(confirmButton);
+            event.target.parentNode.appendChild(backButton);
+
+
         });
 
         var bookingUpdateRoot = document.getElementById("updateBookingsRoot");
@@ -78,6 +102,10 @@ const listClientBookings = (bookings) => {
 
 const hideDeleteButton = (button) =>{
     button.style.display = "none";
+}
+
+const showDeleteButton = (button) =>{
+    button.style.display = "block";
 }
 
 const showLoadingImage = (node)=>{

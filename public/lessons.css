@@ -93,7 +93,7 @@ body{
     flex-direction: column;
 }
 
-#intro div{
+#intro div, #policy div, #rates div, #holidays div{
     width: 80%;
 }
 
@@ -106,7 +106,25 @@ body{
 }
 
 @media only screen and (max-width: 600px) {
+    #lessonsNav{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
+    #lessonsNav ul{
+        width: 100%;
+        padding: 0;
+    }
+
+    #lessonsNav li{
+        text-align: center;
+        width: 100%;
+        font-size: 2rem;
+        border-top: 2px var(--blue-color) solid;
+        border-bottom: 2px var(--blue-color) solid;
+        margin: 10px 0px;
+    }
 
 }
 

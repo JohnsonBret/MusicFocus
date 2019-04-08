@@ -6,28 +6,58 @@
 
 }
 
-.week{
+.weekLesson{
     min-height: 40vh;
     width: 100%;
     display: flex;
+    flex-direction: row;
+    background-color: var(--blue-color);
 }
 
-.day{
+.weekRehearsal{
+    min-height: 40vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: var(--orange-color);
+}
+
+.dayLesson{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     border: 1px solid var(--off-white-color);
-    min-width: 160px;
+    min-width: 100px;
     width: 15%;
     /* height: 30vh; */
 }
 
-.day h2{
+.dayRehearsal{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border: 1px solid var(--off-white-color);
+    min-width: 100px;
+    width: 15%;
+    /* height: 30vh; */
+}
+
+.dayLesson h2{
     background-color: var(--off-black-color);
     border-bottom: 1px solid var(--off-white-color);
 }
 
-.day div{
+.dayRehearsal h2{
+    background-color: var(--off-black-color);
+    border-bottom: 1px solid var(--off-white-color);
+}
+
+.dayLesson div{
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--off-white-color);
+}
+
+.dayRehearsal div{
     margin-bottom: 20px;
     border-bottom: 1px solid var(--off-white-color);
 }
@@ -55,4 +85,59 @@ i{
 .scheduleSubTitle{
     width: 30%;
     text-align: center;
+}
+
+@media only screen and (max-width: 1050px) {
+
+}
+
+
+@media only screen and (max-width: 800px) {
+    .weekLesson{
+        min-height: 40vh;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: var(--off-black-color);
+    }
+
+    .weekRehearsal{
+        min-height: 40vh;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: var(--off-black-color);
+    }
+    
+    .dayLesson{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        border: 1px solid var(--off-white-color);
+        min-width: 100px;
+        width: 80%;
+        background-color: var(--blue-color);
+    }
+
+    .dayRehearsal{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        border: 1px solid var(--off-white-color);
+        min-width: 100px;
+        width: 80%;
+        background-color: var(--orange-color);
+    }
+
+}
+
+@media only screen and (max-width: 600px) {
+
+
+}
+
+@media only screen and (max-width: 400px) {
+
 }

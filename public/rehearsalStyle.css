@@ -296,6 +296,10 @@ body{
 
 @media only screen and (max-width: 1050px) {
     
+    .sectionTitleContainer{
+        width:50%;
+    }
+
     .rulesCard{
         width: 40%;
     }
@@ -303,9 +307,38 @@ body{
     .lessonPackages{
         width: 70%;
     }
+
+    #equipmentTitleContainer{
+        width: 40%;
+    }
+
+    #roomTitleContainer{
+        width: 40%;
+    }
 }
 
 @media only screen and (max-width: 800px) {
+    
+    #rehearsalNav{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #rehearsalNav ul{
+        width: 100%;
+        padding: 0;
+    }
+
+    #rehearsalNav li{
+        text-align: center;
+        width: 100%;
+        font-size: 2rem;
+        border-top: 2px var(--blue-color) solid;
+        border-bottom: 2px var(--blue-color) solid;
+        margin: 10px 0px;
+    }
+
     #gum{
         width: 3rem;
         margin: 0.5rem 1rem;
@@ -327,6 +360,50 @@ body{
     .lessonPackages{
         width: 80%;
     }
+
+    #rulesVideo{
+
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #rulesVideo div{
+        width: 80%;
+    }
+
+    #biggestRule{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .img1, .img2{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .img1 img, .img2 img{
+        width: 80%;
+    }
+    
+    #loungeLeadTitle{
+        font-size: 1.8em;
+    }
+    
+    .loungeSubLead p{
+        width: 60%;
+        font-size: 1.2em;
+    }
+    
+    .loungeSubLead1 p{
+        width: 50%;
+        font-size: 1.2em; 
+    }
+
+    .instrumentContainer{
+        width: 60%;
+    }
 }
 
 @media only screen and (max-width: 600px) {
@@ -347,6 +424,52 @@ body{
         width: 90%;
     }
 
+    #equipmentTitleContainer{
+        width: 60%;
+    }
+
+    #roomTitleContainer{
+        width: 60%;
+    }
+
+    #loungeLeadTitle{
+        font-size: 1.4em;
+    }
+    
+    .loungeSubLead p{
+        width: 60%;
+        font-size: 1em;
+    }
+    
+    .loungeSubLead1 p{
+        width: 50%;
+        font-size: 1em; 
+    }
+
+}
+
+@media only screen and (max-width: 500px) {
+    #loungeLeadTitle{
+        font-size: 1.2em;
+    }
+    
+    .loungeSubLead{
+
+    }
+    
+    .loungeSubLead p{
+        width: 60%;
+        font-size: 1em;
+    }
+    
+    .loungeSubLead1{
+
+    }
+    
+    .loungeSubLead1 p{
+        width: 50%;
+        font-size: 1em; 
+    }
 }
 
 @media only screen and (max-width: 400px) {

@@ -473,6 +473,7 @@ body{
     width: 20%;
     text-align: center;
     transform: skewX(-20deg);
+    margin-left: 20px;
 }
 
 #ownerTitleContainer h1{
@@ -992,6 +993,63 @@ font-family: prompt;
         width: 40%;
         margin-left: 1em;
     }
+
+    #ownerTitleContainer{
+        width: 50%;
+        text-align: center;
+        margin: auto;
+    }
+
+    #ownerMain{
+        flex-direction: column;
+        align-items: center;
+    }
+     
+    #karlBioPic{
+        flex-basis: 80%;
+        margin-bottom: 20px;
+    }
+
+    #ownerEmailContainer{
+        flex-direction: column;
+        margin: 10px 20px;
+    }
+    #ownerEmailTag{
+        width: 50%;
+    }
+
+    #ownerSecondary{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #ownerAlbumTag{
+        flex-basis: 50%;
+        margin-right:  30px;
+    }
+    
+    #ownerSoundtrackTag{
+        flex-basis: 60%;
+        margin-right:  30px;
+    }
+    
+    #ownerCreditsTag{
+
+        flex-basis: 60%;
+        margin-right:  30px;
+    }
+    
+    #ownerProductionTag{
+        width: 75%;
+        margin: auto;
+    }
+
+    #ownerAffiliationsTag{
+        flex-basis: 60%;
+        margin-right:  30px;
+    }
+
+
 }
 
 @media only screen and (max-width: 600px) {
@@ -1042,6 +1100,23 @@ font-family: prompt;
         margin-bottom: 0.5rem;
     }
 
+    #ownerEmailTag{
+        width: 70%;
+    }
+
+    #mailAddress{
+        font-size: 25px;
+    }
+
+    #bandCreditsContainer{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .creditText{
+        width: 50%;
+    }
+
 }
 
 @media only screen and (max-width: 400px) {
@@ -1054,4 +1129,40 @@ font-family: prompt;
     .price{
         font-size: 2.0rem;
     }
+
+    #mailAddress{
+        font-size: 20px;
+    }
+
+    #ownerTitleContainer{
+        width: 70%;
+    }
+
+    #ownerAlbumTag{
+        width: 60%;
+        margin: auto;
+    }
+    
+    #ownerSoundtrackTag{
+        width: 80%;
+        margin: auto;
+    }
+    
+    #ownerCreditsTag{
+
+        width: 60%;
+        margin: auto;
+    }
+    
+    #ownerProductionTag{
+        width: 75%;
+        margin: auto;
+    }
+
+    
+    #ownerAffiliationsTag{
+        width: 75%;
+        margin: auto;
+    }
+
 }

@@ -34,3 +34,16 @@
     line-height: 1.6;
     font-family: Roboto;
 }
+
+@media only screen and (max-width: 1050px) {
+
+}
+
+@media only screen and (max-width: 600px) {
+
+
+}
+
+@media only screen and (max-width: 400px) {
+
+}

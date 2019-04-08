@@ -7,7 +7,8 @@
     <title>Music Focus - {{pageTitle}}</title>
     <link rel="stylesheet" href="recording.css">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css?family=Bangers|Prompt|Roboto|Teko|Roboto:900" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Bangers|Prompt|Roboto|Teko|Roboto:900" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"> 
   </head>
   <body>
           {{> header}}
@@ -47,30 +48,37 @@
             <section class="sectionTitleContainerSkew blueBG">
                 <h1 class="sectionTitle">Preparation</h1>
             </section>
-            <div>
-                <section class="subTitleContainerSkew blueBG width20Percent textCenter">
-                    <h2>GUITARISTS</h2> 
-                </section>
-                <p>Get new strings on the instruments you will be playing on the recording. Check out all guitars, amps, pedals, speakers, and cords to make sure nothing is defective or noisy. </p> 
+            <div class="flexRow flexWrap justifySpaceEvenly width100Percent">
+                <div class="preparationCard width40Percent blackBG">
+                    <section class="width60Percent blueBG textCenter">
+                        <i class="fas fa-guitar marginTop20px"></i>
+                        <h2>GUITARISTS</h2> 
+                    </section>
+                    <p>Get new strings on the instruments you will be playing on the recording. Check out all guitars, amps, pedals, speakers, and cords to make sure nothing is defective or noisy. </p> 
+                </div>
+                <div class="preparationCard width40Percent blackBG">
+                    <section class="width60Percent blueBG textCenter">
+                        <i class="fas fa-drum marginTop20px"></i>
+                        <h2>DRUMMERS</h2> 
+                    </section>
+                    <p>Completely tune the kit and think very seriously about purchasing new drum heads for the session. All drum equipment should be listened to carefully for squeaks and rattles that will show up on tape.</p> 
+                </div>
+                <div class="preparationCard width40Percent blackBG">
+                    <section class="width60Percent blueBG textCenter">
+                        <i class="fas fa-sort-amount-up marginTop20px"></i>
+                        <h2>PRACTICE SCHEDULE</h2> 
+                    </section>
+                    <p>You should have at least 3 recording practices before you come in to record. For the sake of endurance try this: Run a tune 3 or 4 times in a row with about 30 seconds in between. If you really do this with all the tunes, you'll get a good idea of how it's going to feel in the studio on the big day. Get your endurance up before the day. Your sense of perfection is heightened while recording. If you've practiced endurance, you won't wimp out on the 4th take. </p> 
+                </div>
+                <div class="preparationCard width40Percent blackBG">
+                    <section class="width60Percent blueBG textCenter">
+                        <i class="fas fa-question-circle marginTop20px"></i>
+                        <h2>CONCERNS</h2> 
+                    </section>
+                    <p>What songs are you recording? How many? Warn your drummer about fatigue if you plan on more than 3 or 4 songs. Whether you are tracking in layers or recording direct to Pro Tools or DAT, drums are the foundation for everything. Although it is the drummer's performance that matters first, everyone must do everything possible to get "the take." You must strive for perfection. </p> 
+                </div>
             </div>
-            <div>
-                <section class="subTitleContainerSkew blueBG width20Percent textCenter">
-                    <h2>DRUMMERS</h2> 
-                </section>
-                <p>Completely tune the kit and think very seriously about purchasing new drum heads for the session. All drum equipment should be listened to carefully for squeaks and rattles that will show up on tape.</p> 
-            </div>
-            <div>
-                <section class="subTitleContainerSkew blueBG width20Percent textCenter">
-                    <h2>PRACTICE SCHEDULE</h2> 
-                </section>
-                <p>You should have at least 3 recording practices before you come in to record. For the sake of endurance try this: Run a tune 3 or 4 times in a row with about 30 seconds in between. If you really do this with all the tunes, you'll get a good idea of how it's going to feel in the studio on the big day. Get your endurance up before the day. Your sense of perfection is heightened while recording. If you've practiced endurance, you won't wimp out on the 4th take. </p> 
-            </div>
-            <div>
-                <section class="subTitleContainerSkew blueBG width20Percent textCenter">
-                    <h2>CONCERNS</h2> 
-                </section>
-                <p>What songs are you recording? How many? Warn your drummer about fatigue if you plan on more than 3 or 4 songs. Whether you are tracking in layers or recording direct to Pro Tools or DAT, drums are the foundation for everything. Although it is the drummer's performance that matters first, everyone must do everything possible to get "the take." You must strive for perfection. </p> 
-            </div>
+            
         </section>
 
         <section id="setup" class="marginTop20px">

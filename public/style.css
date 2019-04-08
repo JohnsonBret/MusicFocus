@@ -32,6 +32,10 @@ body{
     align-items: center;
 }
 
+#mobileNav{
+    display: none;
+}
+
 #superlead{
    font-family: Prompt; 
    font-size: 48px;
@@ -151,6 +155,10 @@ body{
     width: 40%;
 }
 
+.width60Percent{
+    width: 60%;
+}
+
 .width80Percent{
     width: 80%;
 }
@@ -185,9 +193,9 @@ body{
     flex-direction: column;
 }
 
-.flexColumnCenter div{
+/* .flexColumnCenter div{
     width: 80%;
-}
+} */
 
 .flexRow{
     display: flex;
@@ -211,6 +219,14 @@ body{
 
 .alignCenter{
     align-items: center;
+}
+
+.marginVercial1EM{
+    margin: 1em 0px;
+}
+
+.padding1EM{
+    padding: 1em;
 }
 
 .lessonsContainer{
@@ -782,3 +798,111 @@ font-family: prompt;
         bottom: 2%;
     }
   }
+
+@media only screen and (max-width: 1050px) {
+    #navContainer{
+        height: 25vh;
+    }
+    
+    #mainNav{
+        display: none;
+    }
+
+    #mobileNav{
+        display: flex;
+        flex-direction: column;
+    }
+
+    #mobileTitle{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #mobileLinks{
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    #navContainer{
+        /* height: 65vh; */
+        height: 15vh;
+    }
+    
+    #mobileLinks{
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+
+    #mobileLinks #lessonsLink{
+        border-top: 5px var(--yellow-color) solid;
+        border-bottom: 5px var(--yellow-color) solid;
+        margin: 0.4em 0;
+    }
+    
+    #mobileLinks #recordingLink{
+        border-top: 5px var(--orange-color) solid;
+        border-bottom: 5px var(--orange-color) solid;
+        margin: 0.4em 0;
+    }
+    
+    #mobileLinks #rehearsalLink{
+        border-top: 5px var(--pink-color) solid;
+        border-bottom: 5px var(--pink-color) solid;
+        margin: 0.4em 0;
+    }
+    
+    #mobileLinks #productsLink{
+        border-top: 5px var(--purple-color) solid;
+        border-bottom: 5px var(--purple-color) solid;
+        margin: 0.4em 0;
+    }
+    
+    #mobileLinks #ownerLink{
+        border-top: 5px var(--green-color) solid;
+        border-bottom: 5px var(--green-color) solid;
+        margin: 0.4em 0;
+    }
+    
+    #mobileLinks #historyLink{
+        border-top: 5px var(--blue-color) solid;
+        border-bottom: 5px var(--blue-color) solid;
+        margin: 0.4em 0;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+
+    #navContainer{
+        /* height: 65vh; */
+        height: 20vh;
+    }
+
+    .priceGrid{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        list-style-type: none;
+    }
+
+    .price{
+        font-size: 2.5rem;
+    }
+
+}
+
+@media only screen and (max-width: 400px) {
+    .lessonPackages h3{
+        font-size: 2.2rem;
+        line-height: 1.125;
+        margin-bottom: 0.5rem;
+    }
+
+    .price{
+        font-size: 2.0rem;
+    }
+}

@@ -47,17 +47,18 @@
 
         
         <section id="schedule">
-
+            {{>scheduleRehearsal}}
         </section>
 
-        <section id="rules">
+        <section id="rules" class="marginTop20px">
             <div class="sectionTitleContainer">
                  <h1 class="sectionTitle">The Rules</h1>
             </div>
            
             <div id="rulesVideo">
-                <div>
+                <div class="blackBG">
                     <h2>IF YOU'RE NEW TO OUR STUDIO<br> YOU MUST WATCH THIS VIDEO</h2>
+                    <i class="fas fa-arrow-right iconMargin"></i>
                     <p>(NOT AN OPTION)</p>
                     <h2>AND ALL YOUR BAND MEMBERS.<br> I'M HAPPY TO TEXT IT TO YOU</h2>
                     <p>(PROBABLY ALREADY DID...):</p>
@@ -71,17 +72,23 @@
                 <div class="img2">
                     <img src="Door2.png" alt="">
                 </div>
-                <div class="doorText">
+                <div class="doorText width100Percent">
+                    <div class="flexColumnCenter blackBG width80Percent">
+                        <div class="flexRow justifyCenter orangeBG width80Percent">
+                            <i class="fas fa-exclamation-triangle bigRuleIcon iconMargin"></i>
+                        </div>
                     <h2>The BIGGEST RULE OF ALL</h2>
                     <h2>Close and Lock both outer doors when you are playing.</h2> 
                     <p>Please "sound check" with the doors closed. Respect our neighbors.</p> 
+                    </div>
+
                 </div>
                
                 
             </div>
             <div>
-                <ul class="rulesList flexRow flexWrap justifySpaceEvenly width100Percent">
-                    <li class="rulesCard width30Percent blackBG">
+                <ul class="rulesList">
+                    <li class="rulesCard blackBG">
                         <div class="flexRow justifyCenter blueBG">
                             <i class="fas fa-drum iconMargin"></i>
                             <i class="fas fa-arrow-right iconMargin"></i>
@@ -97,7 +104,7 @@
                         Other gear may be used only by specific permission with possible additional rates
                         (guitars, electric piano, acoustic guitar amps, special PRO-electric guitar amps, etc.)</p>  
                     </li>
-                    <li class="rulesCard width30Percent blackBG">
+                    <li class="rulesCard blackBG">
                         <div class="flexRow justifyCenter blueBG">
                             <i class="fas fa-people-carry iconMargin"></i>
                         </div>
@@ -108,7 +115,7 @@
                             and wonder "where's my cowbell" (for real, it happened...). 
                         Sorry... DO speak up if you have a valid concern though... </p>
                     </li>
-                    <li class="rulesCard width30Percent blackBG">
+                    <li class="rulesCard blackBG">
                         <div class="flexRow justifyCenter blueBG">
                             <i class="far fa-thumbs-down iconMargin"></i>
                             <i class="fas fa-volume-up iconMargin"></i>
@@ -117,14 +124,14 @@
                         <p>This is a facility for recording and rehearsal, it's not a concert hall, or play-pen for dodgy behavior.
                         Also keep your guests to a minimum. No full blown parties without permission... THANKS... </p>
                     </li>
-                    <li class="rulesCard width30Percent blackBG">
+                    <li class="rulesCard blackBG">
                         <div class="flexRow justifyCenter blueBG">
                             <i class="fas fa-camera-retro iconMargin"></i>
                         </div>
                         <h2>Photo shoots, special/social events and/or video "shoots" may require extra payment.
                         Please let us know in advance if you plan to use our facility for your event.</h2> 
                     </li>
-                    <li class="rulesCard width30Percent blackBG">
+                    <li class="rulesCard blackBG">
                         <div class="flexRow justifyCenter blueBG">
                             <i class="fas fa-money-bill-wave iconMargin"></i>
                             <i class="fas fa-arrow-right iconMargin"></i>
@@ -141,20 +148,20 @@
                         agreement, respect of the facility and payment in full. Like a punk song, simple but powerful!
                         99% of our bands are respectful and this is not even an issue... Thank you!!! Peace!!</p> 
                     </li>
-                    <li class="rulesCard width30Percent blackBG">
+                    <li class="rulesCard blackBG">
                         <div class="flexRow justifyCenter blueBG">
                             <i class="far fa-clock iconMargin"></i>
                         </div>
                         <h2>Please realize that if you book from, say, 2-5pm you must be fully packed OUT at 5pm !! </h2> 
                         <p>It does NOT mean you can play until 5pm then leasurely pack up and leave... In my experiece you need to allow approx 8 to 10 minutes MORE than YOU think to pack, clean-up, and load out (see rule 7.). Word up - we WILL find out if you've been cutting into the "next band's" time... If someone's consistantly abusing YOUR "entrance" time, just let us know...</p> 
                     </li>
-                    <li class="rulesCard width30Percent blackBG">
+                    <li class="rulesCard blackBG">
                         <div class="flexRow justifyCenter blueBG">
                             <i class="fas fa-glass-cheers iconMargin"></i>
                         </div>
                         <h2>Please use the drink holders!!...</h2>
                     </li>
-                    <li class="rulesCard width30Percent blackBG">
+                    <li class="rulesCard blackBG">
                         <div class="flexRow justifyCenter blueBG">
                             <img id="gum" src="gum.svg" alt="">
                             <i class="fas fa-arrow-right iconMargin"></i>
@@ -163,14 +170,14 @@
                         <h2>No Gum Chewing Allowed Here!!!</h2>
                         <p>Leave it cleaner than when you came!</p>
                     </li>
-                    <li class="rulesCard width30Percent blackBG">
+                    <li class="rulesCard blackBG">
                         <div class="flexRow justifyCenter blueBG">
                             <i class="fas fa-user-tag iconMargin"></i>
                         </div>
                         <h2>Anything you bring in here needs to be labeled with your name on it!!!</h2>
                         <p>You'd be surprised what's been left here (weirdest thing listed at end of section)...</p>
                     </li>
-                    <li class="rulesCard width30Percent blackBG">
+                    <li class="rulesCard blackBG">
                         <div class="flexRow justifyCenter blueBG">
                             <i class="fas fa-car-side iconMargin"></i>
                             <i class="fas fa-truck-loading iconMargin"></i>
@@ -178,7 +185,7 @@
                         <h2>Please park in an assigned space!!!</h2>
                         <p>You can load in right next to the door, but Don't leave your car in the road! Or you'll cause "neighbor-wrath"...</p>
                     </li>
-                    <li class="rulesCard width30Percent blackBG">
+                    <li class="rulesCard blackBG">
                         <div class="flexRow justifyCenter blueBG">
                             <i class="fas fa-tasks iconMargin"></i>
                         </div>
@@ -197,7 +204,7 @@
                             <li>Take your goods! Ever hear the term "stupid check"? All pros know the term, because we've ALL been stupid at least once! </li>
                         </ul>
                     </li>
-                    <li class="rulesCard width30Percent blackBG">
+                    <li class="rulesCard blackBG">
                         <div class="flexRow justifyCenter blueBG">
                             <i class="fas fa-guitar iconMargin"></i>
                             <i class="fas fa-music iconMargin"></i>
@@ -273,60 +280,39 @@
                     </ul>
 
                 </div>
-            <div>
-                <div>
-                    <h2>This is a "pay as you play" facility, if you book, it is assumed, you will
-                    pay on the day you play, no exceptions</h2>
+            <div class="flexColumnCenter">
+                <div class="rateTitleContainer width100Percent marginTop20px">
+                    <h2>ATTENTION!</h2> 
                 </div>
                 <section class="flexRow flexWrap justifySpaceEvenly width100Percent">
-                    <div class="rulesCard alignCenter width30Percent blackBG">
+                    <div class="rulesCard alignCenter blackBG">
                         <div class="rateTitleContainer flexRow justifyCenter">
-                            <i class="fas fa-money-bill-alt iconMargin"></i>
+                            <i class="far fa-clock iconMargin"></i>
+                            <i class="fas fa-lock iconMargin"></i>
                         </div>
-                        <h2>CASH</h2>
-                        
-                        <ul>
-                            <li>For cash payment, use "mini" pay envelopes! </li>
-                            <li>Just put your name and date, or your "band-name" and date on the envelope and pop it in the box!</li>
-                            <li>If there IS a NAME on an envelope, just scratch it out and write YOUR band name!</li>
-                            <li>Your cash receipts are on file - if you did not obtain it, please just ask...</li>
-                        </ul>
+                        <h2>LOCKDOWN</h2>
+                        <h2>There is now a 4 day "lock down" confirmation time zone.</h2> 
                     </div>
-                    <div class="rulesCard alignCenter width30Percent blackBG">
+                    <div class="rulesCard alignCenter blackBG">
                         <div class="rateTitleContainer flexRow justifyCenter">
-                            <i class="fas fa-money-check-alt iconMargin"></i>
-                            
+                            <i class="fas fa-file-invoice-dollar iconMargin"></i>
                         </div>
-                        <h2>CHECK</h2>
-                        <ul>
-                            <li>If you're paying by check please DO NOT use an envelope.</li>
-                            <li>We try to deposit your check as quickly as possible.</li>
-                            <li>Make Checks payable to "Music Focus", your cancelled check is your receipt</li>
-                            <li>We don't write out receipts for checks, just cash...</li>
-                        </ul>
+                        <h2>PAY</h2>
+                         <h2>This is a "pay as you play" facility, if you book, it is assumed, you will pay on the day you play, no exceptions</h2>
                     </div>
-                    <div class="rulesCard alignCenter width30Percent blackBG">
+                    <div class="rulesCard alignCenter blackBG">
                         <div class="rateTitleContainer flexRow justifyCenter">
-                            <img class="iconMargin" src="venmo.svg" alt="">
+                            <i class="fab fa-black-tie iconMargin"></i>
                         </div>
-                        <h2>VENMO </h2>
+                        <h2>TABS </h2>
                         <ul>
-                            <li>"Karl Grossman"</li>
+                            <h3>Managers, agents, and/or record companies:</h3>
+                            <p>Unfortunately, we cannot offer you, or your clients, any sort of "credit" or "tab" account.</p>
+                             <p>All bands/bookers must pay as they play. No exceptions. </p>
+                            <p>Make checks payable to: "Music Focus". Thank you.</p> 
                         </ul>
                     </div>
                 </section>
-                <div>
-                    <div class="rateTitleContainer">
-                        <h2>ATTENTION!</h2> 
-                    </div>
-                    <p>There is now a 4 day "lock down" confirmation time zone.</p> 
-                    <p>This is a "pay as you play" facility, if you book, you agree to pay on the day you booked.</p> 
-                </div>
-                <div>
-                    <h3>Managers, agents, and/or record companies:</h3>
-                    <p>Unfortunately, we cannot offer you, or your clients, any sort of "credit" or "tab" account. All bands/bookers must pay as they play. No exceptions. 
-                    <br>Make checks payable to: "Music Focus". Thank you.</p> 
-                </div>
             </div>
         </section>
 
@@ -474,5 +460,8 @@
     </main>
 
     {{> footer}}
+
+    <script src="/luxon.min.js"></script>
+    <script src="/schedule.js"></script>
   </body>
 </html>

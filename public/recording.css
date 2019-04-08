@@ -101,10 +101,20 @@ body{
     display: flex;
     align-items: center;
     flex-direction: column;
+    line-height: 1.4;
 }
 
-#preparation div{
-    width: 80%;
+.preparationCard{
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 1em 0px;
+    padding: 1em;
+}
+
+.preparationCard i{
+    font-size: 3rem;
 }
 
 #post{
@@ -227,4 +237,17 @@ body{
 
 #rehearsalNav ul li:hover{
     color: var(--blue-color);
+}
+
+@media only screen and (max-width: 1050px) {
+
+}
+
+@media only screen and (max-width: 600px) {
+
+
+}
+
+@media only screen and (max-width: 400px) {
+
 }

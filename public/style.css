@@ -1054,9 +1054,15 @@ font-family: prompt;
 
 @media only screen and (max-width: 600px) {
 
-    #navContainer{
-        
-    }
+    #leadButtons{
+        flex-direction: column;
+        align-items: center;
+     }
+
+     #leadButtons button{
+         width: 80%;
+         margin: 1rem;
+     }
 
     .priceGrid{
         display: flex;
@@ -1120,6 +1126,24 @@ font-family: prompt;
 }
 
 @media only screen and (max-width: 400px) {
+    
+    #bannerContainer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+     }
+
+    #leadContainer{
+        width: 80%;
+        display: flex;
+        justify-content: center;
+    }
+
+    #leadLineTwo{
+        width: 95%;
+    }
+    
     .lessonPackages h3{
         font-size: 2.2rem;
         line-height: 1.125;

@@ -20,7 +20,7 @@ async function createUser() {
 
     if(rawResponse.status == 200)
     {
-        console.log(`Created user ${content.body.username} at email ${content.body.password}`);
+        console.log(`Created user ${content.username} at email ${content.password}`);
     }
 
 };

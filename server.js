@@ -96,7 +96,9 @@ app.get('/schedule/week/:weekNum/:location', (req, res) =>{
     var locate = req.params.location;
 
     //TODO: Needs to handle years - can only handle current year
-    var displayWeek = DateTime.fromObject({weekNumber: weekNum});
+    //Testing added setZone('America/Los_Angeles')
+    var displayWeek = DateTime.fromObject({weekNumber: weekNum}).setZone('America/Los_Angeles');
+    
 
     Booking.find({
         location: locate,
@@ -215,7 +217,6 @@ app.post('/users/login', (req,res)=>{
 
     User.findByCredentials(body.email, body.password).then((user)=>{
         return user.generateAuthToken().then((token)=>{
-            console.log(`About to send 200 xauth token ${token}`);
             res.status(200).header('x-auth', token).send(user);
         });
     }).catch((e)=>{
@@ -232,7 +233,6 @@ app.post('/booking', bookingMiddleware, (req, res)=>{
 
     User.findByToken(token).then((user)=>{
         if(!user){
-            console.log("Failed to find by Token Server.js line 182");
             return Promise.reject();
         }
 

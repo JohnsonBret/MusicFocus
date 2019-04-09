@@ -106,8 +106,8 @@ function search(searchType){
     if(searchBar !== "")
     {
       var myNode = document.getElementById("root");
-      while (myNode.firstChild) {
-        myNode.removeChild(myNode.firstChild);
+      while (myNode.childNodes.length > 2) {
+        myNode.removeChild(myNode.lastChild);
       }
 
 

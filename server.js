@@ -215,6 +215,7 @@ app.post('/users/login', (req,res)=>{
 
     User.findByCredentials(body.email, body.password).then((user)=>{
         return user.generateAuthToken().then((token)=>{
+            console.log(`About to send 200 xauth token ${token}`);
             res.status(200).header('x-auth', token).send(user);
         });
     }).catch((e)=>{

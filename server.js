@@ -95,13 +95,12 @@ app.get('/schedule/week/:weekNum/:location', (req, res) =>{
     var weekNum = req.params.weekNum;
     var locate = req.params.location;
 
-    console.log(`Week Number ${weekNum}`);
+    // console.log(`Week Number ${weekNum}`);
 
     //TODO: Needs to handle years - can only handle current year
-    //Testing added setZone('America/Los_Angeles')
     var displayWeek = DateTime.fromObject({weekNumber: weekNum, zone: 'America/Los_Angeles'});
 
-    console.log(`Display Week ${displayWeek}`);
+    // console.log(`Display Week ${displayWeek}`);
     
 
     Booking.find({

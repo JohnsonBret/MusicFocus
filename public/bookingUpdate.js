@@ -162,3 +162,15 @@ updateBookingClientList.addEventListener("change", function(event) {
     console.log(`Bookee ID ${bookeeId}`);
     getClientBookings(bookeeId);
 });
+
+
+let updateBookingRefreshBtn = document.getElementById("updateBookingButton");
+
+
+updateBookingRefreshBtn.addEventListener("click", function(event) {
+    let updateBookingClientList = document.getElementById("updateBookingClientList");
+    var bookeeId = updateBookingClientList[updateBookingClientList.selectedIndex].value;
+
+    console.log(`Bookee ID ${bookeeId}`);
+    getClientBookings(bookeeId);
+});

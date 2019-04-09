@@ -705,6 +705,7 @@ footer nav div a{
     height: 5vh;
     border: 1px solid var(--off-black-color);
     display: flex;
+    align-items: center;
 }
 
 .custom-select label{

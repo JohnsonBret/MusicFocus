@@ -1,0 +1,12 @@
+{
+    "test":{
+        "PORT": 3000,
+        "MONGODB_URI": "mongodb://localhost:27017/MusicFocusAppTest",
+        "JWT_SECRET": "qweournxc324alk1230da"
+    },
+    "development":{
+        "PORT": 3000,
+        "MONGODB_URI": "mongodb://localhost:27017/MusicFocusApp",
+        "JWT_SECRET": "akc92zio1ajk40cabnq0fdjsl"
+    }
+}

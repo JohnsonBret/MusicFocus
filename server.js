@@ -190,7 +190,7 @@ app.post('/users', (req, res)=>{
     }).then((token)=>{
         res.header('x-auth', token).send(user);
     }).catch((e)=>{
-        res.status(400).send(e);
+        res.status(400).send({errorMsg: e});
     });
 });
 
@@ -206,7 +206,7 @@ app.post('/users/admin/create', (req, res)=>{
             email: body.email
         });
     }).catch((e)=>{
-        res.status(400).send(e);
+        res.status(400).send({errorMsg: e});
     });
 });
 
@@ -215,10 +215,10 @@ app.post('/users/login', (req,res)=>{
 
     User.findByCredentials(body.email, body.password).then((user)=>{
         return user.generateAuthToken().then((token)=>{
-            res.header('x-auth', token).send(user);
+            res.status(200).header('x-auth', token).send(user);
         });
     }).catch((e)=>{
-        res.status(400).send();
+        res.status(400).send({errorMsg: e});
     });
 });
 
@@ -243,7 +243,7 @@ app.post('/booking', bookingMiddleware, (req, res)=>{
                 booking: "successful"
             });
         }).catch((e)=>{
-            res.status(400).send(e);
+            res.status(400).send({errorMsg: e});
         });
 
     }).catch((e)=>{

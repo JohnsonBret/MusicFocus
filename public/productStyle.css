@@ -290,3 +290,254 @@ details summary:hover{
     width: 100%;
     justify-content: center;
 }
+
+@media only screen and (max-width: 1050px) {
+
+    #pictureTube{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #pictureTubeLeft div{
+        display: flex;
+    }
+
+    #pictureTubeLeft p{
+        text-align: center;
+    }
+
+    #pictureTubeTitleContainer{
+        display: flex;
+        justify-content: center;
+        margin: auto;
+    }
+    
+    #pictureTubeTitleContainer h2{
+        text-align: center;
+    }
+
+    #xmasKarl{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #xmasKarlLeft div{
+        display: flex;
+    }
+
+    #xmasKarlLeft p{
+        text-align: center;
+    }
+
+    #xmasKarlTitleContainer{
+        display: flex;
+        justify-content: center;
+        margin: auto;
+    }
+    
+    #xmasKarlTitleContainer h2{
+        text-align: center;
+    }
+
+    #soloScapes{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #soloScapes div{
+        display: flex;
+    }
+
+    #soloScapes p{
+        text-align: center;
+    }
+
+    #soloScapesTitleContainer{
+        display: flex;
+        justify-content: center;
+        margin: auto;
+    }
+    
+    #soloScapesTitleContainer h2{
+        text-align: center;
+    }
+
+    #caged{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #caged div{
+        display: flex;
+    }
+
+    #caged p{
+        text-align: center;
+    }
+
+    #cagedTitleContainer{
+        display: flex;
+        justify-content: center;
+        margin: auto;
+    }
+    
+    #cagedTitleContainer h2{
+        text-align: center;
+    }
+
+    #campfire{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #campfire div{
+        display: flex;
+    }
+
+    #campfire p{
+        text-align: center;
+    }
+
+    #campfireTitleContainer{
+        display: flex;
+        justify-content: center;
+        margin: auto;
+    }
+    
+    #campfireTitleContainer h2{
+        text-align: center;
+    }
+
+    #jazzPorch{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #jazzPorch div{
+        display: flex;
+    }
+
+    #jazzPorch p{
+        text-align: center;
+    }
+
+    #jazzPorchTitleContainer{
+        display: flex;
+        justify-content: center;
+        margin: auto;
+    }
+    
+    #jazzPorchTitleContainer h2{
+        text-align: center;
+    }
+
+
+}
+
+@media only screen and (max-width: 850px) {
+    #pictureTubeLeft div{
+        flex-direction: column;
+    }
+
+    #xmasKarlLeft div{
+        flex-direction: column;
+    }
+
+    #soloScapesLeft div{
+        flex-direction: column;
+    }
+
+    #cagedLeft div{
+        flex-direction: column;
+    }
+
+    #campfireLeft div{
+        flex-direction: column;
+    }
+
+    #jazzPorchLeft div{
+        flex-direction: column;
+    }
+
+    #jazzPorchRight div{
+        width: 100%;
+        justify-content: center;
+    }
+
+    #campfireSongsGrid, #jazzSongsGrid{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .songsLeft, .songsRight{
+        margin: 0 auto;
+        padding: 0;
+        width: 45%;
+
+    }
+
+
+    .albumArt{
+        display: flex;
+        align-items: center;
+    }
+
+    .albumArt img{
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+
+}
+
+@media only screen and (max-width: 400px) {
+    #pictureTubeTitleContainer{
+        width: 95%;
+    }
+    
+    #pictureTubeTitleContainer h2{
+        font-size: 1.3rem;
+    }
+
+    #xmasKarlTitleContainer{
+        width: 95%;
+    }
+    
+    #xmasKarlTitleContainer h2{
+        font-size: 1.3rem;
+    }
+
+    #soloScapesTitleContainer{
+        width: 95%;
+    }
+    
+    #soloScapesTitleContainer h2{
+        font-size: 1.3rem;
+    }
+
+    #cagedTitleContainer{
+        width: 95%;
+    }
+    
+    #cagedTitleContainer h2{
+        font-size: 1.3rem;
+    }
+
+    #campfireTitleContainer{
+        width: 95%;
+    }
+    
+    #campfireTitleContainer h2{
+        font-size: 1.3rem;
+    }
+
+    #jazzPorchTitleContainer{
+        width: 95%;
+    }
+    
+    #jazzPorchTitleContainer h2{
+        font-size: 1.3rem;
+    }
+}

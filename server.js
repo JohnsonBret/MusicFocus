@@ -99,7 +99,7 @@ app.get('/schedule/week/:weekNum/:location', (req, res) =>{
 
     //TODO: Needs to handle years - can only handle current year
     //Testing added setZone('America/Los_Angeles')
-    var displayWeek = DateTime.fromObject({weekNumber: weekNum}).setZone('America/Los_Angeles');
+    var displayWeek = DateTime.fromObject({weekNumber: weekNum, zone: 'America/Los_Angeles'});
 
     console.log(`Display Week ${displayWeek}`);
     

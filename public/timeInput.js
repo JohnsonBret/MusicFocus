@@ -83,6 +83,53 @@ function changeLocation(event)
 
     var location = document.getElementById("displayLocation");
     location.value = event.target.getAttribute("value");
+
+    if(location.value == 2)
+    {
+        var dropButtons = document.getElementsByClassName("dropbtn");
+        for(let i = 0; i < dropButtons.length; i++)
+        {
+            dropButtons[i].style = "background-color: var(--orange-color)";
+        }
+
+        var labels = document.getElementsByClassName("scheduleLabel");
+        for(let i = 0; i < labels.length; i++)
+        {
+            if(labels[i].parentNode.classList.contains("custom-select") == false)
+            {
+            labels[i].style = "background-color: var(--orange-color)";
+            }
+        }
+
+        var dates = document.getElementsByClassName("date");
+        for(let i = 0; i < dates.length; i++)
+        {
+            dates[i].style = "background-color: var(--orange-color)";
+        }
+    }
+    else{
+        var dropButtons = document.getElementsByClassName("dropbtn");
+        for(let i = 0; i < dropButtons.length; i++)
+        {
+            dropButtons[i].style = "background-color: var(--blue-color)";
+        }
+
+        var labels = document.getElementsByClassName("scheduleLabel");
+        for(let i = 0; i < labels.length; i++)
+        {
+            if(labels[i].parentNode.classList.contains("custom-select") == false)
+            {
+            labels[i].style = "background-color: var(--blue-color)";
+            }
+        }
+
+        var dates = document.getElementsByClassName("date");
+        for(let i = 0; i < dates.length; i++)
+        {
+            dates[i].style = "background-color: var(--blue-color)";
+        }
+    }
+
     location.innerHTML = event.target.innerHTML;
 }
 

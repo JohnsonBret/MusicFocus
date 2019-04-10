@@ -1220,7 +1220,10 @@ font-family: prompt;
         margin: 0.4rem;
     }
 
-
+    .subTitleContainerSkew{
+        width: 70%;
+        margin-left: 1em;
+    }
 
 }
 

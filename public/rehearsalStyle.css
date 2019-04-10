@@ -473,5 +473,22 @@ body{
 }
 
 @media only screen and (max-width: 400px) {
+    .loungeSubLead p{
+        width: 80%;
+        font-size: 0.8rem;
+    }
+    
 
+    .loungeSubLead1 p{
+        width: 80%;
+        font-size: 0.8rem;
+    }
+
+    #equipmentTitleContainer{
+        width: 80%;
+    }
+    
+    #equipmentTitle{
+        font-size: 2em;
+    }
 }

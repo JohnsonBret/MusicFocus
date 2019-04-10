@@ -667,6 +667,7 @@ body{
 
 footer{
     background-color: #2f2f2f;
+    font-family: Roboto; 
 }
 
 footer nav{
@@ -1153,9 +1154,7 @@ font-family: prompt;
         margin-bottom: 0.5rem;
     }
 
-    .price{
-        font-size: 2.0rem;
-    }
+
 
     #mailAddress{
         font-size: 20px;
@@ -1191,5 +1190,46 @@ font-family: prompt;
         width: 75%;
         margin: auto;
     }
+
+    .halfHourMemberFeatures{
+        flex-direction: column;
+        
+    }
+
+    .halfHourMemberFeatures ul{
+        padding: 0.2rem;
+        list-style: none;
+        margin: 0rem;
+
+    }
+
+    .priceGrid{
+        padding: 0.2rem;
+    }
+
+    .price{
+        font-size: 1.8rem;
+    }
+
+    #bookContainer{
+        flex-direction: column;
+        padding: 0.3rem;
+    }
+
+    #bookContainer p{
+        margin: 0.4rem;
+    }
+
+
+
+}
+
+@media only screen and (max-width: 350px) {
+    .lessonPackages h3{
+        font-size: 1.8rem;
+        line-height: 1.125;
+        margin-bottom: 0.5rem;
+    }
+
 
 }

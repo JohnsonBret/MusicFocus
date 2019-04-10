@@ -61,6 +61,8 @@ const populateWeekSchedule = (weekSchedule, location) => {
         bookeeP.innerHTML = current.bookeeName;
         timeP.innerHTML = timeDisplayStr;
 
+        div.classList.add("booking");
+
         div.appendChild(bookeeP);
         div.appendChild(timeP);
 

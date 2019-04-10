@@ -6,6 +6,10 @@
 
 }
 
+.booking{
+    padding: 0.3rem;
+}
+
 .weekLesson{
     min-height: 40vh;
     width: 100%;

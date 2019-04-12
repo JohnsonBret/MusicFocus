@@ -4,6 +4,7 @@ require('./config/config');
 
 const _ = require('lodash');
 const express = require('express');
+const stripe = require('stripe')('sk_test_zaDeitYTZGlzlNddFicamtrn00hz1X3IzS')
 const fs = require('fs');
 const hbs = require('hbs');
 const bodyParser = require('body-parser');
@@ -255,6 +256,28 @@ app.post('/booking', bookingMiddleware, (req, res)=>{
     });
 
 
+});
+
+app.post('/charge', (req, res)=>{
+    const amount = 2000;
+    console.log(req.body);
+
+    stripe.customers.create({
+        email: req.body.stripeEmail,
+        source: req.body.stripeToken
+    }).then((customer)=>{
+        stripe.charges.create({
+            amount: amount,
+            description: "Picture Tube CD",
+            currency: 'usd',
+            customer: customer.id
+        })
+    }).then((charge)=>{
+        res.status(200).render('purchase.hbs', {
+            item: "Picture Tube CD",
+            amount: amount
+        })
+    })    
 });
 
 

@@ -132,6 +132,10 @@ body{
     justify-content: center;
 }
 
+#spiritGum{
+    width: 80%;
+}
+
 .rulesList{
     list-style: none;
     padding: 0;
@@ -162,6 +166,11 @@ body{
 .iconMargin{
     margin: 1rem 2rem;
 }
+
+#downArrow{
+    display: none;
+}
+
 
 .rulesCard p{
     flex: 1 0 auto;
@@ -357,6 +366,14 @@ body{
         margin: 0.5rem 1rem;
     }
 
+    #rightArrow{
+        display: none;
+    }
+
+    #downArrow{
+        display: block;
+    }
+
     .lessonPackages{
         width: 80%;
     }
@@ -368,7 +385,7 @@ body{
     }
 
     #rulesVideo div{
-        width: 80%;
+        width: 100%;
     }
 
     #biggestRule{
@@ -381,6 +398,7 @@ body{
         display: flex;
         justify-content: center;
         width: 100%;
+        height: 50vh;
     }
 
     .img1 img, .img2 img{
@@ -403,6 +421,10 @@ body{
 
     .instrumentContainer{
         width: 60%;
+    }
+
+    .doorText h2, .doorText p{
+        padding: 1rem;
     }
 }
 

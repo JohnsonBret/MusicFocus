@@ -13,6 +13,7 @@ const {ObjectID} = require('mongodb');
 var {mongoose} = require('./db/mongoose');
 var {Booking} = require('./models/booking');
 var {User} = require('./models/user');
+var {UserAddress} = require('./models/userAddress');
 var {authenticate} = require('./middleware/authenticate');
 var {bookingValidator} = require('./middleware/booking-validator');
 var {DateTime} = require('luxon');
@@ -259,25 +260,91 @@ app.post('/booking', bookingMiddleware, (req, res)=>{
 });
 
 app.post('/charge', (req, res)=>{
-    const amount = 2000;
+
     console.log(req.body);
 
-    stripe.customers.create({
-        email: req.body.stripeEmail,
-        source: req.body.stripeToken
-    }).then((customer)=>{
-        stripe.charges.create({
-            amount: amount,
-            description: "Picture Tube CD",
-            currency: 'usd',
-            customer: customer.id
-        })
-    }).then((charge)=>{
-        res.status(200).render('purchase.hbs', {
-            item: "Picture Tube CD",
-            amount: amount
-        })
-    })    
+    // 1. Does the Email exist as a user?
+    // Yes? 
+    // 2. Do we have their address info? -> Save it
+    // 3. Have they ordered before?
+    //      Yes?
+    // 4.         Don't create a Customer in stripe -> charge the existing stripe customer
+    //      No
+    // 5.         Create a stripe customer
+
+    // 6. Save the order information -> Orders collection -> Save the object ID -> stripe charge ID
+
+
+    // 1. Does the Email exist as a user?
+    User.find({email: req.body.stripeEmail}).then((user)=>{
+        if (user.length == 0) {
+            return Promise.reject();
+        }
+
+        // 2. Do we have their address info? -> Save it
+        UserAddress.find({_userId: user._id}).then((address)=>{
+            if (address.length == 0) {
+                var addressBody = {
+                    email: req.body.stripeEmail,
+                    _userId: user[0]._id,
+                    name: req.body.stripeBillingName,
+                    addressStreet: req.body.stripeBillingAddressLine1,
+                    addressCity: req.body.stripeBillingAddressCity,
+                    addressZip: req.body.stripeBillingAddressZip,
+                    addressState: req.body.stripeBillingAddressState,
+                    addressCountry: req.body.stripeBillingAddressCountry
+                }
+
+                console.log("User not address not found - saving address");
+
+                var userSaveAddress = new UserAddress(addressBody);
+ 
+                userSaveAddress.save().then((savedAddress)=>{
+
+                console.log("User Address saved!");
+
+                res.status(200).send({
+                    user: user,
+                    address: savedAddress
+                    });
+                }).catch((e)=>{
+                    return Promise.reject(e);
+                });
+            }
+
+            console.log("User was in the Database");
+            console.log(JSON.stringify(user,undefined,2));
+            console.log(JSON.stringify(address,undefined,2));
+
+        }).catch((e)=>{
+            res.status(400).send({errorMsg: e});
+        });
+
+
+    }).catch((e)=>{
+        res.status(400).send({errorMsg: e});
+    });
+
+    
+    //Confirm charge amount -> Products Collection
+    const amount = 2000;
+
+    // stripe.customers.create({
+    //     email: req.body.stripeEmail,
+    //     source: req.body.stripeToken
+    // }).then((customer)=>{
+    //     stripe.charges.create({
+    //         amount: amount,
+    //         description: "Picture Tube CD",
+    //         currency: 'usd',
+    //         customer: customer.id
+    //     })
+    // }).then((charge)=>{
+    //     res.status(200).render('purchase.hbs', {
+    //         item: "Picture Tube CD",
+    //         amount: amount
+    //     })
+    // })    
 });
 
 

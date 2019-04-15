@@ -14,6 +14,7 @@ var {mongoose} = require('./db/mongoose');
 var {Booking} = require('./models/booking');
 var {User} = require('./models/user');
 var {UserAddress} = require('./models/userAddress');
+var {CustomerInfo} = require('./models/customerInfo');
 var {authenticate} = require('./middleware/authenticate');
 var {bookingValidator} = require('./middleware/booking-validator');
 var {DateTime} = require('luxon');
@@ -282,7 +283,7 @@ app.post('/charge', (req, res)=>{
         }
 
         // 2. Do we have their address info? -> Save it
-        UserAddress.find({_userId: user._id}).then((address)=>{
+        UserAddress.find({_userId: user[0]._id}).then((address)=>{
             if (address.length == 0) {
                 var addressBody = {
                     email: req.body.stripeEmail,
@@ -303,10 +304,7 @@ app.post('/charge', (req, res)=>{
 
                 console.log("User Address saved!");
 
-                res.status(200).send({
-                    user: user,
-                    address: savedAddress
-                    });
+                
                 }).catch((e)=>{
                     return Promise.reject(e);
                 });
@@ -317,15 +315,77 @@ app.post('/charge', (req, res)=>{
             console.log(JSON.stringify(address,undefined,2));
 
         }).catch((e)=>{
+            return Promise.reject(e);
+            // res.status(400).send({errorMsg: e});
+        });
+
+        CustomerInfo.findOne({email: req.body.stripeEmail}).then((customerInfo)=>{
+
+            if(!customerInfo)
+            {
+                stripe.customers.create({
+                    email: req.body.stripeEmail,
+                    source: req.body.stripeToken
+                }).then((customer)=>{
+
+                    var pickedNewCustomerInfo = _.pick(customer, ['email', 'created', 
+                                                                    'account_balance', 'delinquent', 'livemode']);
+                    
+                    pickedNewCustomerInfo._customerId = customer.id;
+
+                    if(user[0]._id)
+                    {
+                        pickedNewCustomerInfo._userId = user[0]._id;
+                    }
+
+                    console.log("Picked Customer Info", JSON.stringify(pickedNewCustomerInfo, undefined,2));
+        
+                    var custInfo = new CustomerInfo(pickedNewCustomerInfo);
+        
+                    custInfo.save().then((cust)=>{
+                        console.log("New customer info saved", JSON.stringify(cust,undefined,2));
+                    }).catch((e)=>{
+                        return Promise.reject(e);
+                        // res.status(400).send({errorMsg: e});
+                    });
+
+                    stripe.charges.create({
+                        amount: amount,
+                        description: "Picture Tube CD",
+                        currency: 'usd',
+                        customer: customer.id
+                    }).then((charge)=>{
+                    res.status(200).render('purchase.hbs', {
+                        item: "Picture Tube CD",
+                        amount: amount
+                        })
+                    });
+                
+                
+                });
+            }
+    
+            console.log(JSON.stringify(customerInfo, undefined, 2));
+
+            //CREATE A CHARGE FOR THE EXISTING CUSTOMER ID
+    
+            // res.status(200).send({
+            //     user: user,
+            //     address: savedAddress
+            //     });
+    
+        }).catch((e)=>{
             res.status(400).send({errorMsg: e});
         });
 
-
     }).catch((e)=>{
-        res.status(400).send({errorMsg: e});
+        return Promise.reject(e);
+        // res.status(400).send({errorMsg: e});
     });
 
     
+
+
     //Confirm charge amount -> Products Collection
     const amount = 2000;
 

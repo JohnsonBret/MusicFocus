@@ -301,11 +301,11 @@ app.post('/charge', (req, res)=>{
  
                 userSaveAddress.save().then((savedAddress)=>{
 
-                    console.log("User Address saved!");
+                console.log("User Address saved!");
 
-                    res.status(200).send({
-                        user: user,
-                        address: savedAddress
+                res.status(200).send({
+                    user: user,
+                    address: savedAddress
                     });
                 }).catch((e)=>{
                     return Promise.reject(e);

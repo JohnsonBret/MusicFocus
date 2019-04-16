@@ -27,13 +27,13 @@ var UserAddressSchema = new mongoose.Schema({
     addressStreet:{
         type: String,
         required: true,
-        unique: true,
+        unique: false,
         minlength: 3
     },
     addressCity:{
         type: String,
         required: true,
-        unique: true,
+        unique: false,
     },
     addressZip:{
         type: String,
@@ -43,12 +43,13 @@ var UserAddressSchema = new mongoose.Schema({
     addressState:{
         type: String,
         required: true,
+        unique: false,
         minlength: 2
     },
     addressCountry:{
         type: String,
         required: true,
-        unique: true,
+        unique: false,
         minlength: 3
     }
 

@@ -7,7 +7,7 @@ var OrderSchema = new mongoose.Schema({
         type: String,
         required: true,
         unique: true,
-        minlength: 3
+        minlength: 1
     },
     customerEmail:{
         type: String,
@@ -24,6 +24,11 @@ var OrderSchema = new mongoose.Schema({
         type: String,
         required: true,
         unique: false
+    },
+    _chargeId:{
+        type: String,
+        required: true,
+        unique: true
     },
     productId:{
         type: Number,
@@ -46,6 +51,12 @@ var OrderSchema = new mongoose.Schema({
         addressZip: {type: String, required: true, unique: false},
         addressState: {type: String, required: true, unique: false},
         addressCountry: {type: String, required: true, unique: false}
+    },
+    shippingName:{
+        type: String,
+        required: true,
+        unique: true,
+        minlength: 1
     },
     shippingAddress:{
         addressStreet: {type: String, required: true, unique: false},

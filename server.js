@@ -261,9 +261,11 @@ app.post('/booking', bookingMiddleware, (req, res)=>{
 
 });
 
+
+//TODO clean up this abomination!
 app.post('/charge', async (req, res)=>{
 
-    // console.log("request body", req.body);
+    console.log("request body", req.body);
 
     // 1. Does the Email exist as a user?
     // Yes? 
@@ -279,95 +281,163 @@ app.post('/charge', async (req, res)=>{
     try{
 
         const user = await User.find({email: req.body.stripeEmail})
+        let searchUserAddress;
         if (user.length == 0) {
-            // return Promise.reject();
+            const newUser = new User({email: req.body.stripeEmail, 
+                password: "MF123456",
+                name: req.body.stripeBillingName});
+
+            const createdUser = await newUser.save();
+
+            searchUserAddress = createdUser._id;
+        }
+        else
+        {
+            searchUserAddress = user[0]._id;
         }
 
-        const address = await UserAddress.find({_userId: user[0]._id})
-            if (address.length == 0) {
-                var addressBody = {
-                    email: req.body.stripeEmail,
-                    _userId: user[0]._id,
-                    name: req.body.stripeBillingName,
+        const address = await UserAddress.find({_userId: searchUserAddress })
+        
+        if (address.length == 0) {
+            var addressBody = {
+                email: req.body.stripeEmail,
+                _userId: searchUserAddress,
+                name: req.body.stripeBillingName,
+                addressStreet: req.body.stripeBillingAddressLine1,
+                addressCity: req.body.stripeBillingAddressCity,
+                addressZip: req.body.stripeBillingAddressZip,
+                addressState: req.body.stripeBillingAddressState,
+                addressCountry: req.body.stripeBillingAddressCountry
+            }
+
+            console.log("User not address not found - saving address");
+
+            var userSaveAddress = new UserAddress(addressBody);
+
+            const savedAddress = await userSaveAddress.save()
+
+            console.log("User Address saved!");
+
+        }
+        else
+        {
+            console.log("User was in the Database");
+        }
+
+        const customerInfo = CustomerInfo.findOne({email: req.body.stripeEmail});
+
+        const productInfo = Product.findOne({productId: req.body.productId});
+
+        const info = await Promise.all([customerInfo, productInfo]);
+
+        if(!info[1])
+        {
+            throw new Error("Product Info not found");
+        }
+        const amount = info[1].price;
+        console.log(`Amount ${amount} Product Id ${req.body.productId}`);
+
+        if(!info[0])
+        {
+            const customer = await stripe.customers.create({
+                email: req.body.stripeEmail,
+                source: req.body.stripeToken
+            });
+
+            var pickedNewCustomerInfo = _.pick(customer, ['email', 'created', 
+                                                            'account_balance', 'delinquent', 'livemode']);
+            
+            pickedNewCustomerInfo._customerId = customer.id;
+
+            if(searchUserAddress)
+            {
+                pickedNewCustomerInfo._userId = searchUserAddress;
+            }
+
+            var custInfo = new CustomerInfo(pickedNewCustomerInfo);
+
+            const cust = await custInfo.save();
+
+            const charge = await stripe.charges.create({
+                amount: amount,
+                description: "Picture Tube CD",
+                currency: 'usd',
+                customer: customer.id
+            });
+
+            // console.log("Charge ID", charge.id);
+
+            //Save A order FOR THE NEW CUSTOMER ID - pickedNewCustomerInfo._customerId
+            var newOrder = new Order({
+                customerName: req.body.stripeBillingName,
+                customerEmail: req.body.stripeEmail,
+                _customerId: pickedNewCustomerInfo._customerId,
+                _chargeId: charge.id,
+                productId: req.body.productId,
+                price: amount,
+                created: Date.now,
+                billingAddress: {
                     addressStreet: req.body.stripeBillingAddressLine1,
                     addressCity: req.body.stripeBillingAddressCity,
                     addressZip: req.body.stripeBillingAddressZip,
                     addressState: req.body.stripeBillingAddressState,
                     addressCountry: req.body.stripeBillingAddressCountry
+                    },
+                shippingName: req.body.stripeShippingName,
+                shippingAddress: {
+                    addressStreet: req.body.stripeShippingAddressLine1,
+                    addressCity: req.body.stripeShippingAddressCity,
+                    addressZip: req.body.stripeShippingAddressZip,
+                    addressState: req.body.stripeShippingAddressState,
+                    addressCountry: req.body.stripeShippingAddressCountry
                 }
+            });
 
-                console.log("User not address not found - saving address");
+            const savedOrder = await newOrder.save();
 
-                var userSaveAddress = new UserAddress(addressBody);
- 
-                const savedAddress = await userSaveAddress.save()
-
-                console.log("User Address saved!");
-
-            }
-
-            console.log("User was in the Database");
-            // console.log(JSON.stringify(user,undefined,2));
-            // console.log(JSON.stringify(address,undefined,2));
-
-            const customerInfo = await CustomerInfo.findOne({email: req.body.stripeEmail});
-
-            //Get charge amount -> Products Collection
-            const productInfo = await Product.findOne({productId: req.body.productId});
-
-            if(!productInfo)
-            {
-                throw new Error("Product Info not found");
-            }
-            const amount = productInfo.price;
-            console.log(`Amount ${amount} Product Id ${req.body.productId}`);
-
-            if(!customerInfo)
-            {
-                const customer = await stripe.customers.create({
-                    email: req.body.stripeEmail,
-                    source: req.body.stripeToken
-                });
-
-                var pickedNewCustomerInfo = _.pick(customer, ['email', 'created', 
-                                                                'account_balance', 'delinquent', 'livemode']);
-                
-                pickedNewCustomerInfo._customerId = customer.id;
-
-                if(user[0]._id)
-                {
-                    pickedNewCustomerInfo._userId = user[0]._id;
-                }
-
-                // console.log("Picked Customer Info", JSON.stringify(pickedNewCustomerInfo, undefined,2));
-    
-                var custInfo = new CustomerInfo(pickedNewCustomerInfo);
-    
-                const cust = await custInfo.save();
-                // console.log("New customer info saved", JSON.stringify(cust,undefined,2));
-
-                const charge = await stripe.charges.create({
-                    amount: amount,
-                    description: "Picture Tube CD",
-                    currency: 'usd',
-                    customer: customer.id
-                });
-
-                return res.status(200).render('purchase.hbs', {
-                    item: "Picture Tube CD",
-                    amount: amount
-                });
-            }
-        
-            // console.log("customer info", JSON.stringify(customerInfo, undefined, 2));
+            return res.status(200).render('purchase.hbs', {
+                item: "Picture Tube CD",
+                amount: amount
+            });
+        }
 
             //CREATE A CHARGE FOR THE EXISTING CUSTOMER ID
             const charge = await stripe.charges.create({
                 amount: amount,
                 description: "Picture Tube CD",
                 currency: 'usd',
-                customer: customerInfo._customerId
+                customer: info[0]._customerId
             });
+
+            // console.log("Charge ID", charge.id);
+
+            //Save A order FOR THE EXISTING CUSTOMER ID - info[0]._customerId
+            var newOrder = new Order({
+                customerName: req.body.stripeBillingName,
+                customerEmail: req.body.stripeEmail,
+                _customerId: info[0]._customerId,
+                _chargeId: charge.id,
+                productId: req.body.productId,
+                price: amount,
+                created: Date.now,
+                billingAddress: {
+                    addressStreet: req.body.stripeBillingAddressLine1,
+                    addressCity: req.body.stripeBillingAddressCity,
+                    addressZip: req.body.stripeBillingAddressZip,
+                    addressState: req.body.stripeBillingAddressState,
+                    addressCountry: req.body.stripeBillingAddressCountry
+                    },
+                shippingName: req.body.stripeShippingName,
+                shippingAddress: {
+                    addressStreet: req.body.stripeShippingAddressLine1,
+                    addressCity: req.body.stripeShippingAddressCity,
+                    addressZip: req.body.stripeShippingAddressZip,
+                    addressState: req.body.stripeShippingAddressState,
+                    addressCountry: req.body.stripeShippingAddressCountry
+                }
+            });
+
+            const savedOrder = await newOrder.save();
 
             return res.status(200).render('purchase.hbs', {
                 item: "Picture Tube CD",

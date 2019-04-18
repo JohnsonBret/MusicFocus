@@ -6,7 +6,7 @@ var OrderSchema = new mongoose.Schema({
     customerName:{
         type: String,
         required: true,
-        unique: true,
+        unique: false,
         minlength: 1
     },
     customerEmail:{
@@ -14,7 +14,7 @@ var OrderSchema = new mongoose.Schema({
         required: true,
         trim: true,
         minlength: 1,
-        unique: true,
+        unique: false,
         validate: {
             validator: validator.isEmail,
             message: '{VALUE} is not a valid email'
@@ -43,7 +43,7 @@ var OrderSchema = new mongoose.Schema({
     },
     created:{
         type: Date,
-        default: Date.now
+        default: Date.now()
     },
     billingAddress:{
         addressStreet: {type: String, required: true, unique: false},
@@ -64,6 +64,16 @@ var OrderSchema = new mongoose.Schema({
         addressZip: {type: String, required: true, unique: false},
         addressState: {type: String, required: true, unique: false},
         addressCountry: {type: String, required: true, unique: false}
+    },
+    shippingStatus:{
+        type: Boolean,
+        required: false,
+        default: false,
+    },
+    orderCancelStatus:{
+        type: Boolean,
+        required: false,
+        default: false
     }
 });
 

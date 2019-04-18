@@ -25,6 +25,11 @@ var ProductSchema = new mongoose.Schema({
         required: true,
         unique: false
     },
+    productImage:{
+        type: String,
+        required: true,
+        unique: false
+    },
     productType:{
         type: String,
         required: true,

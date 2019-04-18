@@ -284,7 +284,12 @@ body{
 .halfHourMemberFeatures{
     display: flex;
     width: 100%;
-    justify-content: space-between;
+    justify-content: space-evenly;
+}
+
+.halfHourMemberFeatures ul{
+    padding: 2rem;
+    width: 50%;
 }
 
 #halfHourMemberPricing{
@@ -429,6 +434,7 @@ body{
 
  #scrollButtonContainer{
     margin-top: 100px;
+    margin-bottom: 100px;
     display: flex;
     justify-content: center;
 }

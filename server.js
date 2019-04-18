@@ -15,6 +15,7 @@ var {Booking} = require('./models/booking');
 var {User} = require('./models/user');
 var {UserAddress} = require('./models/userAddress');
 var {CustomerInfo} = require('./models/customerInfo');
+var {Order} = require('./models/order');
 var {Product} = require('./models/product');
 var {authenticate} = require('./middleware/authenticate');
 var {bookingValidator} = require('./middleware/booking-validator');
@@ -265,7 +266,7 @@ app.post('/booking', bookingMiddleware, (req, res)=>{
 //TODO clean up this abomination!
 app.post('/charge', async (req, res)=>{
 
-    console.log("request body", req.body);
+    // console.log("request body", req.body);
 
     // 1. Does the Email exist as a user?
     // Yes? 
@@ -310,18 +311,9 @@ app.post('/charge', async (req, res)=>{
                 addressCountry: req.body.stripeBillingAddressCountry
             }
 
-            console.log("User not address not found - saving address");
-
             var userSaveAddress = new UserAddress(addressBody);
 
-            const savedAddress = await userSaveAddress.save()
-
-            console.log("User Address saved!");
-
-        }
-        else
-        {
-            console.log("User was in the Database");
+            const savedAddress = await userSaveAddress.save();
         }
 
         const customerInfo = CustomerInfo.findOne({email: req.body.stripeEmail});
@@ -332,10 +324,9 @@ app.post('/charge', async (req, res)=>{
 
         if(!info[1])
         {
-            throw new Error("Product Info not found");
+            throw new Error(`Product Info not found for Product ID ${req.body.productId}`);
         }
         const amount = info[1].price;
-        console.log(`Amount ${amount} Product Id ${req.body.productId}`);
 
         if(!info[0])
         {
@@ -360,12 +351,10 @@ app.post('/charge', async (req, res)=>{
 
             const charge = await stripe.charges.create({
                 amount: amount,
-                description: "Picture Tube CD",
+                description: info[1].description,
                 currency: 'usd',
                 customer: customer.id
             });
-
-            // console.log("Charge ID", charge.id);
 
             //Save A order FOR THE NEW CUSTOMER ID - pickedNewCustomerInfo._customerId
             var newOrder = new Order({
@@ -375,7 +364,7 @@ app.post('/charge', async (req, res)=>{
                 _chargeId: charge.id,
                 productId: req.body.productId,
                 price: amount,
-                created: Date.now,
+                created: Date.now(),
                 billingAddress: {
                     addressStreet: req.body.stripeBillingAddressLine1,
                     addressCity: req.body.stripeBillingAddressCity,
@@ -396,7 +385,8 @@ app.post('/charge', async (req, res)=>{
             const savedOrder = await newOrder.save();
 
             return res.status(200).render('purchase.hbs', {
-                item: "Picture Tube CD",
+                item: info[1].name,
+                image: info[1].productImage,
                 amount: amount
             });
         }
@@ -404,12 +394,10 @@ app.post('/charge', async (req, res)=>{
             //CREATE A CHARGE FOR THE EXISTING CUSTOMER ID
             const charge = await stripe.charges.create({
                 amount: amount,
-                description: "Picture Tube CD",
+                description: info[1].description,
                 currency: 'usd',
                 customer: info[0]._customerId
             });
-
-            // console.log("Charge ID", charge.id);
 
             //Save A order FOR THE EXISTING CUSTOMER ID - info[0]._customerId
             var newOrder = new Order({
@@ -419,7 +407,7 @@ app.post('/charge', async (req, res)=>{
                 _chargeId: charge.id,
                 productId: req.body.productId,
                 price: amount,
-                created: Date.now,
+                created: Date.now(),
                 billingAddress: {
                     addressStreet: req.body.stripeBillingAddressLine1,
                     addressCity: req.body.stripeBillingAddressCity,
@@ -440,7 +428,8 @@ app.post('/charge', async (req, res)=>{
             const savedOrder = await newOrder.save();
 
             return res.status(200).render('purchase.hbs', {
-                item: "Picture Tube CD",
+                item: info[1].name,
+                image: info[1].productImage,
                 amount: `$${amount / 100}`
             });
         
@@ -453,7 +442,7 @@ app.post('/charge', async (req, res)=>{
 app.post('/product/create', authenticate, async (req, res)=>{
 
     try{
-        var product = _.pick(req.body, ['name', 'productId', 'description', 'price', 'productType']);
+        var product = _.pick(req.body, ['name', 'productId', 'description', 'price', 'productImage', 'productType']);
         var newProduct = new Product(product);
         const prod = await newProduct.save();
 

@@ -13,25 +13,35 @@
   <body>
           {{> header}}
     <main>
-        <div id="bannerContainer">
-            <div id="leadContainer">
-                <div id="leadLineTwo">
-                    <div id="leadBG">
-                        <h1 id="lead">Music Focus</h1>  
+        <section id="videoContainer">
+            <video poster="" id="bgvid" playsinline autoplay muted loop>
+            
+            <source src="/layla720.webm" type="video/webm">
+            <source src="/layla720.mp4" type="video/mp4">
+
+            </video>
+        </section>
+        <section id="contentContainer">
+            <div id="bannerContainer">
+                <div id="leadContainer">
+                    <div id="leadLineTwo">
+                        <div id="leadBG">
+                            <h1 id="lead">Music Focus</h1>  
+                            <h2 id="subLead">Learn Guitar</h2>
+                        </div>
+                        {{!-- <h2 id="subLead">Learn Guitar</h2> --}}
                         
                     </div>
-                    <h2 id="subLead">Learn Guitar</h2>
-                    
                 </div>
             </div>
-        </div>
-        <div id="leadButtons">
-            <button onclick="window.location.href = '#lessonScheduleTitle';">Lesson Schedule</button>
-            <button onclick="window.location.href = '#rehearsalScheduleTitle';">Rehearsal Schedule</button>
-        </div>
-        <div id="scrollButtonContainer">
-            <a href="#lessonScheduleTitle"><img src="UiButtons.png"></a>
-        </div>
+            <div id="leadButtons">
+                <button class="orangeText orangeBorder linkButtonPadding" onclick="window.location.href = '#lessonScheduleTitle';">Lesson Schedule</button>
+                <button class="orangeText orangeBorder linkButtonPadding" onclick="window.location.href = '#rehearsalScheduleTitle';">Rehearsal Schedule</button>
+            </div>
+            <div id="scrollButtonContainer">
+                <a href="#lessonScheduleTitle"><img src="UiButtons.png"></a>
+            </div>
+        </section>
         <section class="lessonsContainer">
             <div class="pricingContainer">
                 <div class="flexColumnCenter halfHourMember blackBG">

@@ -18,12 +18,18 @@
 
 }
 
-
+::-webkit-scrollbar { 
+    width: 0px!important;
+  } 
 
 body{
     background-color: var(--black-color);
     color: var(--white-color);
     margin: 0;
+}
+
+#navContainer{
+    background-color: var(--black-color);
 }
 
 #mainNav{
@@ -46,6 +52,27 @@ body{
     text-shadow: 0px 0px 10px var(--blue-color);
 }
 
+#videoContainer video{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    transform: translateX(-50%) translateY(-50%);
+ background: url('//demosthenes.info/assets/images/polina.jpg') no-repeat;
+  background-size: cover;
+  transition: 1s opacity;
+}
+
+#contentContainer{
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background-color: rgba(0,0,0,0.5);
+}
+
 #superlead{
    font-family: Prompt; 
    font-size: 48px;
@@ -58,7 +85,7 @@ body{
    display: flex;
    justify-content: center;
    flex-direction: column;
-   margin-top: 100px;
+
 }
 
 #bookContainer{
@@ -69,6 +96,7 @@ body{
     font-family: Prompt;
     justify-content: center;
     padding: 0;
+    background-color: rgba(34,34,34, 0.6);
 }
 
 #leadContainer{
@@ -77,6 +105,7 @@ body{
     padding: 10px;
     box-shadow: 0 0 5px var(--blue-color),0 0 10px var(--blue-color),0 0 15px var(--blue-color),0 0 20px var(--blue-color),0 0 25px var(--blue-color),0 0 15px #000;
     animation: containerShadow 1s infinite;
+    background-color: rgba(0,0,0,0.5);
 }
 
 #leadLineTwo{
@@ -88,50 +117,44 @@ body{
 }
 
 #leadBG{
-    top: -96px;
-    position: relative;
-    margin: 0px 200px;
+    width: 100%;
 }
 
 
 #lead{
     font-family: Prompt; 
-    font-size: 64px;
+    font-size: 4rem;
     text-align: center;
     text-shadow: 0 0 5px var(--blue-color),0 0 10px var(--blue-color),0 0 15px var(--blue-color),0 0 20px var(--blue-color),0 0 25px var(--blue-color),0 0 15px #000;
-    background-color: #000;
     animation: logoShadow 2s infinite;
+    width: 100%;
  }
 
  #subLead{
     font-family: Prompt; 
-    font-size: 40px;
-    top: -96px;
-    position: relative;
+    font-size: 3.5rem;
     text-align: center;
-    margin: 0;
  }
 
  #leadButtons{
+     margin-top: 50px;
     display: flex;
     justify-content: center;
  }
  
  #leadButtons button{
-    background-color: var(--orange-color); /* Green */
-    border: none;
-    color: white;
-    font-family: Roboto;
-    font-weight: 900;
-    padding: 15px 32px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
-    font-size: 30px;
+    font-size: 1.6rem;
     margin: 0px 40px;
-    text-shadow: 2px 2px 4px #000;
-    top: -40px;
-    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background-color: rgba(34,34,34, 0.6);
+ }
+
+ #leadButtons button:hover{
+    text-shadow: 0px 0px 10px var(--orange-color);
+    background-color: rgba(34,34,34, 0.6);
  }
 
  .pricingContainer{
@@ -442,7 +465,6 @@ body{
 
  #scrollButtonContainer{
     margin-top: 100px;
-    margin-bottom: 100px;
     display: flex;
     justify-content: center;
 }
@@ -921,9 +943,7 @@ font-family: prompt;
 }
 
 @media only screen and (max-width: 1050px) {
-    #navContainer{
-        
-    }
+
     
     #mainNav{
         display: none;
@@ -932,7 +952,7 @@ font-family: prompt;
     #mobileNav{
         display: flex;
         flex-direction: column;
-        margin-bottom: 20px;
+        padding-bottom: 20px;
     }
 
     #hamburger{
@@ -948,6 +968,11 @@ font-family: prompt;
     #mobileLinks{
         display: flex;
         justify-content: center;
+    }
+
+    #contentContainer{
+        width: 100%;
+        height: 100%;
     }
 }
 
@@ -1001,6 +1026,24 @@ font-family: prompt;
         border-top: 5px var(--blue-color) solid;
         border-bottom: 5px var(--blue-color) solid;
         margin: 0.4em 0;
+    }
+
+    #leadContainer{
+        margin: 0 10%;
+    }
+
+    #lead{
+        font-size: 3rem;
+        width: 100%;
+     }
+    
+     #subLead{
+        font-size: 2.5rem;
+     }
+    
+
+    #videoContainer video{
+        display: none;
     }
 
     .attribution{
@@ -1082,6 +1125,21 @@ font-family: prompt;
          margin: 1rem;
      }
 
+     #leadContainer{
+        margin: 0 5%;
+    }
+
+     #lead{
+        font-size: 3rem;
+        width: 100%;
+        margin: 20px 0px;
+     }
+    
+     #subLead{
+        font-size: 2.5rem;
+     }
+    
+
     .priceGrid{
         display: flex;
         justify-content: space-between;
@@ -1153,7 +1211,7 @@ font-family: prompt;
      }
 
     #leadContainer{
-        width: 80%;
+        width: 90%;
         display: flex;
         justify-content: center;
     }

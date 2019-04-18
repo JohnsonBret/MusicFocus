@@ -186,6 +186,10 @@ body{
     width: 100%;
 }
 
+.height100Percent{
+    height: 100%;
+}
+
 .marginTop20px{
     margin-top: 20px;
 }
@@ -206,6 +210,10 @@ body{
     display: flex;
     align-items: center;
     flex-direction: column;
+}
+
+.flexItemGrow{
+    flex: 1 0 auto;
 }
 
 /* .flexColumnCenter div{

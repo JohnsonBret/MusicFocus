@@ -5,3 +5,7 @@ main{
     justify-content: space-evenly;
     min-height: 60vh;
 }
+
+#updateBookingsRoot div{
+    padding: 1rem;
+}

@@ -136,6 +136,70 @@ app.get('/history', (req, res)=>{
     });
 });
 
+app.get('/orders/:status', async (req, res)=>{
+
+    try{
+        const status = req.params.status;
+
+        let shippingStatus;
+        let orderCancelStatus;
+
+        if(status === "NotShipped")
+        {
+            shippingStatus = false;
+            orderCancelStatus = false;
+        }
+        else if(status === "Shipped"){
+            shippingStatus = true;
+            orderCancelStatus = false;
+        }
+        else if(status === "Canceled"){
+            orderCancelStatus = true;
+        }
+        else if(status === "Active"){
+            orderCancelStatus = false;
+        }
+
+        console.log(`Got fetch request for Orders ${status}`);
+        console.log(`Shipping Status ${shippingStatus} Order Status ${orderCancelStatus}`);
+
+        if(shippingStatus === undefined)
+        {
+            const selectedOrders = await Order.find({
+                orderCancelStatus: orderCancelStatus
+            });
+
+            console.log(selectedOrders);
+
+            res.status(200).send(selectedOrders);
+        }
+        else if(orderCancelStatus === undefined)
+        {
+            const selectedOrders = await Order.find({
+                shippingStatus: shippingStatus
+            });
+
+            console.log(selectedOrders);
+
+            res.status(200).send(selectedOrders);
+        }
+        else{
+            const selectedOrders = await Order.find({
+                shippingStatus: shippingStatus,
+                orderCancelStatus: orderCancelStatus
+            });
+
+            console.log(selectedOrders);
+            res.status(200).send(selectedOrders);
+        }
+        
+
+    }catch(e){
+        res.status(400).send({errorMsg: e});
+    }
+    
+});
+
 app.get('/owner', (req, res)=>{
     res.render('owner.hbs', {
         pageTitle: "Services",

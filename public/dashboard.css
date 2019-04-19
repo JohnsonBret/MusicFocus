@@ -9,3 +9,33 @@ main{
 #updateBookingsRoot div{
     padding: 1rem;
 }
+
+.orderCard{
+    padding: 1rem;
+    background-color: var(--off-black-color);
+}
+
+.canceledBG{
+   background-color: var(--orange-color);
+}
+
+.shippedBG{
+    background-color: var(--green-color);
+}
+
+.buttonStd{
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 5px;
+}
+
+.shippingAddress{
+    padding: 1rem;
+}
+
+.shippingAddress p{
+    border-bottom: 1px solid white;
+}

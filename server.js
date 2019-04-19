@@ -136,10 +136,11 @@ app.get('/history', (req, res)=>{
     });
 });
 
-app.get('/orders/:status', async (req, res)=>{
+app.get('/orders/:status', authenticate, async(req, res)=>{
+
+    const status = req.params.status;
 
     try{
-        const status = req.params.status;
 
         let shippingStatus;
         let orderCancelStatus;
@@ -163,39 +164,48 @@ app.get('/orders/:status', async (req, res)=>{
         console.log(`Got fetch request for Orders ${status}`);
         console.log(`Shipping Status ${shippingStatus} Order Status ${orderCancelStatus}`);
 
-        if(shippingStatus === undefined)
+        
+        if(orderCancelStatus === undefined && shippingStatus === undefined)
         {
-            const selectedOrders = await Order.find({
-                orderCancelStatus: orderCancelStatus
-            });
+            let selectedOrders = await Order.find({});
 
-            console.log(selectedOrders);
-
-            res.status(200).send(selectedOrders);
+            return res.status(200).send(selectedOrders);
         }
         else if(orderCancelStatus === undefined)
         {
-            const selectedOrders = await Order.find({
+            let selectedOrders = await Order.find({
                 shippingStatus: shippingStatus
             });
 
             console.log(selectedOrders);
 
-            res.status(200).send(selectedOrders);
+            return res.status(200).send(selectedOrders);
         }
-        else{
-            const selectedOrders = await Order.find({
-                shippingStatus: shippingStatus,
+        else if(shippingStatus === undefined)
+        {
+            let selectedOrders = await Order.find({
                 orderCancelStatus: orderCancelStatus
             });
 
             console.log(selectedOrders);
-            res.status(200).send(selectedOrders);
+
+            return res.status(200).send(selectedOrders);
+           
+        }
+        else{
+            let selectedOrders = await Order.find({
+                shippingStatus: shippingStatus,
+                orderCancelStatus: orderCancelStatus
+            });
+           
+            // console.log(selectedOrders);
+            return res.status(200).send(selectedOrders);
         }
         
 
     }catch(e){
-        res.status(400).send({errorMsg: e});
+        console.log("Error Message", e);
+        return res.status(400).send(e);
     }
     
 });
@@ -499,6 +509,36 @@ app.post('/charge', async (req, res)=>{
         
     }catch (e){
         res.status(400).send({errorMsg: e});
+    }
+
+});
+
+app.patch('/orders/shipped/:id/:value', authenticate, async (req,res)=>{
+    const id = req.params.id;
+    const updateValue = req.params.value;
+
+    console.log(`Patch Request Id: ${id} and Value ${updateValue}`);
+
+    try{
+        const updatedOrder = await Order.findOneAndUpdate({_id: id}, {$set:{shippingStatus: updateValue}}, {new: true});
+        res.status(200).send({message: "Success", order: updatedOrder});
+    } catch(e){
+        res.status(400).send(e);
+    }
+
+});
+
+app.patch('/orders/cancel/:id/:value', authenticate, async (req,res)=>{
+    const id = req.params.id;
+    const updateValue = req.params.value;
+
+    console.log(`Patch Request Id: ${id} and Value ${updateValue}`);
+
+    try{
+        const updatedOrder = await Order.findOneAndUpdate({_id: id}, {$set:{orderCancelStatus: updateValue}}, {new: true});
+        res.status(200).send({message: `Canceled order ${id}`, order: updatedOrder});
+    } catch(e){
+        res.status(400).send(e);
     }
 
 });

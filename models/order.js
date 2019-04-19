@@ -82,7 +82,7 @@ OrderSchema.methods.toJSON = function(){
     let order = this;
     let orderObject = order.toObject();
 
-    return _.pick(productObject, ['_id', 'name', 'productId', 'description', 'price', 'productType']);
+    return orderObject;
 };
 
 var Order = mongoose.model('Order', OrderSchema);

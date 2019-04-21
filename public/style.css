@@ -95,7 +95,6 @@ body{
     font-family: Prompt;
     justify-content: center;
     padding: 0;
-    background-color: rgba(34,34,34, 0.6);
 }
 
 #leadContainer{
@@ -176,6 +175,11 @@ body{
      text-shadow: 0px 0px 10px var(--blue-color);
  }
 
+ .bookLink:hover{
+    color: var(--white-color);
+    text-shadow: 0px 0px 10px var(--off-white-color);
+ }
+
 .fs20{
      font-size: 20px;
 }
@@ -222,6 +226,22 @@ body{
 
 .textCenter{
     text-align: center;
+}
+
+.textRight{
+    text-align: right;
+}
+
+.text2Rem{
+    font-size: 2rem;
+}
+
+.upperCase{
+    text-transform: uppercase;
+}
+
+.letterSpace2px{
+    letter-spacing: 2px;
 }
 
 .sectionTitleContainerSkew{

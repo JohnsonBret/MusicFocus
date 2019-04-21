@@ -437,6 +437,7 @@ app.post('/charge', async (req, res)=>{
                 _customerId: pickedNewCustomerInfo._customerId,
                 _chargeId: charge.id,
                 productId: req.body.productId,
+                productName: info[1].name,
                 price: amount,
                 created: Date.now(),
                 billingAddress: {
@@ -480,6 +481,7 @@ app.post('/charge', async (req, res)=>{
                 _customerId: info[0]._customerId,
                 _chargeId: charge.id,
                 productId: req.body.productId,
+                productName: info[1].name,
                 price: amount,
                 created: Date.now(),
                 billingAddress: {

@@ -10,9 +10,14 @@ main{
     padding: 1rem;
 }
 
+#orders{
+    min-height: 200px;
+}
+
 .orderCard{
     padding: 1rem;
     background-color: var(--off-black-color);
+    border-bottom: 1px solid var(--white-color);
 }
 
 .canceledBG{

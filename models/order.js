@@ -36,6 +36,11 @@ var OrderSchema = new mongoose.Schema({
         unique: false,
         minlength: 4
     },
+    productName:{
+        type: String,
+        required: true,
+        unique: false,
+    },
     price:{
         type: Number,
         required: true,
@@ -55,7 +60,7 @@ var OrderSchema = new mongoose.Schema({
     shippingName:{
         type: String,
         required: true,
-        unique: true,
+        unique: false,
         minlength: 1
     },
     shippingAddress:{

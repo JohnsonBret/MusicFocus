@@ -1,0 +1,56 @@
+.formMain{
+    display: flex;
+    justify-content: center;
+}
+
+.formLabelField{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.labelFieldPadding{
+    padding-right: 20px;
+    margin: 5px 0px;
+}
+
+.formStyle{
+    background-color: var(--blue-color);
+    border-radius: 5px;
+    padding: 10px 20px;
+    width: 100%;
+}
+
+.formButtonRow{
+    display: flex;
+}
+
+.formTitle{
+    font-size: 40px;
+    margin: 10px 0px;
+}
+
+.labelTextSize{
+    font-size: 24px;
+}
+
+.textInput{
+    height: 32px;
+    font-size:20px;
+}
+
+.textInput:focus{
+    
+    box-shadow: 2px 2px 5px var(--off-white-color);
+}
+
+.textArea{
+    height: 30vh;
+    /*margin-right: 20px; */
+    font-size:20px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.pageTitle{
+    font-size: 3rem;
+}

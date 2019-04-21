@@ -92,6 +92,7 @@ const listSelectedOrders = async (orders)=>{
     await orders.map((current)=>{
         let orderCardDiv = document.createElement("div");
         let name = document.createElement("h3");
+        let product = document.createElement("h3");
         let orderId = document.createElement("p");
         let shippingStatus = document.createElement("p");
         let activeStatus = document.createElement("p");
@@ -128,7 +129,8 @@ const listSelectedOrders = async (orders)=>{
 
 
         name.innerHTML = `Customer Name: ${current.customerName}`;
-        orderId.innerHTML = `Order ID: ${current._id}`
+        product.innerHTML = `Item: ${current.productName}`;
+        orderId.innerHTML = `Order ID: ${current._id}`;
         shippingStatus.innerHTML = `Shipped: ${current.shippingStatus}`;
         activeStatus.innerHTML = `Canceled: ${current.orderCancelStatus}`;
         orderDate.innerHTML = `Ordered At: ${DateTime.fromISO(current.created)
@@ -136,6 +138,7 @@ const listSelectedOrders = async (orders)=>{
             .toLocaleString(DateTime.DATETIME_MED_WITH_SECONDS)}`;
         
         orderCardDiv.appendChild(name);
+        orderCardDiv.appendChild(product);
         orderCardDiv.appendChild(orderId);
         orderCardDiv.appendChild(shippingStatus);
         orderCardDiv.appendChild(activeStatus);
@@ -187,7 +190,7 @@ const createShippedConfirmDiv = (orderCardDiv,  shippedButton)=>{
     confirmShipButton.innerHTML = "Confirm";
     confirmShipButton.addEventListener("click", (event)=>{
         console.log("Confirm Ship Update Database");
-        let idText = event.target.parentNode.parentNode.childNodes[1].innerHTML;
+        let idText = event.target.parentNode.parentNode.childNodes[2].innerHTML;
         let idArry = idText.split(": ");
         updateOrderShipStatus(idArry[1], true);
         
@@ -243,7 +246,7 @@ const createCancelConfirmDiv = (orderCardDiv,  cancelButton)=>{
     confirmCancelButton.innerHTML = "Confirm";
     confirmCancelButton.addEventListener("click", (event)=>{
         console.log("Cancel Order Update Database");
-        let idText = event.target.parentNode.parentNode.childNodes[1].innerHTML;
+        let idText = event.target.parentNode.parentNode.childNodes[2].innerHTML;
         let idArry = idText.split(": ");
         updateCancelStatus(idArry[1], true);
     });
@@ -301,7 +304,7 @@ const createUnShippedConfirmDiv = (orderCardDiv,  unShippedButton)=>{
     confirmUnShipButton.innerHTML = "Confirm";
     confirmUnShipButton.addEventListener("click", (event)=>{
         console.log("Confirm Ship Update Database");
-        let idText = event.target.parentNode.parentNode.childNodes[1].innerHTML;
+        let idText = event.target.parentNode.parentNode.childNodes[2].innerHTML;
         let idArry = idText.split(": ");
         updateOrderShipStatus(idArry[1], false);
         
@@ -359,7 +362,7 @@ const createReActivateConfirmDiv = (orderCardDiv,  ReActivateButton)=>{
     confirmReActivateButton.innerHTML = "Confirm";
     confirmReActivateButton.addEventListener("click", (event)=>{
         console.log("Confirm Ship Update Database");
-        let idText = event.target.parentNode.parentNode.childNodes[1].innerHTML;
+        let idText = event.target.parentNode.parentNode.childNodes[2].innerHTML;
         let idArry = idText.split(": ");
         updateCancelStatus(idArry[1], false);
         

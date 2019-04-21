@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+        {{> header}}
+    <link href="https://fonts.googleapis.com/css?family=Bangers|Prompt|Roboto|Teko|Roboto:900" rel="stylesheet"> 
+    <link rel="stylesheet" href="/contact.css"> 
+    <link rel="stylesheet" href="/style.css"> 
+    <body>
+        <section class="secondaryHeader">
+            <div class="secondaryTextContainer">
+                <div class="HrGreenSpacer"></div>
+                <h1 class="pageTitle prompt textCenter">{{pageTitle}}</h1>
+                <h2 class="">{{thanksMsg}}</h2>
+            </div>
+        </section>
+        <main class="formMain prompt">
+            <section class="formTextContainer">   
+                <form action="/submit" method="POST" class="formStyle">
+                    <h2 class="formTitle whitetext"></i>Send us an EMAIL <i class="fas fa-tree"></i></h2>
+                    <p class="whitetext">Please fill out the information below if you are interested in a FREE quote, or simply have a few questions you’d like answered</p>
+                    <div class="secondaryFlexRow">
+                        <div class="formLabelField labelFieldPadding">
+                            <label class="labelTextSize whitetext">*Name</label>
+                            <input class="textInput browntext" type="text" name="contactName" placeholder="Full Name (required)" required>
+                        </div>
+                    </div>
+                    <div class="secondaryFlexRow">
+                        <div class="formLabelField labelFieldPadding">
+                            <label class="labelTextSize whitetext">*Email</label>
+                            <input class="textInput browntext" type="email" name="contactEmail" placeholder="Email Address (required)" required>
+                        </div>
+                    </div>
+                    <div class="secondaryFlexRow">
+                        <div class="formLabelField labelFieldPadding">
+                            <label class="labelTextSize whitetext">*Telephone</label>
+                            <input class="textInput browntext" type="tel" name="contactNumber" placeholder="Phone Number (required)" required>
+                        </div>
+                    </div>
+                    <div class="secondaryFlexRow">
+                        <div class="formLabelField labelFieldPadding">
+                            <label class="labelTextSize whitetext">Address</label>
+                            <input class="textInput browntext" type="text" name="contactStreet" placeholder="Street Address (optional)">
+                        </div>
+                    </div>
+                    <div class="secondaryFlexRow">
+                        <div class="formLabelField labelFieldPadding">
+                            <label class="labelTextSize whitetext">City</label>
+                            <input class="textInput browntext" type="text" name="contactCity" placeholder="City (optional)">
+                        </div>
+                    </div>
+                    <div class="formLabelField textArea">
+                        <label class="labelTextSize whitetext">Questions?</label>
+                        <textarea class="textArea browntext" name="contactQuestions"></textarea>
+                    </div>
+                    <div class="formButtonRow">
+                        <input class="button blueBtn" type="submit" value="Send it!" name="" id="">
+                    </div>
+                </form>
+            </section>
+        </main>
+    
+        {{> footer}}
+    
+    </body>
+</html>

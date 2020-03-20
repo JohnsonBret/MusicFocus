@@ -1,13 +1,21 @@
 
 <div>
         <h1>Booking Update</h1>
-        <section class="custom-select">
+        <section class="custom-select blueBG">
                 <label class="scheduleLabel" for="clientList">Client</label>
                 <select class="clientList" name="" id="updateBookingClientList"></select>
                 <div>
                 <button id="updateBookingButton" class="button blueBtn"><i class="fas fa-redo blueIcon"></i></button>
                 </div>
+
         </section>
+        <div id="clientSearchBar" class="blueBG">
+                <label>Client Search</label>
+                <input oninput="searchAll()" id="all" type="text">
+        </div>
+        <ul id="clientSearchList">
+
+        </ul>
         <section id="updateBookingsRoot">
 
         

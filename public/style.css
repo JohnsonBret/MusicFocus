@@ -758,7 +758,7 @@ footer nav div a{
 
 .custom-select{
     width: 100%;
-    height: 5vh;
+    /* height: 5vh; */
     /* border: 1px solid var(--off-black-color); */
     display: flex;
     align-items: center;
@@ -1314,6 +1314,11 @@ font-family: prompt;
     .subTitleContainerSkew{
         width: 70%;
         margin-left: 1em;
+    }
+
+    .creditText{
+        width: 80%;
+        text-align: center;
     }
 
 }

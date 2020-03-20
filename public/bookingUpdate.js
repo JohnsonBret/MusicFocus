@@ -54,6 +54,7 @@ const listClientBookings = (bookings) => {
         deleteButton.classList.add("blueBtn");
 
         div.classList.add("blackBG");
+        div.classList.add("bookingCard");
         div.style.minWidth = "300px";
 
         div.appendChild(bookeeP);
@@ -141,16 +142,9 @@ const clearBookingsList = ()=>{
 
     var bookingUpdateRoot = document.getElementById("updateBookingsRoot");
 
-    for (var i = 0; i < bookingUpdateRoot.children.length; i++) {
-
-        var currentNode = bookingUpdateRoot.children[i];
-        
-        while (currentNode.childNodes.length > 0) {
-            currentNode.removeChild(currentNode.lastChild);
+        while (bookingUpdateRoot.childNodes.length > 0) {
+            bookingUpdateRoot.removeChild(bookingUpdateRoot.lastChild);
         }
-
-    }
-
 }
 
 let updateBookingClientList = document.getElementById("updateBookingClientList");

@@ -10,6 +10,35 @@ main{
     padding: 1rem;
 }
 
+#clientSearchBar{
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Roboto;
+    text-transform: uppercase;
+}
+
+#clientSearchBar input{
+    background-color: var(--blue-color);
+    border-top: none;
+    border-right: none;
+    border-bottom: 2px solid #ecf6f8;
+    border-left: 2px solid #ecf6f8;
+    color: #ecf6f8;
+    font-size: 1rem;
+    padding: 0.25rem 0.5rem;
+    margin-left: 10px;
+}
+
+#clientSearchList{
+    
+}
+
+.bookingCard{
+    border-bottom: 1px solid var(--white-color);
+}
+
 #orders{
     min-height: 200px;
 }

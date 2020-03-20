@@ -161,10 +161,9 @@ app.get('/orders/:status', authenticate, async(req, res)=>{
             orderCancelStatus = false;
         }
 
-        console.log(`Got fetch request for Orders ${status}`);
-        console.log(`Shipping Status ${shippingStatus} Order Status ${orderCancelStatus}`);
+        // console.log(`Got fetch request for Orders ${status}`);
+        // console.log(`Shipping Status ${shippingStatus} Order Status ${orderCancelStatus}`);
 
-        
         if(orderCancelStatus === undefined && shippingStatus === undefined)
         {
             let selectedOrders = await Order.find({});
@@ -337,7 +336,7 @@ app.post('/booking', bookingMiddleware, (req, res)=>{
 });
 
 
-//TODO clean up this abomination!
+//TODO Refactor - has gotten bloated!
 app.post('/charge', async (req, res)=>{
 
     // console.log("request body", req.body);
